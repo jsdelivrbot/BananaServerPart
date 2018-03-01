@@ -1,6 +1,6 @@
 
 const express = require('express');
-const socketIO = require('socket.io');
+const socketIO = require('./node_modules/socket.io');
 const path = require('path');
 
 const PORT = process.env.PORT || 3000;
