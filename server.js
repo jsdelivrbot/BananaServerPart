@@ -1,13 +1,21 @@
-//var express = require('express');
-var http = require('http');
 
-/*express.get('/',function(req,res){
-	res.send('Hellow');
-})*/
 
-var server = http.createServer((req, res) => {
-		res.writeHead(200, {'Content-type':'text/html'});
-res.end('<h1>Hello NodeJS</h1>');
+const express = require('express');
+const socketIO = require('socket.io');
+const path = require('path');
+
+const PORT = process.env.PORT || 3000;
+const INDEX = path.join(__dirname, 'index.html');
+
+const server = express()
+  .use((req, res) => res.sendFile(INDEX) )
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+const io = socketIO(server);
+
+io.on('connection', (socket) => {
+  console.log('Client connected');
+  socket.on('disconnect', () => console.log('Client disconnected'));
 });
 
-server.listen(4321,() => console.log('Server running on port 3000'));
+setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
