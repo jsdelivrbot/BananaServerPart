@@ -1,11 +1,13 @@
 {
-  "name": "websockets-socket.io",
-  "version": "1.0.0",
+  "name": "Banan-server",
+  "version": "0.3.0",
+  "description": "A sample Node.js app using Express 4",
   "engines": {
-    "node": "6.2.0"
+    "node": "8.9.1"
   },
+  
   "description": "",
-  "main": "index.js",
+  "main": "node server.js",
   "scripts": {
     "start": "node server.js"
   },
