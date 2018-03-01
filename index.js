@@ -1,23 +1,20 @@
-var express = require('express');
-var app = express();
 
-// set the port of our application
-// process.env.PORT lets the port be set by Heroku
-var port = process.env.PORT || 8080;
+const express = require('express');
+const socketIO = require('socket.io');
+const path = require('path');
 
-// set the view engine to ejs
-app.set('view engine', 'ejs');
+const PORT = process.env.PORT || 3000;
+const INDEX = path.join(__dirname, 'index.html');
+/*
+const server = express()
+		.use((req, res) => res.sendFile(INDEX)  )
+.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+*/
+const io = socketIO(server);
 
-// make express look in the public directory for assets (css/js/img)
-app.use(express.static(__dirname + '/public'));
-
-// set the home page route
-app.get('/', function(req, res) {
-
-	// ejs render automatically looks in the views folder
-	res.render('index');
+io.on('connection', (socket) => {
+	console.log('Client connected');
+socket.on('disconnect', () => console.log('Client disconnected'));
 });
 
-app.listen(port, function() {
-	console.log('Our app is running on http://localhost:' + port);
-});
+setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
