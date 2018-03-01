@@ -1,4 +1,4 @@
-var express = require('express');
+var express = require('express')();
 var http = require('http');
 
 express.get('/',function(req,res){
