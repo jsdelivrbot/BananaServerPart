@@ -3,6 +3,7 @@ var io = require('socket.io').listen(8080);
 io.set('log level', 1);
 // Навешиваем обработчик на подключение нового клиента
 io.sockets.on('connection', function (socket) {
+	console.log("connect");
 	// Т.к. чат простой - в качестве ников пока используем первые 5 символов от ID сокета
 	var ID = (socket.id).toString().substr(0, 5);
 	var time = (new Date).toLocaleTimeString();
