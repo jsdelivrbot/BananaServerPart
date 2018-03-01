@@ -11,14 +11,12 @@ var server=http.createServer(function(req,res){
 }).listen(555);
 */
 
-var server=express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+const server = express()
+		.use((req, res) => res.sendFile(INDEX) )
+.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
-var io=socketIO(server);
+
+const io=socketIO(server);
 
 io.on('connection',(socket)=>{
   console.log("Clinet connect");
