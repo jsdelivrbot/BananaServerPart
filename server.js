@@ -1,4 +1,5 @@
 var express = require('express');
+var cool = require('cool-ascii-faces');
 var app = express();
 
 // set the port of our application
@@ -17,7 +18,9 @@ app.get('/', function(req, res) {
 	// ejs render automatically looks in the views folder
 	res.render('index');
 });
-
+app.get('/cool', function(request, response) {
+	response.send(cool());
+});
 app.listen(port, function() {
 	console.log('Our app is running on http://localhost:' + port);
 });
