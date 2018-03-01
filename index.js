@@ -1,26 +1,19 @@
-const express = require('express')
-const path = require('path')
+const express = require('express');
 const socketIO = require('socket.io');
-const PORT = process.env.PORT || 5000
-const http = require('http');
+const path = require('path');
 
-/*
-var server=http.createServer(function(req,res){
-  res.writeHead(200);
-  res.end("Banana 555");
-}).listen(555);
-*/
+const PORT = process.env.PORT || 3000;
+const INDEX = path.join(__dirname, 'index.html');
 
 const server = express()
 		.use((req, res) => res.sendFile(INDEX) )
 .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
+const io = socketIO(server);
 
-const io=socketIO(server);
+io.on('connection', (socket) => {
+	console.log('Client connected');
+socket.on('disconnect', () => console.log('Client disconnected'));
+});
 
-io.on('connection',(socket)=>{
-  console.log("Clinet connect");
-  socket.on('disconnect',()=>console.log('disconnect'));
-})
-
-setInterval(()=>io.emit('time',new Date().toTimeString()),1000);
+setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
