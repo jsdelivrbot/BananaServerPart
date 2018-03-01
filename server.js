@@ -1,21 +1,16 @@
+var net = require('net');
 
-
-const express = require('express');
-const socketIO = require('socket.io');
-const path = require('path');
-
-const PORT = process.env.PORT || 3000;
-const INDEX = path.join(__dirname, 'index.html');
-
-const server = express()
-  .use((req, res) => res.sendFile(INDEX) )
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`));
-
-const io = socketIO(server);
-
-io.on('connection', (socket) => {
-  console.log('Client connected');
-  socket.on('disconnect', () => console.log('Client disconnected'));
+var client = new net.Socket();
+client.connect(1337, '127.0.0.1', function() {
+	console.log('Connected');
+	client.write('Hello, server! Love, Client.');
 });
 
-setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
+client.on('data', function(data) {
+	console.log('Received: ' + data);
+	client.destroy(); // kill client after server's response
+});
+
+client.on('close', function() {
+	console.log('Connection closed');
+});
