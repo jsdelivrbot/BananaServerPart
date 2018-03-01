@@ -7,7 +7,7 @@
   },
   
   "description": "",
-  "main": "node server.js",
+  "main": "index.html",
   "scripts": {
     "start": "node server.js"
   },
