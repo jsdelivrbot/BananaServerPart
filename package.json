@@ -5,7 +5,7 @@
   "engines": {
     "node": "8.9.1"
   },
-  "main": "server.js",
+  "main": "node server.js",
   "scripts": {
     "start": "node server.js",
     "test": "node test.js"
