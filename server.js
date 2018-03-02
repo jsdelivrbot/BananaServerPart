@@ -1,7 +1,5 @@
-var express = require('express');
-var app = express();
-var server = app.listen(5000);
-var io = require('socket.io').listen(server);
+var app=require('http').createServer(handler).listen(5050);
+var io =require('socket.io').listen(app);
 var fs = require('fs');
 
 
