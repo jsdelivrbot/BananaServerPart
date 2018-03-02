@@ -3,7 +3,7 @@
 	<title>Test socket.io</title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
 	<script>
-	var socket = io.connect('https://ancient-gorge-52214.herokuapp.com:5000');
+	var socket = io.connect('https://ancient-gorge-52214.herokuapp.com:8222');
 	socket.on('connect',function(){
 		socket.emit('addme',prompt('New users'));
 	})

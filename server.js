@@ -1,4 +1,4 @@
-var app=require('http').createServer(handler).listen(5050);
+var app=require('http').createServer(handler).listen(8222);
 var io =require('socket.io').listen(app);
 var fs = require('fs');
 
