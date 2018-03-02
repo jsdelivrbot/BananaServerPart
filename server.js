@@ -1,5 +1,5 @@
-const PORT = process.env.PORT || 3000;
-var app=require('http').createServer(handler).listen(PORT);
+
+var app=require('http').createServer(handler).listen(3000);
 var io =require('socket.io').listen(app);
 var fs = require('fs');
 
