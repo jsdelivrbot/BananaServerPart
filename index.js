@@ -1,20 +1,31 @@
+var app=require('http').createServer(handler).listen(80);
+var io =require('socket.io').listen(app);
+var fs = require('fs');
 
-  const express = require('express');
-  const socketIO = require('socket.io');
-  const path = require('path');
 
-  const PORT = process.env.PORT || 3000;
-  const INDEX = path.join(__dirname, 'index.html');
+function handler(req,res){
+	fs.readFile(__dirname+"index.html",function(err,data){
+		if(err){
+			res.writeHead(500);
+			return res.end("Err load");
+		}
+		res.writeHead(200);
+		res.end(data);
+	});
+}
 
-  const server = express()
-    .use((req, res) => res.sendFile(INDEX)  )
-    .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+io.sockets.on('connection',function(socket){
+	socket.on('addme',function(user){
+		socket.username=user;
+		socket.emit('chat','Server','Connected');
+		socket.broadcast.emit('chat','Server',user + 'on deck');
 
-  const io = socketIO(server);
+	});
+	socket.on('sendchat',function(data){
+		io.sockets.emit('chat',socket.username,data);
 
-  io.on('connection', (socket) => {
-    console.log('Client connected');
-    socket.on('disconnect', () => console.log('Client disconnected'));
-  });
-
-  setInterval(() => io.emit('time', new Date().toTimeString()), 1000);
+	});
+	socket.on('disconect',function(){
+		io.sockets.emit('chat','Server',socket.username + 'left');
+	});
+});
