@@ -16,12 +16,12 @@ const io = socketIO(server);
 io.sockets.on('connection',function(socket){
 	socket.on('addme',function(user){
 		socket.username=user;
-		socket.emit('chat','Server','Connected');
-		socket.broadcast.emit('chat','Server'+user + 'on deck');
+		socket.emit('chat','Server Connected');
+		io.sockets.emit('chat','Server'+user + 'on deck');
 
 	});
 	socket.on('sendchat',function(data){
-		socket.broadcast.emit('chat',socket.username+":"+data);
+		io.sockets.emit('chat',socket.username+":"+data);
 
 	});
 	socket.on('disconect',function(){
