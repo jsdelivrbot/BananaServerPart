@@ -11,13 +11,13 @@
 <input type="button" id="sendtext" value="Send Text" />
 </div>
 <script>
-	var socket = io();
+	var socket = io("http://ancient-gorge-52214.herokuapp.com");
 	socket.on('connect',function(){
 		socket.emit('addme',prompt('New users'));
 	})
-	socket.on('chat',function(user,data){
+	socket.on('chat',function(infos){
 		var p=document.createElement("p");
-		p.innerHTML=user+": "+data;
+		p.innerHTML=infos;
 		document.getElementById("output").appendChild(p);
 	})
 	window.addEventListener('load',function(){
