@@ -33,9 +33,9 @@ io.sockets.on('connection',function(socket){
 
 	socket.on('jsoncreater',function(json){
 			var $j=JSON.parse(json);
-			param1_sum+=$j["param1"];
-			param2_sum+=$j["param2"];
-			param3_sum+=$j["param3"];
+			param1_sum+=parseInt($j["param1"],10);
+			param2_sum+=parseInt($j["param2"],10);
+			param3_sum+=parseInt($j["param3"],10);
 			count++;
 			param1_mid=param1_sum/count;
 			param2_mid=param2_sum/count;
