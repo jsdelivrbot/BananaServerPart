@@ -6,7 +6,10 @@ const path = require('path');
 
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
-
+var count;
+var param1_mid;
+var param2_mid;
+var param3_mid;
 const server = express()
 		.use((req, res) => res.sendFile(INDEX) )
 .listen(PORT, () => console.log(`Listening on ${ PORT }`));
@@ -23,6 +26,11 @@ io.sockets.on('connection',function(socket){
 	socket.on('sendchat',function(data){
 		io.sockets.emit('chat',socket.username+":"+data);
 
+	});
+
+	socket.on('jsoncreater',function(json){
+			var $j=JSON.parse(json);
+			io.sockets.emit('chat',	socket.username+" : "+$j);
 	});
 	socket.on('disconect',function(){
 		io.sockets.emit('chat','Server',socket.username + 'left');
