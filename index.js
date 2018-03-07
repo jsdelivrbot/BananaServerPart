@@ -6,10 +6,13 @@ const path = require('path');
 
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
-var count;
+var count=0;
 var param1_mid;
 var param2_mid;
 var param3_mid;
+var param1_sum;
+var param2_sum;
+var param3_sum;
 const server = express()
 		.use((req, res) => res.sendFile(INDEX) )
 .listen(PORT, () => console.log(`Listening on ${ PORT }`));
@@ -30,8 +33,15 @@ io.sockets.on('connection',function(socket){
 
 	socket.on('jsoncreater',function(json){
 			var $j=JSON.parse(json);
-
-			socket.broadcast.emit('chat',	$j["name"]);
+			param1_sum+=$j["param1"];
+			param2_sum+=$j["param2"];
+			param3_sum+=$j["param3"];
+			count++;
+			param1_mid=param1_sum/count;
+			param2_mid=param2_sum/count;
+			param3_mid=param3_sum/count;
+			socket.broadcast.emit('middle',param1_mid,param2_mid,param3_mid);
+			socket.broadcast.emit('chat',	json);
 	});
 	socket.on('disconect',function(){
 		io.sockets.emit('chat','Server',socket.username + 'left');
