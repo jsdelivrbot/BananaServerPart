@@ -40,8 +40,8 @@ io.sockets.on('connection',function(socket){
 			param1_mid=param1_sum/count;
 			param2_mid=param2_sum/count;
 			param3_mid=param3_sum/count;
-			var $p="{'param1':'"+param1_sum+"','param2':'"+param1_sum+"','param3':'"+param1_sum+"'}";
-			io.sockets.emit("middle",json);
+			var $p="{'param1':'"+$j["param1"]+"','param2':'"+$j["param2"]+"','param3':'"+$j["param3"]+"'}";
+			io.sockets.emit("middle",$p);
 			socket.broadcast.emit("chat",	json);
 	});
 	socket.on('disconect',function(){
