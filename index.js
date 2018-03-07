@@ -29,7 +29,7 @@ io.sockets.on('connection',function(socket){
 	});
 
 	socket.on('jsoncreater',function(json){
-			var $j=json;
+			var $j=JSON.parse(json);
 
 			socket.broadcast.emit('chat',	$j["name"]);
 	});
