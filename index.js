@@ -40,8 +40,8 @@ io.sockets.on('connection',function(socket){
 			param1_mid=param1_sum/count;
 			param2_mid=param2_sum/count;
 			param3_mid=param3_sum/count;*/
-			socket.broadcast.emit('middle',"text");
-			socket.broadcast.emit('chat',	json);
+			io.sockets.emit("middle");
+			socket.broadcast.emit("chat",	json);
 	});
 	socket.on('disconect',function(){
 		io.sockets.emit('chat','Server',socket.username + 'left');
