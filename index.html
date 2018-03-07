@@ -21,6 +21,12 @@
 		p.innerHTML=infos;
 		document.getElementById("output").appendChild(p);
 	})
+	socket.on('middle',function(infos){
+		var p=document.createElement("p");
+		
+		p.innerHTML=infos;
+		document.getElementById("output").appendChild(p);
+	})
 	window.addEventListener('load',function(){
 		document.getElementById('sendtext').addEventListener('click',function(){
 			var text=document.getElementById('data').value;
