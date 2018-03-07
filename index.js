@@ -41,7 +41,7 @@ io.sockets.on('connection',function(socket){
 			param2_mid=param2_sum/count;
 			param3_mid=param3_sum/count;
 			var $p="{'param1':'"+param1_sum+"','param2':'"+param1_sum+"','param3':'"+param1_sum+"'}";
-			io.sockets.emit("middle",$p);
+			io.sockets.emit("middle",json);
 			socket.broadcast.emit("chat",	json);
 	});
 	socket.on('disconect',function(){
