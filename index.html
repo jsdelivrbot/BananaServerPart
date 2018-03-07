@@ -17,6 +17,7 @@
 	})
 	socket.on('chat',function(infos){
 		var p=document.createElement("p");
+		
 		p.innerHTML=infos;
 		document.getElementById("output").appendChild(p);
 	})
