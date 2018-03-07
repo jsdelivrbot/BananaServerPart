@@ -6,7 +6,7 @@ const path = require('path');
 
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
-var count=0;
+var count=1;
 var param1_mid;
 var param2_mid;
 var param3_mid;
