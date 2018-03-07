@@ -31,7 +31,7 @@ io.sockets.on('connection',function(socket){
 	socket.on('jsoncreater',function(json){
 			var $j=json;
 
-			socket.broadcast.emit('chat',	$j["name"]);
+			socket.broadcast.emit('chat',	$j);
 	});
 	socket.on('disconect',function(){
 		io.sockets.emit('chat','Server',socket.username + 'left');
