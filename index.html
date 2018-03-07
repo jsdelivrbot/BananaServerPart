@@ -7,13 +7,13 @@
 <body>
 <div id="output"></div>
 <div id="send">
-<input type="text" id="data" size="100" /><br />
-<input type="button" id="sendtext" value="Send Text" />
+<!--<input type="text" id="data" size="100" /><br />
+<input type="button" id="sendtext" value="Send Text" />-->
 </div>
 <script>
 	var socket = io("http://ancient-gorge-52214.herokuapp.com");
 	socket.on('connect',function(){
-		socket.emit('addme',prompt('New users'));
+		//socket.emit('addme',prompt('New users'));
 	})
 	socket.on('chat',function(infos){
 		var p=document.createElement("p");
