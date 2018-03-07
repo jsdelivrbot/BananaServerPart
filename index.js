@@ -33,14 +33,15 @@ io.sockets.on('connection',function(socket){
 
 	socket.on('jsoncreater',function(json){
 			var $j=JSON.parse(json);
-			/*param1_sum+=$j["param1"];
+			param1_sum+=$j["param1"];
 			param2_sum+=$j["param2"];
 			param3_sum+=$j["param3"];
 			count++;
 			param1_mid=param1_sum/count;
 			param2_mid=param2_sum/count;
-			param3_mid=param3_sum/count;*/
-			io.sockets.emit("middle","middle");
+			param3_mid=param3_sum/count;
+			var $p="{"+param1_mid+","+param2_mid+","+param3_mid+"}";
+			io.sockets.emit("middle",$p);
 			socket.broadcast.emit("chat",	json);
 	});
 	socket.on('disconect',function(){
