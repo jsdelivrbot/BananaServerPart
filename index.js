@@ -11,11 +11,14 @@ const INDEX = path.join(__dirname, 'index.html');
 
 const server = express();
 server.use((req, res) => res.sendFile(INDEX));
-server.use(express.bodyParser());
-server.use(express.methodOverride());
+
 server.set('port', process.env.PORT || 3000);
 server.set('views', __dirname + '/views');
 server.set('view engine', 'jade');
+server.use(express.bodyParser());
+server.use(express.methodOverride());
+server.use(express.session());
+server.use(server.router);
 server.use(express.static(path.join(__dirname, 'public')));
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
