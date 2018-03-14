@@ -1,9 +1,9 @@
 //var start = require("../models/start_module.js");
 
-module.exports.controller = function (app) {
+module.exports.controller = function (app,dir) {
     app.get('/', function (req, res) {
        
-        res.sendFile('../views/start.html');
+        res.sendFile(dir+'/views/start.html');
     });
 
     app.get('/start', function (req, res) {
