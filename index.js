@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 fs.readdirSync('./controllers').forEach(function(file){
 	if(file.substr(-3)=='.js'){
 		var route = require('./controllers/'+file);
-		route.controller(server);
+        route.controller(app);
 	}
 })
 
