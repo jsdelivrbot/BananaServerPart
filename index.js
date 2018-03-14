@@ -15,6 +15,7 @@ server.use((req, res) => res.sendFile(INDEX));
 server.set('port', process.env.PORT || 3000);
 server.set('views', __dirname + '/views');
 server.set('view engine', 'jade');
+server.use(express.logger('dev'));
 server.use(express.bodyParser());
 server.use(express.methodOverride());
 server.use(express.session());
