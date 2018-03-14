@@ -2,8 +2,7 @@
 
 module.exports.controller = function (app) {
     app.get('/start', function (req, res) {
-        res.send("START");
-        console.log("STARTER");
+        res.render('start');
     });
 
     app.get('/end', function (req, res) {
