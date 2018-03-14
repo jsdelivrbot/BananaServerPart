@@ -1,4 +1,4 @@
-var start = require("../modules/start.js");
+
 
 module.exports.controller = function (app) {
     app.get('/start', function (req, res) {
