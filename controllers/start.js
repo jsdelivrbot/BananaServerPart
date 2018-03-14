@@ -1,5 +1,5 @@
 exports.Index = function (request, response) {
-    console.log("STARTES");
+   
     response.render('index');
 };
 
