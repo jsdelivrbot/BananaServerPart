@@ -1,0 +1,12 @@
+html(lang="en")
+  head
+    title= pageTitle
+    :javascript
+      | if (foo) {
+      |    bar()
+      | }
+  body
+    h1 Jade - node template engine
+    #container
+     #{name}
+	 #{message}

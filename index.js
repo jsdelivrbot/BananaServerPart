@@ -18,11 +18,9 @@ var server = express();
 //server.use((req, res) => res.sendFile(INDEX));
 
 server.set('port', process.env.PORT || 3000);
-//server.set('views', path.join(__dirname, 'views'));
-server.set('views', './views')
+server.set('views', path.join(__dirname, 'views'));
 
-app.set('view engine', 'pug');
-
+server.set('view engine', 'jade');
 server.set('view options', { layout: 'layout' });
 server.use(methodOverride());
 server.use(bodyParser.json());
