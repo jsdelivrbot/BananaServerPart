@@ -11,6 +11,8 @@ const INDEX = path.join(__dirname, 'index.html');
 
 const server = express();
 server.use((req, res) => res.sendFile(INDEX));
+server.use(express.bodyParser());
+server.use(express.methodOverride());
 server.set('port', process.env.PORT || 3000);
 server.set('views', __dirname + '/views');
 server.set('view engine', 'jade');
