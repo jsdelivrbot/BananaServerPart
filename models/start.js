@@ -1,5 +1,5 @@
 
-var Start = require('./controllers/start');
+var Start = require('../controllers/start');
 module.exports = function (app) {
     app.get('/', Start.Index);
 
