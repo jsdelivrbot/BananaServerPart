@@ -32,7 +32,7 @@ server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 require('./router')(server);
 
-fs.readdirSync('./controllers').forEach(function(file){
+fs.readdirSync('./models').forEach(function(file){
     if (file.substr(-3) == '.js') {
         console.log(file);
 		var route = require('./models/'+file);
