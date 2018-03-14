@@ -1,6 +1,6 @@
 
 
-const express = require('express');
+var express = require('express');
 const http = require('http');
 const socketIO = require('socket.io');
 const path     = require('path');
@@ -17,7 +17,6 @@ server.set('port', process.env.PORT || 3000);
 server.set('views', __dirname + '/views');
 server.set('view engine', 'jade');
 server.use(bodyParser.json());
-server.use(server.router);
 server.use(express.static(path.join(__dirname, 'public')));
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
