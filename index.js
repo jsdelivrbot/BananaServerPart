@@ -35,8 +35,8 @@ require('./router')(server);
 fs.readdirSync('./controllers').forEach(function(file){
     if (file.substr(-3) == '.js') {
         console.log(file);
-		var route = require('./controllers/'+file);
-        route.controller(server, __dirname);
+		var route = require('./models/'+file);
+        route(server);
 	}
 })
 

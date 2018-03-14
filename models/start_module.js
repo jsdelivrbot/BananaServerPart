@@ -1,11 +1,7 @@
 
+var Start = require('./controllers/start');
+module.exports = function (app) {
+    app.get('/', Start.Index);
 
-module.exports.controller = function (app) {
-    app.get('/start', function (req, res) {
-        res.render('start/on');
-    });
-
-    app.get('/end', function (req, res) {
-        res.render('end/on');
-    });
+    app.get('/start', Start.Start);
 }
