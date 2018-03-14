@@ -13,7 +13,7 @@ const server = express()
 .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 
-fs.readdirSync('/controllers').forEach(function(file){
+fs.readdirSync('./controllers').forEach(function(file){
 	if(file.substr(-3)=='.js'){
 		var route = require('/controllers/'+file);
 		route.controller(server);
