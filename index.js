@@ -4,14 +4,23 @@ const express  = require('express');
 const socketIO = require('socket.io');
 const path     = require('path');
 const fs       = require('fs');
-
+var app = express();
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
+app.set('port', process.env.PORT || 3000);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jade');
+app.use(express.favicon());
+app.use(express.logger('dev'));
+app.use(express.bodyParser());
+app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
 
-const server = express()
+
+/*const server = express()
 		.use((req, res) => res.sendFile(INDEX) )
 .listen(PORT, () => console.log(`Listening on ${ PORT }`));
-
+*/
 
 fs.readdirSync('./controllers').forEach(function(file){
 	if(file.substr(-3)=='.js'){
