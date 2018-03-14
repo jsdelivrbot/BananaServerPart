@@ -1,21 +1,24 @@
 'use strict';
 
-const express = require('express');
+const express  = require('express');
 const socketIO = require('socket.io');
-const path = require('path');
+const path     = require('path');
+const fs       = require('fs');
 
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
-var count=0;
-var param1_mid=0;
-var param2_mid=0;
-var param3_mid=0;
-var param1_sum=0;
-var param2_sum=0;
-var param3_sum=0;
+
 const server = express()
 		.use((req, res) => res.sendFile(INDEX) )
 .listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
+
+fs.readdirSync('./controllers').forEach(function(file){
+	if(file.substr(-3)=='.js'){
+		var route = require('./controllers/'+file);
+		route.controller(server);
+	}
+})
 
 const io = socketIO(server);
 
@@ -33,15 +36,8 @@ io.sockets.on('connection',function(socket){
 
 	socket.on('jsoncreater',function(json){
 			var $j=JSON.parse(json);
-			param1_sum+=parseInt($j["param1"],10);
-			param2_sum+=parseInt($j["param2"],10);
-			param3_sum+=parseInt($j["param3"],10);
-			count++;
-			param1_mid=param1_sum/count;
-			param2_mid=param2_sum/count;
-			param3_mid=param3_sum/count;
-			var $p="{'param1':'"+param1_mid+"','param2':'"+param2_mid+"','param3':'"+param3_mid+"'}";
-			io.sockets.emit("middle",$p);
+
+			io.sockets.emit("middle",json);
 			socket.broadcast.emit("chat",	json);
 	});
 	socket.on('disconect',function(){
