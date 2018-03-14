@@ -21,7 +21,6 @@ server.set('view engine', 'jade');
 server.use(methodOverride());
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
-server.use(multer());
 server.use(express.static(path.join(__dirname, 'public')));
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
