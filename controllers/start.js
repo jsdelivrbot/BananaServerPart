@@ -3,7 +3,7 @@
 module.exports.controller = function (app) {
     app.get('/', function (req, res) {
        
-        res.sendFile(__dirname + "views/start.html");
+        res.sendFile("start.html");
     });
 
     app.get('/start', function (req, res) {
