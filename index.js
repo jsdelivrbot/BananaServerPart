@@ -1,22 +1,27 @@
 
 
 var express = require('express');
-const http = require('http');
-const socketIO = require('socket.io');
-const path     = require('path');
-const fs = require('fs');
+var http = require('http');
+var socketIO = require('socket.io');
+var path     = require('path');
+var fs = require('fs');
+var multer = require('multer');
+var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
 
-const server = express();
+var server = express();
 //server.use((req, res) => res.sendFile(INDEX));
 
 server.set('port', process.env.PORT || 3000);
 server.set('views', __dirname + '/views');
 server.set('view engine', 'jade');
+server.use(methodOverride());
 server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(multer());
 server.use(express.static(path.join(__dirname, 'public')));
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
