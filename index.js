@@ -19,6 +19,7 @@ var server = express();
 
 server.set('port', process.env.PORT || 3000);
 server.set('views', path.join(__dirname, 'views'));
+server.set('view options', { layout: 'layout' });
 server.set('view engine', 'jade');
 
 server.use(methodOverride());
