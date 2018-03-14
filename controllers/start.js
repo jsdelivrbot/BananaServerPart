@@ -1,6 +1,6 @@
 exports.Index = function (request, response) {
-    response.send("Play");
-   // response.render('index');
+    
+    response.render('index');
 };
 
 exports.Start = function (request, response) {

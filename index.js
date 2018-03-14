@@ -19,12 +19,12 @@ var server = express();
 
 server.set('port', process.env.PORT || 3000);
 server.set('views', path.join(__dirname, 'views'));
-server.set('view options', { layout: 'layout' });
-server.set('view engine', 'jade');
 
-server.use(methodOverride());
+server.set('view engine', 'jade');
+server.set('view options', { layout: 'layout' });
+/*server.use(methodOverride());
 server.use(bodyParser.json());
-server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.urlencoded({ extended: true }));*/
 server.use(express.static(path.join(__dirname, 'views')));
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
