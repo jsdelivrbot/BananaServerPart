@@ -5,7 +5,6 @@ var http = require('http');
 var socketIO = require('socket.io');
 var path     = require('path');
 var fs = require('fs');
-var handlebars = require('express-handlebars');
 
 var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
@@ -13,21 +12,18 @@ var bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
 
-var hbs = handlebars.create({
-    defaultLayout: 'main'
-});
+
 
 var server = express();
 //server.use((req, res) => res.sendFile(INDEX));
 
 server.set('port', process.env.PORT || 3000);
 server.set('views', path.join(__dirname, 'views'));
+server.set('view engine', 'jade');
 
-server.engine('handlebars', hbs.engine);
-server.set('view engine', 'handlebars');
-/*server.use(methodOverride());
+server.use(methodOverride());
 server.use(bodyParser.json());
-server.use(bodyParser.urlencoded({ extended: true }));*/
+server.use(bodyParser.urlencoded({ extended: true }));
 server.use(express.static(path.join(__dirname, 'public')));
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
