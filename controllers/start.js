@@ -1,6 +1,10 @@
 //var start = require("../models/start_module.js");
 
 module.exports.controller = function (app) {
+    app.get('/', function (req, res) {
+        res.render('start.html');
+    });
+
     app.get('/start', function (req, res) {
         res.render('start.jade');
     });
