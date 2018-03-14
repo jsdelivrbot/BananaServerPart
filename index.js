@@ -21,7 +21,8 @@ var server = express();
 //server.use((req, res) => res.sendFile(INDEX));
 
 server.set('port', process.env.PORT || 3000);
-server.set('views', __dirname + '/views');
+server.set('views', path.join(__dirname, 'views'));
+
 server.engine('handlebars', hbs.engine);
 server.set('view engine', 'handlebars');
 /*server.use(methodOverride());
