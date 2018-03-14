@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
 
 const server = express();
-server.use((req, res) => res.sendFile(INDEX));
+//server.use((req, res) => res.sendFile(INDEX));
 
 server.set('port', process.env.PORT || 3000);
 server.set('views', __dirname + '/views');
