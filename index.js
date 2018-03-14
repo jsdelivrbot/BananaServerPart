@@ -24,9 +24,9 @@ server.set('port', process.env.PORT || 3000);
 server.set('views', __dirname + '/views');
 server.engine('handlebars', hbs.engine);
 server.set('view engine', 'handlebars');
-server.use(methodOverride());
+/*server.use(methodOverride());
 server.use(bodyParser.json());
-server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.urlencoded({ extended: true }));*/
 server.use(express.static(path.join(__dirname, 'public')));
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
