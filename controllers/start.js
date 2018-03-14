@@ -2,7 +2,7 @@
 
 module.exports.controller = function (app) {
     app.get('/start', function (req, res) {
-        res.render('start');
+        res.render('start.jade');
     });
 
     app.get('/end', function (req, res) {
