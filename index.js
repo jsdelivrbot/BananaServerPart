@@ -22,7 +22,8 @@ server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 
 fs.readdirSync('./controllers').forEach(function(file){
-	if(file.substr(-3)=='.js'){
+    if (file.substr(-3) == '.js') {
+        console.log(file);
 		var route = require('./controllers/'+file);
 		route.controller(server);
 	}
