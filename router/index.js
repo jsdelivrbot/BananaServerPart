@@ -1,6 +1,6 @@
 //var start = require("../models/start_module.js");
 
-module.exports = function (app,dir) {
+module.exports = function (app) {
     app.get('/', function (req, res) {
        
         
