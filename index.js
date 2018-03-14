@@ -25,7 +25,7 @@ fs.readdirSync('./controllers').forEach(function(file){
 	}
 })
 
-const io = socketIO(server);
+const io = socketIO(app);
 
 io.sockets.on('connection',function(socket){
 	socket.on('addme',function(user){
