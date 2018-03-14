@@ -18,7 +18,8 @@ var server = express();
 //server.use((req, res) => res.sendFile(INDEX));
 
 server.set('port', process.env.PORT || 3000);
-server.set('views', path.join(__dirname, 'views'));
+//server.set('views', path.join(__dirname, 'views'));
+server.set('views', './views')
 
 app.set('view engine', 'pug');
 
