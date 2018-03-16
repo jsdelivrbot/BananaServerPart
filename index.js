@@ -16,7 +16,7 @@ const INDEX = path.join(__dirname, 'index.html');
 
 var server = express();
 var http = require('http').Server(server);
-var io = require('socket.io')(http);
+var io = require('socket.io').listen(http);
 //server.use((req, res) => res.sendFile(INDEX));
 
 server.set('port', process.env.PORT || 3000);
@@ -41,6 +41,7 @@ fs.readdirSync('./models').forEach(function(file){
 
 
 io.sockets.on('connection', function (socket) {
+	console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 	socket.on('addme', function (user) {
 		socket.username = user;
 		socket.emit('chat', 'Server Connected');
