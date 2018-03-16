@@ -24,7 +24,7 @@ server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(ex.static(path.join(__dirname, 'views')));
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
-
+servers.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 fs.readdirSync('./models').forEach(function(file){
     if (file.substr(-3) == '.js') {
