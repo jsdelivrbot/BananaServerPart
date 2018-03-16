@@ -3,30 +3,14 @@ var path     = require('path');
 var fs = require('fs');
 var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
-
-
+var servers = require('http').Server(express);
+var io = require('socket.io')(servers);
 
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
 
+var server = express;
 
-function handler (req, res) {
-	fs.readFile(__dirname + '/index.html',
-		function (err, data) {
-			if (err) {
-				res.writeHead(500);
-				return res.end('Error loading index.html');
-			}
-			res.writeHead(200);
-			res.end(data);
-		});
-}
-
-
-
-
-var server = express();
-var Socketio = require('socket.io');
 //server.use((req, res) => res.sendFile(INDEX));
 
 server.set('port', process.env.PORT || 3000);
@@ -51,7 +35,7 @@ fs.readdirSync('./models').forEach(function(file){
 
 
 
-Socketio.sockets.on('connection', function (socket) {
+io.sockets.on('connection', function (socket) {
 
 	socket.on('addme', function (user) {
 		console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
@@ -61,15 +45,15 @@ Socketio.sockets.on('connection', function (socket) {
 
 	});
 	socket.on('sendchat', function (data) {
-		Socketio.sockets.emit('chat', socket.username + ":" + data);
+		io.sockets.emit('chat', socket.username + ":" + data);
 
 	});
 
 	socket.on('jsoncreater', function (json) {
-		Socketio.sockets.emit("middle", json);
+		io.sockets.emit("middle", json);
 		socket.broadcast.emit("chat", json);
 	});
 	socket.on('disconect', function () {
-		Socketio.sockets.emit('chat', 'Server', socket.username + 'left');
+		io.sockets.emit('chat', 'Server', socket.username + 'left');
 	});
 });
