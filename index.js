@@ -11,12 +11,11 @@ var bodyParser = require('body-parser');
 
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
-
+var io = require('socket.io');
 
 
 var server = express();
-var server = require('http').Server(server);
-var io = require('socket.io')(server);
+
 //server.use((req, res) => res.sendFile(INDEX));
 
 server.set('port', process.env.PORT || 3000);
@@ -33,11 +32,14 @@ server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 fs.readdirSync('./models').forEach(function(file){
     if (file.substr(-3) == '.js') {
+
 		var route = require('./models/'+file);
         route(server);
 	}
 })
 
+var http = require('http').Server(server);
+var io = io(http);
 
 io.sockets.on('connection', function (socket) {
 	console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
