@@ -15,6 +15,7 @@ const INDEX = path.join(__dirname, 'index.html');
 
 
 var server = express();
+var socketIO = require('socket.io').listen(server);
 //server.use((req, res) => res.sendFile(INDEX));
 
 server.set('port', process.env.PORT || 3000);
