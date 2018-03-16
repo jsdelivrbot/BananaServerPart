@@ -26,7 +26,7 @@ function handler (req, res) {
 
 
 var server = express();
-var Socketio = require('socket.io').listen(server);
+var Socketio = require('socket.io')(server);
 //server.use((req, res) => res.sendFile(INDEX));
 
 server.set('port', process.env.PORT || 3000);
