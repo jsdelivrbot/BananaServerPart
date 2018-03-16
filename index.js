@@ -1,4 +1,4 @@
-var express = require('express').createServer();
+var express = require('express')();
 var path     = require('path');
 var fs = require('fs');
 var methodOverride = require('method-override');
