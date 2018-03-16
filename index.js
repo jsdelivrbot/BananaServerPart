@@ -51,8 +51,9 @@ fs.readdirSync('./models').forEach(function(file){
 
 
 Socketio.sockets.on('connection', function (socket) {
-	console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+
 	socket.on('addme', function (user) {
+		console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 		socket.username = user;
 		socket.emit('chat', 'Server Connected');
 		socket.broadcast.emit('chat', 'Server ' + user + ' on deck');
