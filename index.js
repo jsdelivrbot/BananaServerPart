@@ -14,7 +14,7 @@ const INDEX = path.join(__dirname, 'index.html');
 
 
 
-var server = express();
+var server = express.createServer();
 var socketIO = require('socket.io').listen(server);
 //server.use((req, res) => res.sendFile(INDEX));
 
