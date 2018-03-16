@@ -6,7 +6,9 @@ var bodyParser = require('body-parser');
 
 var app = require('http').createServer(handler);
 var Socketio = require('socket.io').listen(app);
-app.listen(8124);
+const PORT = process.env.PORT || 3000;
+const INDEX = path.join(__dirname, 'index.html');
+app.listen(PORT);
 
 function handler (req, res) {
 	fs.readFile(__dirname + '/index.html',
@@ -19,8 +21,7 @@ function handler (req, res) {
 			res.end(data);
 		});
 }
-const PORT = process.env.PORT || 3000;
-const INDEX = path.join(__dirname, 'index.html');
+
 
 
 
