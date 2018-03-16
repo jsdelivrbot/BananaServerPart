@@ -1,6 +1,8 @@
+var socketIO = require('socket.io');
+
 exports.Socket = function (request, response) {
    
-    const io = socketIO();
+    var io = socketIO();
 
     io.sockets.on('connection', function (socket) {
         socket.on('addme', function (user) {
