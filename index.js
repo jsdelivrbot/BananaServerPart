@@ -1,4 +1,4 @@
-var express = require('express');
+var express = require('express').createServer();
 var path     = require('path');
 var fs = require('fs');
 var methodOverride = require('method-override');
@@ -26,7 +26,7 @@ function handler (req, res) {
 
 
 var server = express();
-var Socketio = require('socket.io')(server);
+var Socketio = require('socket.io');
 //server.use((req, res) => res.sendFile(INDEX));
 
 server.set('port', process.env.PORT || 3000);
