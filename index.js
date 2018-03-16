@@ -1,16 +1,15 @@
 var express = require('express')();
-var ex = require('express');
 var path     = require('path');
 var fs = require('fs');
 var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
-var servers = require('http').Server(express);
-var io = require('socket.io')(servers);
+var server = require('http').Server(express);
+var io = require('socket.io')(server);
 
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
 
-var server = express;
+//var server = express;
 
 //server.use((req, res) => res.sendFile(INDEX));
 
@@ -22,9 +21,9 @@ server.set('view options', { layout: 'layout' });
 server.use(methodOverride());
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
-server.use(ex.static(path.join(__dirname, 'views')));
+server.use(path.join(__dirname, 'views'));
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
-servers.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+
 
 fs.readdirSync('./models').forEach(function(file){
     if (file.substr(-3) == '.js') {
