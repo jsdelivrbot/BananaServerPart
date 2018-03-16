@@ -16,7 +16,7 @@ const INDEX = path.join(__dirname, 'index.html');
 
 var server = express();
 var http = require('http').Server(server);
-var io = require('socket.io').listen(http);
+var io = require('socket.io')(http);
 //server.use((req, res) => res.sendFile(INDEX));
 
 server.set('port', process.env.PORT || 3000);
@@ -33,7 +33,6 @@ server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 fs.readdirSync('./models').forEach(function(file){
     if (file.substr(-3) == '.js') {
-        console.log(file);
 		var route = require('./models/'+file);
         route(server);
 	}
