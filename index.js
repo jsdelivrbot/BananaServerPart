@@ -18,10 +18,10 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.set('view engine', 'jade');
 app.set('view options', { layout: 'layout' });
-app.use(methodOverride());
+/*app.use(methodOverride());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(path.join(__dirname, 'views'));
+app.use(path.join(__dirname, 'views'));*/
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 
