@@ -1,5 +1,5 @@
 var socketIO = require('socket.io');
-
+response.render('socket', { title: 'Socket', message: 'MVC Socket!' });
 exports.Socket = function (request, response) {
     response.send("Socket");
     var io = socketIO();
