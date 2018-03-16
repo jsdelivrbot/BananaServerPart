@@ -39,9 +39,9 @@ fs.readdirSync('./models').forEach(function(file){
 })
 
 var http = require('http').Server(server);
-var io = io(http);
+var Socketio = io(http);
 
-io.sockets.on('connection', function (socket) {
+Socketio.sockets.on('connection', function (socket) {
 	console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 	socket.on('addme', function (user) {
 		socket.username = user;
@@ -50,15 +50,15 @@ io.sockets.on('connection', function (socket) {
 
 	});
 	socket.on('sendchat', function (data) {
-		io.sockets.emit('chat', socket.username + ":" + data);
+		Socketio.sockets.emit('chat', socket.username + ":" + data);
 
 	});
 
 	socket.on('jsoncreater', function (json) {
-		io.sockets.emit("middle", json);
+		Socketio.sockets.emit("middle", json);
 		socket.broadcast.emit("chat", json);
 	});
 	socket.on('disconect', function () {
-		io.sockets.emit('chat', 'Server', socket.username + 'left');
+		Socketio.sockets.emit('chat', 'Server', socket.username + 'left');
 	});
 });
