@@ -1,7 +1,7 @@
 var socketIO = require('socket.io');
 
 exports.Socket = function (request, response) {
-   
+    response.send("Socket");
     var io = socketIO();
 
     io.sockets.on('connection', function (socket) {

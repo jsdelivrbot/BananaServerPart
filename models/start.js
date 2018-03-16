@@ -6,5 +6,5 @@ module.exports = function (app) {
     app.get('/', Start.Index);
 
     app.get('/start', Start.Start);
-    app.get('/socket.io', Socket.Socket);
+    app.get('/socket', Socket.Socket);
 }
