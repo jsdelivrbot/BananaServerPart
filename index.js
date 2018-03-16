@@ -4,11 +4,11 @@ var fs = require('fs');
 var methodOverride = require('method-override');
 var bodyParser = require('body-parser');
 
-var app = require('http').createServer(handler);
-var Socketio = require('socket.io').listen(app);
+
+
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
-app.listen(PORT);
+
 
 function handler (req, res) {
 	fs.readFile(__dirname + '/index.html',
@@ -26,7 +26,7 @@ function handler (req, res) {
 
 
 var server = express();
-
+var Socketio = require('socket.io').listen(server);
 //server.use((req, res) => res.sendFile(INDEX));
 
 server.set('port', process.env.PORT || 3000);
