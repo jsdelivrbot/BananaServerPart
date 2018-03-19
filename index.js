@@ -7,12 +7,6 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var MongoClient = require('mongodb').MongoClient;
 
-MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
-	if (err) {
-		throw err;
-	}
-	console.log("CONNECT to DATA");
-});
 
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
@@ -25,23 +19,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.set('view options', { layout: 'layout' });
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
-/*
 
-var DBserver = new mongodb.Server('',15759);
-var db = new mongodb.Db('banandata', DBserver);
-
-db.open(function(err, db) {
-	if(!err) {
-		db.collection('bananData',function(err,result){
-			if(!err){
-				var coll={user:'123',data:'1254'};
-				result.insert(coll);
-			}
-			db.close();
-		})
-	}
-})
-*/
 fs.readdirSync('./models').forEach(function(file){
     if (file.substr(-3) == '.js') {
 
@@ -66,8 +44,18 @@ io.sockets.on('connection', function (socket) {
 
 	socket.on('jsoncreater', function (json) {
 
+		MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
+			var collection = db.collection("playerdata");
+			var user = {name: socket.username, json: json};
+			collection.insertOne(user, function(err, result){
 
-
+				if(err){
+					return console.log(err);
+				}
+				db.close();
+			});
+			console.log("CONNECT to DATA");
+		});
 
 		io.sockets.emit("middle", socket.username+" Send: "+json);
 	});
