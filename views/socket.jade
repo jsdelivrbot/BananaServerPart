@@ -5,15 +5,6 @@ html(lang="en")
 		script.
 			
 			var socket=io("https://ancient-gorge-52214.herokuapp.com");
-			socket.on('connect', function() {
-				socket.emit('addme', "admin");
-			});
-			socket.on('chat',function(info){
-					var p=document.createElement("p");
-					p.innerHTML=infos;
-					document.getElementById("output").appendChild(p);
-				}
-			);
 			socket.on('middle',function(infos){
 				var p=document.createElement("p");
 					p.innerHTML=infos;
