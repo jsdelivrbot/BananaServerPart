@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
 
 var DBserver = new mongodb.Server('https://ancient-gorge-52214.herokuapp.com',27017, {auto_reconnect: true});
-var db = new mongdb.Db('banan', DBserver);
+var db = new mongodb.Db('banan', DBserver);
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 
