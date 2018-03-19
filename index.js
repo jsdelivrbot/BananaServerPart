@@ -8,7 +8,7 @@ var io = require('socket.io')(server);
 
 
 var MongoClient = require('mongodb').MongoClient;
-var url = "http://ancient-gorge-52214.herokuapp.com:27017";
+var url = "mongodb://ancient-gorge-52214.herokuapp.com:27017/";
 
 MongoClient.connect(url, function(err, db) {
 	if (err) throw err;
