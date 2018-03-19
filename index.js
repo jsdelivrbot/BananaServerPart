@@ -36,7 +36,7 @@ io.sockets.on('connection', function (socket) {
 	socket.on('addme', function (user) {
 
 		socket.username = user;
-		socket.broadcast.emit('chat', 'Server ' + user + ' on deck');
+		io.sockets.emit('chat', 'Server ' + user + ' on deck');
 		console.log('Server ' + user + ' on deck');
 
 	});
@@ -46,7 +46,7 @@ io.sockets.on('connection', function (socket) {
 	});
 
 	socket.on('jsoncreater', function (json) {
-		io.sockets.emit("middle", json);
+		io.sockets.emit("middle", socket.username+" Send: "+json);
 	});
 	socket.on('disconect', function () {
 		io.sockets.emit('chat', 'Server', socket.username + 'left');
