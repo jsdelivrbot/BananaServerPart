@@ -9,7 +9,7 @@ var io = require('socket.io')(server);
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
 
-var DBserver = new mongodb.Server('https://ancient-gorge-52214.herokuapp.com',27017, {auto_reconnect: true});
+var DBserver = new mongodb.Server('mongodb://ancient-gorge-52214.herokuapp.com',27017, {auto_reconnect: true});
 
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
