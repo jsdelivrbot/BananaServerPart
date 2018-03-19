@@ -1,7 +1,7 @@
 var app = require('express')();
 var path     = require('path');
 var fs = require('fs');
-var mongodb = require('mongodb');
+var mongodb = require('mongodb').MongoClient;;
 var bodyParser = require('body-parser');
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
@@ -9,8 +9,13 @@ var io = require('socket.io')(server);
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
 
-var DBserver = new mongodb.Server('mongodb://ancient-gorge-52214.herokuapp.com',27017, {auto_reconnect: true});
-
+/*var DBserver = new mongodb.Server('mongodb://ancient-gorge-52214.herokuapp.com',27017, {auto_reconnect: true});
+var db = new mongodb.Db('banan', DBserver);*/
+mongodb.connect("mongodb://ancient-gorge-52214.herokuapp.com:27017/banandb", function(err, db) {
+	if(!err) {
+		console.log("We are connected!!!");
+	}
+});
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 
@@ -42,7 +47,7 @@ io.sockets.on('connection', function (socket) {
 	});
 
 	socket.on('jsoncreater', function (json) {
-		var db = new mongodb.Db('banan', DBserver);
+
 		db.open(function(err, db) {
 			if(!err) {
 				db.collection('bananData',function(err,result){
