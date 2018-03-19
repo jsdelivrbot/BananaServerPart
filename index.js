@@ -42,6 +42,7 @@ db.open(function(err, db) {
 	console.log("Connected!");
 	db.close();
 });
+
 /*var DBserver = new mongodb.Server('mongodb://ancient-gorge-52214.herokuapp.com:27017/banandata');
 var db = new mongodb.Db('banan', DBserver);
 
