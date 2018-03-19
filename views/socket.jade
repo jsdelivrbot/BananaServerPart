@@ -7,7 +7,7 @@ html(lang="en")
 		#container !{title}
 		.container !{message}
 		#output
-			script(type="text/javscript")
+			script(type="text/javscript").
 			|:	var socket=io("http://ancient-gorge-52214.herokuapp.com");
 			|:	socket.on('chat',function(info){
 			|:			var p=document.createElement("p");
