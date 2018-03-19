@@ -34,7 +34,15 @@ app.set('view engine', 'jade');
 app.set('view options', { layout: 'layout' });
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
-var DBserver = new mongodb.Server('mongodb://ancient-gorge-52214.herokuapp.com:27017/banandata');
+var host = 'ancient-gorge-52214.herokuapp.com';
+var port = mongodb.Connection.DEFAULT_PORT;
+
+var db = new mongodb.Db('test', new mongodb.Server(host, port, {}), {safe:false});
+db.open(function(err, db) {
+	console.log("Connected!");
+	db.close();
+});
+/*var DBserver = new mongodb.Server('mongodb://ancient-gorge-52214.herokuapp.com:27017/banandata');
 var db = new mongodb.Db('banan', DBserver);
 
 db.open(function(err, db) {
@@ -47,7 +55,7 @@ db.open(function(err, db) {
 			db.close();
 		})
 	}
-})
+})*/
 
 fs.readdirSync('./models').forEach(function(file){
     if (file.substr(-3) == '.js') {
