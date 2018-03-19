@@ -18,7 +18,7 @@ app.set('view engine', 'jade');
 app.set('view options', { layout: 'layout' });
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
-var DBserver = new mongodb.Server('http://ancient-gorge-52214.herokuapp.com',27017, {auto_reconnect: true});
+var DBserver = new mongodb.Server('mongodb://ancient-gorge-52214.herokuapp.com',27017, {auto_reconnect: true});
 var db = new mongodb.Db('banan', DBserver);
 
 db.open(function(err, db) {
