@@ -35,7 +35,7 @@ app.set('view options', { layout: 'layout' });
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 var host = 'ancient-gorge-52214.herokuapp.com';
-var port = mongodb.Connection.DEFAULT_PORT;
+var port = PORT;
 
 var db = new mongodb.Db('test', new mongodb.Server(host, port, {}), {safe:false});
 db.open(function(err, db) {
