@@ -18,10 +18,6 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.set('view engine', 'jade');
 app.set('view options', { layout: 'layout' });
-/*app.use(methodOverride());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(path.join(__dirname, 'views'));*/
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 
@@ -38,7 +34,7 @@ fs.readdirSync('./models').forEach(function(file){
 io.sockets.on('connection', function (socket) {
 
 	socket.on('addme', function (user) {
-		console.log("user connect");
+		console.log("user "+user+" connect");
 		socket.username = user;
 		socket.emit('chat', 'Server Connected');
 		socket.broadcast.emit('chat', 'Server ' + user + ' on deck');
