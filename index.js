@@ -41,7 +41,7 @@ db.open(function(err, db) {
 		})
 	}
 })
-/*
+*/
 fs.readdirSync('./models').forEach(function(file){
     if (file.substr(-3) == '.js') {
 
