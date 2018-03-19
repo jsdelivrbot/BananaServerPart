@@ -5,8 +5,10 @@ html(lang="en")
 		script.
 			
 			var socket=io("http://ancient-gorge-52214.herokuapp.com");
+			socket.on('connect', function() {
+				socket.emit('addme', "admin");
+			});
 			socket.on('chat',function(info){
-					alert(info);
 					var p=document.createElement("p");
 					p.innerHTML=infos;
 					document.getElementById("output").appendChild(p);
