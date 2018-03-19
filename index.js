@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-
+/*
 var MongoClient = require('mongodb').MongoClient;
 var url = "mongodb://ancient-gorge-52214.herokuapp.com:27017/banandata";
 
@@ -19,7 +19,7 @@ MongoClient.connect(url, function(err, db) {
 		db.close();
 	});
 });
-
+*/
 
 
 const PORT = process.env.PORT || 3000;
@@ -33,8 +33,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.set('view options', { layout: 'layout' });
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
-/*
-var DBserver = new mongodb.Server('http://ancient-gorge-52214.herokuapp.com',PORT, {auto_reconnect: true});
+
+var DBserver = new mongodb.Server('mongodb://ancient-gorge-52214.herokuapp.com:27017/banandata');
 var db = new mongodb.Db('banan', DBserver);
 
 db.open(function(err, db) {
@@ -48,7 +48,7 @@ db.open(function(err, db) {
 		})
 	}
 })
-*/
+
 fs.readdirSync('./models').forEach(function(file){
     if (file.substr(-3) == '.js') {
 
