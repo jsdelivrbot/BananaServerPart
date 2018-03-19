@@ -8,17 +8,17 @@ html(lang="en")
 		.container !{message}
 		#output
 			script(type="text/javscript")
-			|	var socket=io("http://ancient-gorge-52214.herokuapp.com");
-			|	socket.on('chat',function(info){
-			|			var p=document.createElement("p");
-			|			p.innerHTML=infos;
-			|			document.getElementById("output").appendChild(p);
-			|		}
-			|	)
-			|	socket.on('middle',function(infos){
-			|			var p=document.createElement("p");
-			|			p.innerHTML=infos;
-			|			document.getElementById("output").appendChild(p);
-			|		}
-			|	);
+			|:	var socket=io("http://ancient-gorge-52214.herokuapp.com");
+			|:	socket.on('chat',function(info){
+			|:			var p=document.createElement("p");
+			|:			p.innerHTML=infos;
+			|:			document.getElementById("output").appendChild(p);
+			|:		}
+			|:	)
+			|:	socket.on('middle',function(infos){
+			|:			var p=document.createElement("p");
+			|:			p.innerHTML=infos;
+			|:			document.getElementById("output").appendChild(p);
+			|:		}
+			|:	);
 		
