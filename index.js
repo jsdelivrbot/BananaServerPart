@@ -6,20 +6,6 @@ var bodyParser = require('body-parser');
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
-/*
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://ancient-gorge-52214.herokuapp.com:27017/banandata";
-
-MongoClient.connect(url, function(err, db) {
-	if (err) throw err;
-	var dbo = db.db("mydb");
-	dbo.createCollection("customers", function(err, res) {
-		if (err) throw err;
-		console.log("Collection created!");
-		db.close();
-	});
-});
-*/
 
 
 const PORT = process.env.PORT || 3000;
@@ -34,16 +20,11 @@ app.set('view engine', 'jade');
 app.set('view options', { layout: 'layout' });
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
-var host = 'ancient-gorge-52214.herokuapp.com';
-var port = PORT;
+var host = 'localhost';
+var port = mongodb.Connection.DEFAULT_PORT;
 
-var db = new mongodb.Db('test', new mongodb.Server(host, port, {}), {safe:false});
-db.open(function(err, db) {
-	console.log("Connected!");
-	db.close();
-});
 
-/*var DBserver = new mongodb.Server('mongodb://ancient-gorge-52214.herokuapp.com:27017/banandata');
+var DBserver = new mongodb.Server('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata');
 var db = new mongodb.Db('banan', DBserver);
 
 db.open(function(err, db) {
@@ -56,7 +37,7 @@ db.open(function(err, db) {
 			db.close();
 		})
 	}
-})*/
+})
 
 fs.readdirSync('./models').forEach(function(file){
     if (file.substr(-3) == '.js') {
