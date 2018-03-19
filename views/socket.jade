@@ -2,12 +2,7 @@ html(lang="en")
 	head
 		title= pageTitle
 		script(src='https://cdn.socket.io/socket.io-1.4.5.js')
-	body
-	h1 Banan server socket
-	#container !{title}
-	.container !{message}
-	#output
-	script(type="text/javscript").
+		script(type="text/javscript").
 		var socket=io("http://ancient-gorge-52214.herokuapp.com");
 		socket.on('chat',function(info){
 				var p=document.createElement("p");
@@ -21,4 +16,13 @@ html(lang="en")
 				document.getElementById("output").appendChild(p);
 			}
 		);
+		window.addEventListener('load',function(){
+			
+		},false);
+	body
+	h1 Banan server socket
+	#container !{title}
+	.container !{message}
+	#output
+	
 		
