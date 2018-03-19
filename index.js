@@ -14,6 +14,8 @@ var db = new mongodb.Db('banan', DBserver);*/
 mongodb.connect("mongodb://ancient-gorge-52214.herokuapp.com:27017/banandb", function(err, db) {
 	if(!err) {
 		console.log("We are connected!!!");
+	}else{
+		console.log(err);
 	}
 });
 app.set('port', process.env.PORT || 3000);
