@@ -7,7 +7,6 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 
 
-
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
 
@@ -21,9 +20,9 @@ app.set('view options', { layout: 'layout' });
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 
-var DBserver = new mongodb.Server('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata');
-var db = new mongodb.Db('banan', DBserver);
- 
+var DBserver = new mongodb.Server('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com',15759);
+var db = new mongodb.Db('banandata', DBserver);
+
 db.open(function(err, db) {
 	if(!err) {
 		db.collection('bananData',function(err,result){
