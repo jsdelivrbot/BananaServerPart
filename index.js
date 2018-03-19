@@ -20,9 +20,6 @@ app.set('view engine', 'jade');
 app.set('view options', { layout: 'layout' });
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
-var host = 'localhost';
-var port = mongodb.Connection.DEFAULT_PORT;
-
 
 var DBserver = new mongodb.Server('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata');
 var db = new mongodb.Db('banan', DBserver);
