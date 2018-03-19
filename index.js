@@ -38,7 +38,7 @@ fs.readdirSync('./models').forEach(function(file){
 io.sockets.on('connection', function (socket) {
 
 	socket.on('addme', function (user) {
-		console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+		console.log("user connect");
 		socket.username = user;
 		socket.emit('chat', 'Server Connected');
 		socket.broadcast.emit('chat', 'Server ' + user + ' on deck');
@@ -51,7 +51,6 @@ io.sockets.on('connection', function (socket) {
 
 	socket.on('jsoncreater', function (json) {
 		io.sockets.emit("middle", json);
-		socket.broadcast.emit("chat", json);
 	});
 	socket.on('disconect', function () {
 		io.sockets.emit('chat', 'Server', socket.username + 'left');
