@@ -45,13 +45,15 @@ io.sockets.on('connection', function (socket) {
 	socket.on('jsoncreater', function (json) {
 
 		MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
-			var collection = db.collection("playerdata");
+				var datas = db.db("banandata");
+				var collection = datas.collection("playerdata");
 			var user = {name: socket.username, json: json};
 			collection.insertOne(user, function(err, result){
 
 				if(err){
 					return console.log(err);
 				}
+
 				db.close();
 			});
 			console.log("CONNECT to DATA");
