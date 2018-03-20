@@ -35,7 +35,7 @@ io.sockets.on('connection', function (socket) {
 	socket.on('addme', function (user) {
 
 		socket.username = user;
-
+		io.sockets.emit('chat', socket.username + " on deck");
 	});
 	socket.on('sendchat', function (data) {
 		io.sockets.emit('chat', socket.username + ":" + data);
