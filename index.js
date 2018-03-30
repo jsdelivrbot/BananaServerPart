@@ -20,10 +20,10 @@ app.set('view engine', 'jade');
 app.set('view options', { layout: 'layout' });
 server.listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
-fs.readdirSync('./models').forEach(function(file){
+fs.readdirSync('./controllers').forEach(function(file){
     if (file.substr(-3) == '.js') {
 
-		var route = require('./models/'+file);
+		var route = require('./controllers/'+file);
         route(app);
 	}
 })

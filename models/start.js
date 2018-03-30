@@ -1,12 +1,8 @@
+exports.Index = function (request, response) {
+   
+    response.render('index', { title: 'Index', message: 'STart!' });
+};
 
-var Start = require('../controllers/start');
-var Socket = require('../controllers/socket');
-var Chat = require('../controllers/chat');
-
-module.exports = function (app) {
-    app.get('/', Start.Index);
-
-    app.get('/start', Start.Start);
-    app.get('/socket', Socket.Socket);
-    app.get('/chat', Chat.Chat);
-}
+exports.Start = function (request, response) {
+    response.render('start', { title: 'Index', message: 'STarted!' });
+};
