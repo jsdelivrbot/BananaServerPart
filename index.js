@@ -5,6 +5,7 @@ var mongodb = require('mongodb');
 var bodyParser = require('body-parser');
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+var user = require("./modules/user.js");
 var MongoClient = require('mongodb').MongoClient;
 
 
@@ -29,7 +30,6 @@ fs.readdirSync('./controllers').forEach(function(file){
 })
 
 
-
 io.sockets.on('connection', function (socket) {
 
 	socket.on('addme', function (user) {
@@ -38,7 +38,7 @@ io.sockets.on('connection', function (socket) {
 		io.sockets.emit('chat', socket.username + " on deck");
 	});
 	socket.on('sendchat', function (data) {
-		io.sockets.emit('sendchat', socket.username + ":" + data);
+		io.sockets.emit('chat', socket.username + ":" + data);
 
 	});
 
