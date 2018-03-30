@@ -18,10 +18,12 @@ exports.dbGetOne=function(table,data){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = data;
+		console.log(table);
+		console.log("////////////////////");
+		console.log(infos);
+		console.log("////////////////////");
 		collection.find(data).toArray(function(err,res){
-			console.log("////////////////////");
-			console.log(res);
-			console.log("////////////////////");
+
 			$return_info=res;
 			db.close();
 		})
