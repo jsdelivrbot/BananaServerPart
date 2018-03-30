@@ -2,8 +2,8 @@
 var DB=require("./db.js");
 exports.getUserBaseInfo=function (socket,iosockets){
     socket.on("getUserBaseInfo",function(data){
-    	console.log("SOCKET CONNECTDATAS");
 	    $datas=DB.dbGetOne("users",data);
+	    console.log($datas);
 	    socket.emit('getUserBaseInfo', $datas);
   });
 }
