@@ -19,10 +19,10 @@ exports.dbGetOne=function(table,data){
 		var collection = datas.collection(table);
 		var infos = data;
 
-		console.log("////////////////////");
+		console.log("________________");
 		console.log(table);
 		console.log(infos);
-		console.log("////////////////////");
+		console.log("________________");
 		collection.find(data).toArray(function(err,res){
 
 			$return_info=res;
