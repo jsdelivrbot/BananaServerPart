@@ -5,7 +5,7 @@ var mongodb = require('mongodb');
 var bodyParser = require('body-parser');
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-var user = require("../models/user.js");
+var user = require("models/user.js");
 var MongoClient = require('mongodb').MongoClient;
 
 
