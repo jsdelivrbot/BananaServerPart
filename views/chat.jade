@@ -8,7 +8,7 @@ html(lang="en")
 			socket.on('connect',function(){
 				socket.emit('addme',prompt('New users'));
 			})
-			socket.on('chat',function(infos){
+			socket.on('sendchat',function(infos){
 				var p=document.createElement("p");
 				p.innerHTML=infos;
 				document.getElementById("output").appendChild(p);
