@@ -21,10 +21,6 @@ exports.dbGetOne=function(table,data){
 
 
 		collection.find(data).toArray(function(err,res){
-			console.log("________________");
-			console.log(table);
-			console.log(infos);
-			console.log(res);
 			$return_info=res;
 			db.close();
 		})
