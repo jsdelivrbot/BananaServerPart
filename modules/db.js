@@ -19,6 +19,9 @@ exports.dbGetOne=function(table,data){
 		var collection = datas.collection(table);
 		var infos = data;
 		collection.find(data).toArray(function(err,res){
+			console.log("////////////////////");
+			console.log(res);
+			console.log("////////////////////");
 			$return_info=res;
 			db.close();
 		})
