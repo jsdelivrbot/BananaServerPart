@@ -1,5 +1,5 @@
 
-var DB=require("db.js");
+var DB=require("./db.js");
 exports.getUserBaseInfo=function (socket,iosockets){
     socket.on("getUserBaseInfo",function(data){
     	console.log("SOCKET CONNECTDATAS");
