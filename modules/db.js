@@ -24,7 +24,6 @@ exports.dbGetOne=function(table,data){
 			console.log("________________");
 			console.log(table);
 			console.log(infos);
-			console.log("________________");
 			$return_info=res;
 			db.close();
 		})
