@@ -2,12 +2,10 @@
 var DB=require("./db.js");
 exports.getUserBaseInfo=function (socket,iosockets){
     socket.on("getUserBaseInfo",function(data){
-	    $datas=DB.dbGetOne("users",data);
-
+	    $datas=DB.dbGetOne("UserBaseInfo",data);
 	    if($datas!=null) {
 		      delete $datas["_id"];
 		      delete $datas["Id_User"];
-		      console.log($datas);
 		    socket.emit('getUserBaseInfo', $datas);
 	    }
   });
@@ -17,11 +15,26 @@ exports.getUserBaseInfo=function (socket,iosockets){
 
 exports.getUserAgronom=function (socket,iosockets){
 	socket.on("getUserAgronom",function(data){
+		$datas=DB.dbGetOne("UserAgronom",data);
+		if($datas!=null) {
+			delete $datas["_id"];
+			delete $datas["Id_User"];
+			socket.emit('getUserAgronom', $datas);
+		}
+
 	});
 }
 
 exports.getUserAgronoms=function (socket,iosockets){
 	socket.on("getUserAgronoms",function(data){
+		$datas=DB.dbGetMore("UserAgronom",data);
+		console.log($datas);
+		if($datas!=null) {
+			//delete $datas["_id"];
+			//delete $datas["Id_User"];
+			//socket.emit('getUserAgronoms', $datas);
+		}
+
 	});
 }
 
