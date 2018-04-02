@@ -31,12 +31,10 @@ exports.getUserAgronoms=function (socket,iosockets){
 
 		if($datas!=null) {
 			for (var $key in $datas) {
-				console.log($key);
 				delete $datas[$key]["_id"];
 				delete $datas[$key]["Id_User"];
 			}
-			console.log($datas);
-			//socket.emit('getUserAgronoms', $datas);
+			socket.emit('getUserAgronoms', $datas);
 		}
 
 	});
