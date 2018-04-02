@@ -1,5 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
-var result=null;
+result=null;
 exports.dbSend=function(table,data){
 
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
