@@ -22,7 +22,6 @@ exports.dbGetOne=function(table,data){
 
 		collection.findOne(infos,function(err,res){
 			var $return_info=res;
-			console.log(res);
 			db.close();
 		})
 	});
