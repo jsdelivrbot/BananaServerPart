@@ -35,6 +35,7 @@ exports.getUserAgronoms=function (socket,iosockets){
 				delete $datas[$key]["_id"];
 				delete $datas[$key]["Id_User"];
 			}
+			console.log($datas);
 			//socket.emit('getUserAgronoms', $datas);
 		}
 
