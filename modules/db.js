@@ -19,12 +19,10 @@ exports.dbGetOne=function(table,data){
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
 		inf=collection.findOne(infos);
-		$inf="123";
-		inf.then(function(res){
-			$inf= res;
-		})
+		var datas = inf.hasNext() ? inf.next() : null;
+
+		console.log(datas.Id_User);
 		console.log("____________________");
-		console.log($inf);
 		db.close();
 	});
 
