@@ -13,7 +13,7 @@ exports.dbSend=function(table,data){
 
 
 exports.dbGetOne=function(table,data){
-	dat="";
+	dat="result";
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
@@ -24,10 +24,10 @@ exports.dbGetOne=function(table,data){
 			dat=res;
 			db.close();
 		})
+		console.log("___________________");
 		console.log(dat);
 	});
-	console.log("___________________");
-	console.log(dat);
+
 
 	return dat;
 }
