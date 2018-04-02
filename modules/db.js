@@ -19,7 +19,7 @@ exports.dbGetOne=function(table,data){
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
 		var inf=collection.findOne(infos).then(function(res) {
-			dat=res;
+			dat=res; 
 			console.log("____________________");
 		});
 		console.log(dat);
