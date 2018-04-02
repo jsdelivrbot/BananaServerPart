@@ -23,7 +23,7 @@ exports.dbGetOne=function(table,data){
 			db.close();
 			infor=123;
 			console.log("____________________");
-			callback(results);
+			//callback(results);
 		});
 		console.log(infor);
 
