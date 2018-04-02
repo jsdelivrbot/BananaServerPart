@@ -20,7 +20,7 @@ exports.dbGetOne=function(table,data){
 		var infos = data;
 
 
-		collection.find(data).toArray(function(err,res){
+		collection.findOne(data)(function(err,res){
 			$return_info=res;
 			db.close();
 		})
