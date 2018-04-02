@@ -2,7 +2,7 @@ var MongoClient = require('mongodb').MongoClient;
 result=null;
 
 function setResult(res){
-	result=res;
+	result= JSON.parse(res);
 }
 exports.dbSend=function(table,data){
 
@@ -23,9 +23,9 @@ exports.dbGetOne=function(table,data){
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
 		var inf=collection.findOne(infos,function(err,res) {
-			db.close();
 			setResult(res);
 		});
+		db.close();
 	});
 return result;
 }
