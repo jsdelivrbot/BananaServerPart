@@ -18,15 +18,15 @@ exports.dbGetOne=function(table,data){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = data;
-
+		console.log("___________________");
+		console.log(data);
 
 		collection.findOne(data)(function(err,res){
 			$return_info=res;
 			db.close();
 		})
 	});
-	console.log("___________________");
-	console.log($return_info);
+
 	return $return_info;
 }
 
