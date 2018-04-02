@@ -20,10 +20,10 @@ exports.dbGetOne=function(table,data){
 		var infos = JSON.parse(data);
 
 
-		collection.findOne(infos,function(err,res){
-			dat=res;
+		dat=collection.findOne(infos,function(err,res){
+			dat1=res;
 			db.close();
-			console.log(dat);
+			
 		})
 		console.log("___________________");
 		console.log(dat);
