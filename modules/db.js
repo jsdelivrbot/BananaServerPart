@@ -20,11 +20,12 @@ exports.dbGetOne=function(table,data){
 		var infos = JSON.parse(data);
 		dat="";
 
-		collection.findOne(infos,function(err,res){
+		$val=collection.findOne(infos,function(err,res){
 			dat=res;
 			db.close();
+			return dat;
 		})
-		console.log(dat);
+		console.log($val);
 		return dat;
 
 	});
