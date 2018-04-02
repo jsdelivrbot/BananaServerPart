@@ -27,7 +27,7 @@ exports.dbGetOne=function(table,data){
 		})
 	});
 	console.log("___________________");
-	console.log($return_info);
+	console.log(res);
 
 	return $return_info;
 }
