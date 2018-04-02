@@ -14,16 +14,14 @@ exports.dbSend=function(table,data){
 
 
 exports.dbGetOne=function(table,data){
-	dat="result";
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
 		var inf=collection.findOne(infos,function(err,res) {
 			db.close();
-			infor=123;
+			infor=res;
 			console.log("____________________");
-			//callback(results);
 		});
 		console.log(infor);
 
