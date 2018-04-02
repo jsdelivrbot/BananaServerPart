@@ -19,7 +19,8 @@ exports.dbGetOne=function(table,data){
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
 		var inf=collection.findOne(infos).then(function(res) {
-			console.log(res);
+			dat=res;
+			console.log(dat);
 			console.log("____________________");
 		});
 		db.close();
