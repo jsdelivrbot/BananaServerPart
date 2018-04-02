@@ -3,10 +3,11 @@ var DB=require("./db.js");
 exports.getUserBaseInfo=function (socket,iosockets){
     socket.on("getUserBaseInfo",function(data){
 	    $datas=DB.dbGetOne("users",data);
-	    console.log($datas);
+
 	    if($datas!=null) {
 		      delete $datas["_id"];
 		      delete $datas["Id_User"];
+		      console.log($datas);
 		    socket.emit('getUserBaseInfo', $datas);
 	    }
   });
