@@ -28,10 +28,11 @@ exports.getUserAgronom=function (socket,iosockets){
 exports.getUserAgronoms=function (socket,iosockets){
 	socket.on("getUserAgronoms",function(data){
 		$datas=DB.dbGetMore("UserAgronom",data);
-		console.log($datas);
+
 		if($datas!=null) {
-			//delete $datas["_id"];
-			//delete $datas["Id_User"];
+			delete $datas["_id"];
+			delete $datas["Id_User"];
+			console.log($datas);
 			//socket.emit('getUserAgronoms', $datas);
 		}
 
