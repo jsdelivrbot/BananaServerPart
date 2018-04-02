@@ -23,7 +23,7 @@ exports.dbGetOne=function(table,data){
 		dat=collection.findOne(infos,function(err,res){
 			dat1=res;
 			db.close();
-			
+			return dat1;
 		})
 		console.log("___________________");
 		console.log(dat);
