@@ -18,7 +18,7 @@ exports.dbGetOne=function(table,data){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
-		var inf="infos";
+		inf="infos";
 
 		collection.findOne(infos,function(err,res){
 			dat=res;
