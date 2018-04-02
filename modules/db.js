@@ -13,7 +13,7 @@ exports.dbSend=function(table,data){
 
 
 exports.dbGetOne=function(table,data){
-	$return_info="";
+	var $return_info="";
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
@@ -21,7 +21,7 @@ exports.dbGetOne=function(table,data){
 
 
 		collection.findOne(infos,function(err,res){
-			$return_info=res;
+			var $return_info=res;
 			console.log(res);
 			db.close();
 		})
