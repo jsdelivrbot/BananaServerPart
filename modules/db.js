@@ -18,14 +18,10 @@ exports.dbGetOne=function(table,data){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
-		var inf=collection.findOne(infos);
-		inf.select('Id_User');
-		inf.exec(function(err,res){
-			console.log(res.Id_User);
+		var inf=collection.findOne(infos).then(function(res) {
+			console.log(res);
 			console.log("____________________");
-		})
-
-
+		});
 		db.close();
 	});
 
