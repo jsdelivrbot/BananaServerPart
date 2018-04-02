@@ -24,6 +24,7 @@ exports.dbGetOne=function(table,data){
 			console.log("____________________");
 		});
 		console.log(dat);
+		
 		db.close();
 	});
 
