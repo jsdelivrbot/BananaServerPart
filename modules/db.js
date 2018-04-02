@@ -37,7 +37,7 @@ exports.dbGetMore=function(table,data){
 		var collection = datas.collection(table);
 		var infos = data;
 		collection.find(data).toArray(function(err,res){
-			result=res;
+			setResult(res);
 			db.close();
 		})
 	});
