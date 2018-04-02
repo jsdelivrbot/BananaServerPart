@@ -23,7 +23,7 @@ exports.dbGetOne=function(table,data){
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
 		var inf=collection.findOne(infos,function(err,res) {
-			setResult(JSON.parse(res));
+			setResult(res);
 		});
 		db.close();
 	});
