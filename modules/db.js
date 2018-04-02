@@ -24,6 +24,7 @@ exports.dbGetOne=function(table,data){
 		var infos = JSON.parse(data);
 		collection.findOne(infos).then(function(res){
 			setResult(res);
+			console.log(res);
 		});
 		db.close();
 	});
