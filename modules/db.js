@@ -22,7 +22,7 @@ exports.dbGetOne=function(table,data){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
-		var inf=collection.findOne(infos,function(err,res) {
+		collection.findOne(infos).then(function(res){
 			setResult(res);
 		});
 		db.close();
