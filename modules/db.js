@@ -29,7 +29,7 @@ exports.dbGetOne=function(table,data){
 	console.log("___________________");
 	console.log(dat);
 
-	return $return_info;
+	return dat;
 }
 
 
