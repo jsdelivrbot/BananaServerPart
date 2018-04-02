@@ -32,7 +32,7 @@ fs.readdirSync('./controllers').forEach(function(file){
 
 io.sockets.on('connection', function (socket) {
 	user.getUserBaseInfo(socket,io.sockets);
-	socket.on(function(){
+	socket.on("",function(){
 		console.log("NULL ARGUMENTS");
 	});
 	socket.on('addme', function (user) {
