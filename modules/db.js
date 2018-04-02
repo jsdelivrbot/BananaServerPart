@@ -13,24 +13,21 @@ exports.dbSend=function(table,data){
 
 
 exports.dbGetOne=function(table,data){
-
-	$return_info=MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
+	dat="";
+	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
-		dat="";
 
-		$val=collection.findOne(infos,function(err,res){
+
+		collection.findOne(infos,function(err,res){
 			dat=res;
 			db.close();
-			return dat;
 		})
-		console.log($val);
-		return dat;
-
+		console.log(dat);
 	});
 	console.log("___________________");
-	console.log($return_info);
+	console.log(dat);
 
 	return $return_info;
 }
