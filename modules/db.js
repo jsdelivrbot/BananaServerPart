@@ -17,11 +17,11 @@ exports.dbGetOne=function(table,data){
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
-		var infos = data;
+		var infos = JSON.parse(data);
 		console.log("___________________");
 		console.log(data);
 
-		collection.findOne(data)(function(err,res){
+		collection.findOne(infos,function(err,res){
 			$return_info=res;
 			db.close();
 		})
