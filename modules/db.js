@@ -22,13 +22,13 @@ exports.dbGetOne=function(table,data){
 
 		collection.findOne(infos,function(err,res){
 			$return_info=res;
-
-
+			console.log(res);
 			db.close();
 		})
 	});
 	console.log("___________________");
 	console.log($return_info);
+
 	return $return_info;
 }
 
