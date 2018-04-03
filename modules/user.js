@@ -98,9 +98,9 @@ exports.getUserScientific=function (socket,iosockets){
 			delete $datas["Id_User"];
 			socket.emit('getUserScientific', $datas);
 		}
-		}
-	});
-}
+		});
+	}
+
 
 
 exports.getUserScientifics=function (socket,iosockets){
