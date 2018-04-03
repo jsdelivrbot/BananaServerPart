@@ -28,7 +28,6 @@ exports.getUserAgronom=function (socket,iosockets){
 exports.getUserAgronoms=function (socket,iosockets){
 	socket.on("getUserAgronoms",function(data){
 		$datas=DB.dbGetMore("UserAgronom",data);
-
 		if($datas!=null) {
 			for (var $key in $datas) {
 				delete $datas[$key]["_id"];
@@ -42,12 +41,26 @@ exports.getUserAgronoms=function (socket,iosockets){
 
 exports.getUserLobbyist=function (socket,iosockets){
 	socket.on("getUserLobbyist",function(data){
+		$datas=DB.dbGetOne("UserLobbyist",data);
+		if($datas!=null) {
+			delete $datas["_id"];
+			delete $datas["Id_User"];
+			socket.emit('getUserLobbyist', $datas);
+		}
 	});
 }
 
 
-exports.getUserLobbyista=function (socket,iosockets){
-	socket.on("getUserLobbyista",function(data){
+exports.getUserLobbyists=function (socket,iosockets){
+	socket.on("getUserLobbyists",function(data){
+		$datas=DB.dbGetMore("UserLobbyist",data);
+		if($datas!=null) {
+			for (var $key in $datas) {
+				delete $datas[$key]["_id"];
+				delete $datas[$key]["Id_User"];
+			}
+			socket.emit('getUserLobbyists', $datas);
+		}
 	});
 }
 
