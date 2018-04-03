@@ -5,7 +5,7 @@ var mongodb = require('mongodb');
 var bodyParser = require('body-parser');
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-var user = require("./modules/user.js");
+var user = require("./modules/agronom.js");
 var MongoClient = require('mongodb').MongoClient;
 
 
@@ -31,7 +31,7 @@ fs.readdirSync('./controllers').forEach(function(file){
 
 
 io.sockets.on('connection', function (socket) {
-	user.getUserEmployeerItems(socket,io.sockets);
+	user.hireAgronom(socket,io.sockets);
 	socket.on('addme', function (user) {
 
 		socket.username = user;
