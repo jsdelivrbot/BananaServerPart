@@ -1,4 +1,4 @@
-
+var DB=require("./db.js");
 exports.getParselsBase=function (socket,iosockets){
 	socket.on("getParselsBase",function(data){
 	});

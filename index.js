@@ -12,6 +12,7 @@ var agronom = require("./modules/agronom.js");
 var hire = require("./modules/hire.js");
 var map = require("./modules/map.js");
 var market = require("./modules/market.js");
+var warehouse = require("./modules/warehouse.js");
 var MongoClient = require('mongodb').MongoClient;
 
 
@@ -64,6 +65,10 @@ io.sockets.on('connection', function (socket) {
 	map.getMapBase(socket,io.sockets);
 
 	market.getMarketPrice(socket,io.sockets);
+
+	warehouse.getWarehouse(socket,io.sockets);
+	warehouse.getWarehouseResources(socket,io.sockets);
+	warehouse.upgradeWarehouse(socket,io.sockets);
 
 	socket.on('addme', function (user) {
 
