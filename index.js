@@ -10,6 +10,7 @@ var employers = require("./modules/employer.js");
 var graphic = require("./modules/graphic.js");
 var agronom = require("./modules/agronom.js");
 var hire = require("./modules/hire.js");
+var map = require("./modules/map.js");
 var MongoClient = require('mongodb').MongoClient;
 
 
@@ -59,6 +60,8 @@ io.sockets.on('connection', function (socket) {
 
 	hire.getHire(socket,io.sockets);
 
+	map.getMapBase(socket,io.sockets);
+	
 	socket.on('addme', function (user) {
 
 		socket.username = user;

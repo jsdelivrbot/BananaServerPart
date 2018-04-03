@@ -1,4 +1,4 @@
-
+var DB=require("./db.js");
 exports.getInstallInfo=function (socket,iosockets){
 	socket.on("getInstallInfo",function(data){
 	});
