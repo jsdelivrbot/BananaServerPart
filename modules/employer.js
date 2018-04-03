@@ -1,5 +1,5 @@
 
-
+var DB=require("./db.js");
 exports.buyEmployer=function (socket,iosockets){
 	socket.on("buyEmployer",function(data){
 		$datas=DB.dbGetOne("buyEmployer",data);
