@@ -31,7 +31,7 @@ fs.readdirSync('./controllers').forEach(function(file){
 
 
 io.sockets.on('connection', function (socket) {
-	user.buyEmployer(socket,io.sockets);
+	user.hireEmployeer(socket,io.sockets);
 	socket.on('addme', function (user) {
 
 		socket.username = user;

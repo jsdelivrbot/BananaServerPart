@@ -6,7 +6,6 @@ exports.buyEmployer=function (socket,iosockets){
 		if($datas!=null) {
 			delete $datas["_id"];
 			delete $datas["Id_User"];
-			delete $datas["Type_employer"];
 			delete $datas["Job_Offer"];
 			socket.emit('buyEmployer', $datas);
 		}
@@ -15,6 +14,13 @@ exports.buyEmployer=function (socket,iosockets){
 
 exports.hireEmployeer=function (socket,iosockets){
 	socket.on("hireEmployeer",function(data){
+		$datas=DB.dbGetOne("hireEmployeer",data);
+		if($datas!=null) {
+			delete $datas["_id"];
+			delete $datas["Id_User"];
+			delete $datas["Hire_position"];
+			socket.emit('hireEmployeer', $datas);
+		}
 	});
 }
 
