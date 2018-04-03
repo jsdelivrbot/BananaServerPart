@@ -59,6 +59,7 @@ io.sockets.on('connection', function (socket) {
 
 	employers.hireEmployeer(socket,io.sockets);
 	employers.buyEmployer(socket,io.sockets);
+	employers.getEmployeerItems(socket,io.sockets);
 
 	hire.getHire(socket,io.sockets);
 
