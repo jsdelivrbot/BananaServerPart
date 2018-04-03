@@ -17,7 +17,7 @@ exports.getWarehouseResources=function (socket,iosockets){
 		if($datas!=null) {
 			delete $datas["_id"];
 			delete $datas["Id_User"];
-			socket.emit('WarehouseResources', $datas);
+			socket.emit('getWarehouseResources', $datas);
 		}
 	});
 }
