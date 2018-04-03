@@ -78,10 +78,12 @@ exports.getUserDirector=function (socket,iosockets){
 
 exports.getUserDirectors=function (socket,iosockets){
 	socket.on("getUserDirectors",function(data){
-		$datas=DB.dbGetOne("UserDirector",data);
+		$datas=DB.dbGetMore("UserDirector",data);
 		if($datas!=null) {
-			delete $datas["_id"];
-			delete $datas["Id_User"];
+			for (var $key in $datas) {
+				delete $datas[$key]["_id"];
+				delete $datas[$key]["Id_User"];
+			}
 			socket.emit('getUserDirectors', $datas);
 		}
 	});
