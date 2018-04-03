@@ -92,6 +92,27 @@ exports.getUserDirectors=function (socket,iosockets){
 
 exports.getUserScientific=function (socket,iosockets){
 	socket.on("getUserScientific",function(data){
+		$datas=DB.dbGetOne("UserDirector",data);
+		if($datas!=null) {
+			delete $datas["_id"];
+			delete $datas["Id_User"];
+			socket.emit('getUserScientific', $datas);
+		}
+		}
+	});
+}
+
+
+exports.getUserScientifics=function (socket,iosockets){
+	socket.on("getUserScientifics",function(data){
+		$datas=DB.dbGetMore("UserScientific",data);
+		if($datas!=null) {
+			for (var $key in $datas) {
+				delete $datas[$key]["_id"];
+				delete $datas[$key]["Id_User"];
+			}
+			socket.emit('getUserScientifics', $datas);
+		}
 	});
 }
 
