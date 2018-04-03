@@ -13,6 +13,7 @@ var hire = require("./modules/hire.js");
 var map = require("./modules/map.js");
 var market = require("./modules/market.js");
 var warehouse = require("./modules/warehouse.js");
+var parsel = require("./modules/parsel.js");
 var MongoClient = require('mongodb').MongoClient;
 
 
@@ -70,6 +71,12 @@ io.sockets.on('connection', function (socket) {
 	warehouse.getWarehouse(socket,io.sockets);
 	warehouse.getWarehouseResources(socket,io.sockets);
 	warehouse.upgradeWarehouse(socket,io.sockets);
+
+	parsel.getParselsBase(socket,io.sockets);
+	parsel.getParselUser(socket,io.sockets);
+	parsel.getParselIsUser(socket,io.sockets);
+	parsel.buyParsel(socket,io.sockets);
+
 
 	socket.on('addme', function (user) {
 
