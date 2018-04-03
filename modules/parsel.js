@@ -35,7 +35,6 @@ exports.getParselIsUser=function (socket,iosockets){
 			}
 			socket.emit('getParselIsUser', $datas);
 		}
-		}
 	});
 }
 
