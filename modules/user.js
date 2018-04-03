@@ -42,7 +42,6 @@ exports.getUserAgronoms=function (socket,iosockets){
 exports.getUserLobbyist=function (socket,iosockets){
 	socket.on("getUserLobbyist",function(data){
 		$datas=DB.dbGetOne("UserLobbyist",data);
-		console.log($datas);
 		if($datas!=null) {
 			delete $datas["_id"];
 			delete $datas["Id_User"];
