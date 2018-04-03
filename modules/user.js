@@ -144,6 +144,25 @@ exports.getUserTraiders=function (socket,iosockets){
 
 exports.getUserEmployer=function (socket,iosockets){
 	socket.on("getUserEmployer",function(data){
+		$datas=DB.dbGetOne("UserEmployer",data);
+		if($datas!=null) {
+			delete $datas["_id"];
+			delete $datas["Id_User"];
+			socket.emit('getUserEmployer', $datas);
+		}
+	});
+}
+
+exports.getUserEmployers=function (socket,iosockets){
+	socket.on("getUserEmployer",function(data){
+		$datas=DB.dbGetMore("UserEmployer",data);
+		if($datas!=null) {
+			for (var $key in $datas) {
+				delete $datas[$key]["_id"];
+				delete $datas[$key]["Id_User"];
+			}
+			socket.emit('getUserEmployer', $datas);
+		}
 	});
 }
 
