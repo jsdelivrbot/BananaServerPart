@@ -20,7 +20,7 @@ exports.getParselUser=function (socket,iosockets){
 			delete $datas["_id"];
 			delete $datas["Id_User"];
 			delete $datas["Id_map"];
-			socket.emit('ParselUser', $datas);
+			socket.emit('getParselUser', $datas);
 		}
 	});
 }
