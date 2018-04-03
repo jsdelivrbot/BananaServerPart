@@ -1,6 +1,6 @@
 
 
-
+var DB=require("./db.js");
 exports.getHire=function (socket,iosockets){
 	socket.on("getHire",function(data){
 		$datas=DB.dbGetMore("Hire",data);
