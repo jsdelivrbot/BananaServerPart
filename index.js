@@ -5,7 +5,11 @@ var mongodb = require('mongodb');
 var bodyParser = require('body-parser');
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-var user = require("./modules/graphic.js");
+var user = require("./modules/user.js");
+var employers = require("./modules/employer.js");
+var graphic = require("./modules/graphic.js");
+var agronom = require("./modules/agronom.js");
+var hire = require("./modules/hire.js");
 var MongoClient = require('mongodb').MongoClient;
 
 
@@ -31,8 +35,30 @@ fs.readdirSync('./controllers').forEach(function(file){
 
 
 io.sockets.on('connection', function (socket) {
-	user.getGraphicItem(socket,io.sockets);
-	user.getGraphics(socket,io.sockets);
+	user.getUserBaseInfo(socket,io.sockets);
+	user.getUserAgronom(socket,io.sockets);
+	user.getUserAgronoms(socket,io.sockets);
+	user.getUserLobbyist(socket,io.sockets);
+	user.getUserLobbyists(socket,io.sockets);
+	user.getUserDirector(socket,io.sockets);
+	user.getUserDirectors(socket,io.sockets);
+	user.getUserScientific(socket,io.sockets);
+	user.getUserScientifics(socket,io.sockets);
+	user.getUserTraider(socket,io.sockets);
+	user.getUserTraiders(socket,io.sockets);
+	user.getUserEmployers(socket,io.sockets);
+	user.getUserEmployeerItems(socket,io.sockets);
+
+	graphic.getGraphicItem(socket,io.sockets);
+	graphic.getGraphics(socket,io.sockets);
+
+	agronom.hireAgronom(socket,io.sockets);
+
+	employers.hireEmployeer(socket,io.sockets);
+	employers.buyEmployer(socket,io.sockets);
+
+	hire.getHire(socket,io.sockets);
+
 	socket.on('addme', function (user) {
 
 		socket.username = user;
@@ -43,25 +69,7 @@ io.sockets.on('connection', function (socket) {
 
 	});
 
-	socket.on('jsoncreater', function (json) {
 
-		MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
-				var datas = db.db("banandata");
-				var collection = datas.collection("playerdata");
-			var user = {name: socket.username, json: json};
-			collection.insertOne(user, function(err, result){
-
-				if(err){
-					return console.log(err);
-				}
-
-				db.close();
-			});
-			console.log("CONNECT to DATA");
-		});
-
-		io.sockets.emit("middle", socket.username+" Send: "+json);
-	});
 	socket.on('disconect', function () {
 		io.sockets.emit('chat', 'Server', socket.username + 'left');
 	});
