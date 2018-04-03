@@ -169,6 +169,15 @@ exports.getUserEmployers=function (socket,iosockets){
 
 exports.getUserEmployeerItems=function (socket,iosockets){
 	socket.on("getUserEmployeerItems",function(data){
+		$datas=DB.dbGetMore("UserEmployeerItems",data);
+		if($datas!=null) {
+			for (var $key in $datas) {
+				delete $datas[$key]["_id"];
+				delete $datas[$key]["Id_User"];
+				delete $datas[$key]["Type_employer"];
+			}
+			socket.emit('getUserEmployeerItems', $datas);
+		}
 	});
 }
 
