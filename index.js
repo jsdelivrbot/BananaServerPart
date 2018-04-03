@@ -31,8 +31,8 @@ fs.readdirSync('./controllers').forEach(function(file){
 
 
 io.sockets.on('connection', function (socket) {
-	user.getUserScientific(socket,io.sockets);
-	user.getUserScientifics(socket,io.sockets);
+	user.getUserTraiders(socket,io.sockets);
+	user.getUserTraider(socket,io.sockets);
 	socket.on('addme', function (user) {
 
 		socket.username = user;

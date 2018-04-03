@@ -117,8 +117,28 @@ exports.getUserScientifics=function (socket,iosockets){
 }
 
 
+exports.getUserTraider=function (socket,iosockets){
+	socket.on("getUserTraider",function(data){
+		$datas=DB.dbGetOne("UserTraider",data);
+		if($datas!=null) {
+			delete $datas["_id"];
+			delete $datas["Id_User"];
+			socket.emit('getUserTraider', $datas);
+		}
+	});
+}
+
+
 exports.getUserTraiders=function (socket,iosockets){
 	socket.on("getUserTraiders",function(data){
+		$datas=DB.dbGetMore("UserTraider",data);
+		if($datas!=null) {
+			for (var $key in $datas) {
+				delete $datas[$key]["_id"];
+				delete $datas[$key]["Id_User"];
+			}
+			socket.emit('getUserTraiders', $datas);
+		}
 	});
 }
 
