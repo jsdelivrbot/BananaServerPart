@@ -92,7 +92,7 @@ exports.getUserDirectors=function (socket,iosockets){
 
 exports.getUserScientific=function (socket,iosockets){
 	socket.on("getUserScientific",function(data){
-		$datas=DB.dbGetOne("UserDirector",data);
+		$datas=DB.dbGetOne("UserScientific",data);
 		if($datas!=null) {
 			delete $datas["_id"];
 			delete $datas["Id_User"];
