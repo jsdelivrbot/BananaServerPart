@@ -14,6 +14,7 @@ var map = require("./modules/map.js");
 var market = require("./modules/market.js");
 var warehouse = require("./modules/warehouse.js");
 var parsel = require("./modules/parsel.js");
+var install = require("./modules/install.js");
 var MongoClient = require('mongodb').MongoClient;
 
 
@@ -77,6 +78,8 @@ io.sockets.on('connection', function (socket) {
 	parsel.getParselIsUser(socket,io.sockets);
 	parsel.buyParsel(socket,io.sockets);
 
+	install.getInstallInfo(socket,io.sockets);
+	install.setInstallInfo(socket,io.sockets);
 
 	socket.on('addme', function (user) {
 
