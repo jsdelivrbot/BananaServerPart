@@ -23,7 +23,7 @@ exports.dbUpdateOne=function(table,data,dataFilter){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = dataFilter;
-		collection.updateOne(infos,{$set:data}, function(err, result){
+		collection.updateOne({$mod:infos},{$set:data}, function(err, result){
 			console.log(err);
 			console.log(result);
 			db.close();
