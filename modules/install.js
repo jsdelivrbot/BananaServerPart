@@ -17,15 +17,20 @@ exports.getInstallInfo=function (socket,iosockets){
 
 exports.setInstallInfo=function (socket,iosockets){
 	socket.on("setInstallInfo",function(data){
-		$datas=DB.dbGetMore("InstallInfo",data);
-		if($datas!=null) {
-			for (var $key in $datas) {
-				delete $datas[$key]["_id"];
-				delete $datas[$key]["Id_User"];
-				delete $datas[$key]["Id_map"];
-				delete $datas[$key]["Id_parsel"];
+		$val=data;
+		if($val!=null) {
+			$json={"Directors_bonus":4};
+			DB.dbUpdateOne("InstallInfo", $val, $json);
+			$datas = DB.dbGetMore("InstallInfo", data);
+			if ($datas != null) {
+				for (var $key in $datas) {
+					delete $datas[$key]["_id"];
+					delete $datas[$key]["Id_User"];
+					delete $datas[$key]["Id_map"];
+					delete $datas[$key]["Id_parsel"];
+				}
+				socket.emit('setInstallInfo', $datas);
 			}
-			socket.emit('setInstallInfo', $datas);
 		}
 	});
 }
