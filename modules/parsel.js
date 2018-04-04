@@ -44,7 +44,7 @@ exports.buyParsel=function (socket,iosockets){
 		console.log("_____________");
 		console.log(data);
 		if(data!=null) {
-		$datas=DB.dbGetMore("ParselsBase",data);
+		$datas=DB.dbGetMore("ParselsBase",JSON.stringify(data));
 
 		DB.dbSendOne("ParselsBase",data);
 			for (var $key in $datas) {
