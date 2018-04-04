@@ -4,13 +4,24 @@ result=null;
 function setResult(res){
 	result= res;
 }
-exports.dbSend=function(table,data){
-
+exports.dbSendOne=function(table,data){
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = data;
 		collection.insertOne(infos, function(err, result){
+			db.close();
+		});
+	});
+}
+
+
+exports.dbSendMore=function(table,data){
+	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
+		var datas = db.db("banandata");
+		var collection = datas.collection(table);
+		var infos = data;
+		collection.insertMany(infos, function(err, result){
 			db.close();
 		});
 	});
