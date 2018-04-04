@@ -23,11 +23,7 @@ exports.dbUpdateOne=function(table,data,dataFilter){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = dataFilter;
-		collection.updateOne({$mod:infos},{$set:data}, function(err, result){
-			console.log(err);
-			console.log(result);
-			db.close();
-		});
+		collection.updateOne(infos,{$set:data},  { upsert: true });
 	});
 }
 
