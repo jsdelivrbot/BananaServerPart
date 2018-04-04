@@ -10,6 +10,8 @@ exports.dbSendOne=function(table,data){
 		var collection = datas.collection(table);
 		var infos = data;
 		collection.insertOne(infos, function(err, result){
+			console.log(err);
+			console.log(result);
 			db.close();
 		});
 	});
