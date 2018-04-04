@@ -24,8 +24,10 @@ exports.getWarehouseResources=function (socket,iosockets){
 
 exports.upgradeWarehouse=function (socket,iosockets){
 	socket.on("upgradeWarehouse",function(data){
-		if(data!=null) {
-			DB.dbUpdateOne("Warehouse", data, JSON.parse('{"Level":20}'));
+		$val=data;
+		if($val!=null) {
+			delete $val["Id_User"];
+			DB.dbUpdateOne("Warehouse", $val, JSON.parse('{"Level":"20"}'));
 			$datas = DB.dbGetOne("Warehouse", data);
 			if ($datas != null) {
 				delete $datas["_id"];
