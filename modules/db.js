@@ -32,7 +32,7 @@ exports.dbUpdateOne=function(table,data,dataFilter){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = dataFilter;
-		collection.updateOne(infos,{$set:data}, function(err, result){
+		collection.updateOne(data,{$set:infos}, function(err, result){
 			console.log(data);
 			console.log("_____________");
 			console.log(infos);
