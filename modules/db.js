@@ -33,7 +33,7 @@ exports.dbUpdateOne=function(table,data,dataFilter){
 		var collection = datas.collection(table);
 		var infos = dataFilter;
 		collection.updateOne(infos,{$set:data}, function(err, result){
-			console.log(err);
+			console.log("_____________");
 			console.log(result);
 			db.close();
 		});
