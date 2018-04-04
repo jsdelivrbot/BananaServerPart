@@ -18,6 +18,33 @@ exports.dbSendOne=function(table,data){
 }
 
 
+exports.dbUpdateOne=function(table,data,dataFilter){
+	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
+		var datas = db.db("banandata");
+		var collection = datas.collection(table);
+		var infos = dataFilter;
+		collection.updateOne(infos,{$set:data}, function(err, result){
+			console.log(err);
+			console.log(result);
+			db.close();
+		});
+	});
+}
+
+exports.dbUpdateOne=function(table,data,dataFilter){
+	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
+		var datas = db.db("banandata");
+		var collection = datas.collection(table);
+		var infos = dataFilter;
+		collection.updateOne(infos,{$set:data}, function(err, result){
+			console.log(err);
+			console.log(result);
+			db.close();
+		});
+	});
+}
+
+
 exports.dbSendMore=function(table,data){
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
 		var datas = db.db("banandata");

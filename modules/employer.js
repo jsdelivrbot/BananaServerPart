@@ -23,11 +23,17 @@ exports.buyEmployer=function (socket,iosockets){
 
 exports.getEmployeerItems=function (socket,iosockets){
 	socket.on("getEmployeerItems",function(data){
-		$datas=DB.dbGetOne("EmployeerItems",data);
-		if($datas!=null) {
-			delete $datas["_id"];
-			delete $datas["Type_employer"];
-			socket.emit('getEmployeerItems', $datas);
+		$finZap=JSON.parse(data);
+		if($data!=null) {
+			DB.dbSendOne("EmployeerItems",$finZap);
+		  $datas=DB.dbGetOne("EmployeerItems",data);
+			if($datas!=null) {
+				delete $datas["_id"];
+				delete $datas["Type_employer"];
+				socket.emit('getEmployeerItems', $datas);
+			}else{
+				socket.emit('getEmployeerItems', "-1");
+			}
 		}
 	});
 }
