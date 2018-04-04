@@ -41,7 +41,7 @@ exports.getParselIsUser=function (socket,iosockets){
 
 exports.buyParsel=function (socket,iosockets){
 	socket.on("buyParsel",function(data){
-    $finZap=JSON.stringify(data);
+    $finZap=data;
     $finZap["Resource"]="0";
 		//"Fertility":"3", "Parsel_Status":"3", "Id_Agronom":"-1", "Agronom_buff":"0"});
 		console.log($finZap);
