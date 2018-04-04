@@ -19,7 +19,7 @@ exports.setInstallInfo=function (socket,iosockets){
 	socket.on("setInstallInfo",function(data){
 		$val=JSON.parse(data);
 		if($val!=null) {
-			$json={"Directors_bonus":"4"};
+			$json={"Directors_bonus":"40"};
 			DB.dbUpdateOne("InstallInfo", $val, $json);
 			$datas = DB.dbGetMore("InstallInfo", data);
 			if ($datas != null) {

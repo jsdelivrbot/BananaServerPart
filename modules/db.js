@@ -10,8 +10,6 @@ exports.dbSendOne=function(table,data){
 		var collection = datas.collection(table);
 		var infos = data;
 		collection.insertOne(infos, function(err, result){
-			console.log(err);
-			console.log(result);
 			db.close();
 		});
 	});
@@ -33,10 +31,6 @@ exports.dbUpdateOne=function(table,data,dataFilter){
 		var collection = datas.collection(table);
 		var infos = dataFilter;
 		collection.findOneAndUpdate(data,{$set:infos}, function(err, result){
-			console.log(data);
-			console.log("_____________");
-			console.log(infos);
-
 			db.close();
 		});
 	});
