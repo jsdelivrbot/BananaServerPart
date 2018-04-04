@@ -41,11 +41,11 @@ exports.getParselIsUser=function (socket,iosockets){
 
 exports.buyParsel=function (socket,iosockets){
 	socket.on("buyParsel",function(data){
-
-		if($datas!=null) {
-		$datas=DB.dbGetMore("ParselsBase",data);
 		console.log("_____________");
 		console.log(data);
+		if(data!=null) {
+		$datas=DB.dbGetMore("ParselsBase",data);
+
 		DB.dbSendOne("ParselsBase",data);
 			for (var $key in $datas) {
 				delete $datas[$key]["_id"];
