@@ -41,8 +41,9 @@ exports.getParselIsUser=function (socket,iosockets){
 
 exports.buyParsel=function (socket,iosockets){
 	socket.on("buyParsel",function(data){
-		$datas=DB.dbGetMore("ParselsBase",data);
+
 		if($datas!=null) {
+		$datas=DB.dbGetMore("ParselsBase",data);
 		console.log("_____________");
 		console.log(data);
 		DB.dbSendOne("ParselsBase",data);
