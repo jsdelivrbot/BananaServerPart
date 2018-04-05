@@ -26,7 +26,7 @@ exports.dbUpdateOne=function(table,data,dataFilter){
 }
 
 exports.dbUpdateOne=function(table,data,dataFilter){
-	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@62.109.0.107:27017/banandata', function(err, db) {
+	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		console.log(err);
 		console.log("______________");
 		var datas = db.db("banandata");
