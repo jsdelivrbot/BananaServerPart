@@ -16,14 +16,6 @@ exports.dbSendOne=function(table,data){
 }
 
 
-exports.dbUpdateOne=function(table,data,dataFilter){
-	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@62.109.0.107:27017/banandata', function(err, db) {
-		var datas = db.db("banandata");
-		var collection = datas.collection(table);
-		var infos = dataFilter;
-		collection.updateOne(infos,{$set:data},  { upsert: true });
-	});
-}
 
 exports.dbUpdateOne=function(table,data,dataFilter){
 	console.log("______________");
