@@ -20,7 +20,7 @@ exports.dbSendOne=function(table,data){
 exports.dbUpdateOne=function(table,data,dataFilter){
 
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
-		var datas = db.db("banandata");
+		var datas = db;
 		var collection = datas.collection(table);
 		var infos = dataFilter;
 		console.log("______________");
