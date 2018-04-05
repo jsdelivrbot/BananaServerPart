@@ -24,9 +24,9 @@ exports.dbUpdateOne=function(table,data,dataFilter){
 		var collection = datas.collection(table);
 		var infos = dataFilter;
 		console.log("______________");
-		console.log(data);
-		console.log(infos);
 		collection.findOneAndUpdate(data,{$set:infos}, function(err, result){
+			console.log(err);
+			console.log(result);
 			db.close();
 		});
 	});
