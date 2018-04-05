@@ -20,11 +20,11 @@ exports.dbSendOne=function(table,data){
 exports.dbUpdateOne=function(table,data,dataFilter){
 
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
-		var datas = db;
+		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = dataFilter;
 		console.log("______________");
-		console.log(datas);
+		console.log(data);
 		console.log(infos);
 		collection.findOneAndUpdate(data,{$set:infos}, function(err, result){
 			db.close();
