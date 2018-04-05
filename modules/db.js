@@ -5,7 +5,7 @@ function setResult(res){
 	result= res;
 }
 exports.dbSendOne=function(table,data){
-	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
+	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@62.109.0.107:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = data;
@@ -17,7 +17,7 @@ exports.dbSendOne=function(table,data){
 
 
 exports.dbUpdateOne=function(table,data,dataFilter){
-	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
+	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@62.109.0.107:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = dataFilter;
@@ -26,7 +26,7 @@ exports.dbUpdateOne=function(table,data,dataFilter){
 }
 
 exports.dbUpdateOne=function(table,data,dataFilter){
-	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@ds215759.mlab.com:15759/banandata', function(err, db) {
+	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@62.109.0.107:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = dataFilter;
