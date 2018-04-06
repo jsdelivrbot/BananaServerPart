@@ -77,13 +77,25 @@ exports.getMaxValParam=function(table,param){
 		var collection = datas.collection(table);
 		$a=collection.find({}).toArray(function(err,res){
 			$length=res.length;
-			console.log($length);
-			console.log("___________");
+			$val=0;
+			for($i=0;$i<$length;$i++){
+				if($i==0){
+					$val=res[param];
+				}else{
+					if($val<res[param]){
+						$val=res[param];
+					}
+				}
+			}
+			$val++;
+			setMax($val);
 			db.close();
 		});
 
 	});
-
+	console.log("____________");
+	console.log(max);
+return max;
 }
 
 exports.dbGetMore=function(table,data){
