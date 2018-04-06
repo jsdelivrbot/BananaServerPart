@@ -17,13 +17,13 @@ exports.dbSendOne=function(table,data){
 
 
 
-exports.dbUpdateOne=function(table,data,dataFilter){
+exports.dbUpdateOne=function(table,dataFilter,dataUpdate){
 
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
-		var infos = dataFilter;
-		collection.updateOne(data,{$set:infos}, function(err, result){
+		var infos = dataUpdate;
+		collection.updateOne(dataFilter,{$set:infos}, function(err, result){
 			db.close();
 		});
 	});
