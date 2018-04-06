@@ -6,7 +6,7 @@ exports.buyEmployer=function (socket,iosockets){
 		$finZap=JSON.parse(data);
 
 		if(data!=null) {
-			$id=DB.getMaxValParam("buyEmployer","Type_employer");
+			$id=DB.getMaxValParam("buyEmployer","Id_employer");
 			$finZap.Id_employer=$id;
 			DB.dbSendOne("buyEmployer",$finZap);
 
