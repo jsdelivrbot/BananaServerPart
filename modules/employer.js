@@ -43,7 +43,7 @@ exports.hireEmployeer=function (socket,iosockets){
 	socket.on("hireEmployeer",function(data){
 		if(data) {
 			$hireStatus=JSON.parse(data);
-			console.log($hireStatus);
+			console.log($hireStatus.Hire_status)
 			$datas = DB.dbGetOne("hireEmployeer", data);
 			if ($datas != null) {
 				delete $datas["_id"];
