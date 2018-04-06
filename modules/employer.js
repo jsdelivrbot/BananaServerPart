@@ -10,7 +10,7 @@ exports.buyEmployer=function (socket,iosockets){
 			$finZap.Id_employer=$id;
 			DB.dbSendOne("buyEmployer",$finZap);
 
-			$datas=DB.dbGetOne("buyEmployer",$finZap);
+			$datas=DB.dbGetOne("buyEmployer",JSON.stringify($finZap));
 			if($datas!=null) {
 				delete $datas["_id"];
 				delete $datas["Id_User"];
