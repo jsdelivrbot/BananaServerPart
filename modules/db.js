@@ -78,6 +78,7 @@ exports.getMaxValParam=function(table,param){
 		$a=collection.find({}).toArray(function(err,res){
 			$res=JSON.parse(res)
 			console.log($res[0]);
+			console.log("___________");
 			db.close();
 		});
 
