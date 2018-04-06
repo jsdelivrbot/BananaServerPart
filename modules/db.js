@@ -76,8 +76,8 @@ exports.getMaxValParam=function(table,param){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		$a=collection.find({}).toArray(function(err,res){
-			$res=res
-			console.log($res[0]["Id_User"]);
+			$length=res.length;
+			console.log($length);
 			console.log("___________");
 			db.close();
 		});
