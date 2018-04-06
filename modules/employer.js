@@ -8,10 +8,9 @@ exports.buyEmployer=function (socket,iosockets){
 		if(data!=null) {
 			$id=DB.getMaxValParam("buyEmployer","Type_employer");
 			$finZap.Id_employer=$id;
-			console.log($finZap);
-			//DB.dbSendOne("buyEmployer",$finZap);
+			DB.dbSendOne("buyEmployer",$finZap);
 
-			$datas=DB.dbGetOne("buyEmployer",data);
+			$datas=DB.dbGetOne("buyEmployer",$finZap);
 			if($datas!=null) {
 				delete $datas["_id"];
 				delete $datas["Id_User"];
