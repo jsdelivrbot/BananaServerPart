@@ -86,8 +86,6 @@ exports.getMaxValParam=function(table,param){
 						$val=res[$i][param];
 					}
 				}
-				console.log($val);
-				console.log(param);
 			}
 			$val++;
 			setMax($val);
@@ -95,8 +93,6 @@ exports.getMaxValParam=function(table,param){
 		});
 
 	});
-	console.log("____________");
-	console.log(max);
 return max;
 }
 

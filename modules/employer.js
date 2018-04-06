@@ -6,8 +6,11 @@ exports.buyEmployer=function (socket,iosockets){
 		$finZap=JSON.parse(data);
 
 		if(data!=null) {
+			$id=DB.getMaxValParam("buyEmployer","Type_employer");
+			$finZap.Id_employer=$id;
+			condole.log($finZap);
 			//DB.dbSendOne("buyEmployer",$finZap);
-			DB.getMaxValParam("buyEmployer","Type_employer");
+
 			$datas=DB.dbGetOne("buyEmployer",data);
 			if($datas!=null) {
 				delete $datas["_id"];
