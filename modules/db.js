@@ -76,7 +76,8 @@ exports.getMaxValParam=function(table,param){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		$a=collection.find({}).toArray(function(err,res){
-			console.log(res);
+			$res=JSON.parse(res)
+			console.log($res[0]);
 			db.close();
 		});
 
