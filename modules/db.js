@@ -80,10 +80,10 @@ exports.getMaxValParam=function(table,param){
 			$val=0;
 			for($i=0;$i<$length;$i++){
 				if($i==0){
-					$val=res[param];
+					$val=res[$i][param];
 				}else{
-					if($val<res[param]){
-						$val=res[param];
+					if($val<res[$i][param]){
+						$val=res[$i][param];
 					}
 				}
 				console.log($val);
