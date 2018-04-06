@@ -45,7 +45,7 @@ exports.hireEmployeer=function (socket,iosockets){
 			$hireData=JSON.parse(data);
 			$status={"Hire_status":$hireData.Hire_status};
 			delete $hireData["Hire_status"];
-			db.dbUpdateOne("hireEmployeer",$hireData,$status);
+			DB.dbUpdateOne("hireEmployeer",$hireData,$status);
 			$datas = DB.dbGetOne("hireEmployeer", data);
 			if ($datas != null) {
 				delete $datas["_id"];
