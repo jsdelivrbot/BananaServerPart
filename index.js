@@ -18,12 +18,12 @@ var install = require("./modules/install.js");
 var MongoClient = require('mongodb').MongoClient;
 
 
-const PORT = process.env.PORT || 3000;
+const PORT =  5891;
 const INDEX = path.join(__dirname, 'index.html');
 
 
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', 5891);
 app.set('views', path.join(__dirname, 'views'));
 
 app.set('view engine', 'jade');

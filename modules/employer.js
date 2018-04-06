@@ -41,12 +41,18 @@ exports.getEmployeerItems=function (socket,iosockets){
 
 exports.hireEmployeer=function (socket,iosockets){
 	socket.on("hireEmployeer",function(data){
-		$datas=DB.dbGetOne("hireEmployeer",data);
-		if($datas!=null) {
-			delete $datas["_id"];
-			delete $datas["Id_User"];
-			delete $datas["Hire_position"];
-			socket.emit('hireEmployeer', $datas);
+		if(data) {
+			$hireStatus=JSON.parse(data);
+			console.log($hireStatus);
+			$datas = DB.dbGetOne("hireEmployeer", data);
+			if ($datas != null) {
+				delete $datas["_id"];
+				delete $datas["Id_User"];
+				delete $datas["Hire_position"];
+				socket.emit('hireEmployeer', $datas);
+			}
+		}else{
+			socket.emit('hireEmployeer', "-1");
 		}
 	});
 }
