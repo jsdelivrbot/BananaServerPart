@@ -75,10 +75,10 @@ exports.getMaxValParam=function(table,param){
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
-		collection.find({}).toArray(function(err,res){
-			console.log(res);
+		$a=collection.find({}).toArray(function(err,res){
 			db.close();
-		})
+		});
+		console.log($a);
 	});
 
 }
