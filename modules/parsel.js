@@ -42,17 +42,29 @@ exports.getParselIsUser=function (socket,iosockets){
 exports.buyParsel=function (socket,iosockets){
 	socket.on("buyParsel",function(data){
     $finZap=JSON.parse(data);
+    $finalDataPay={"Id_User":$finZap["Id_User"]};
 		delete $finZap["Id_User"];
 		if(data!=null) {
 			$dataParsel=DB.dbGetOne("ParselsBase",JSON.stringify($finZap));
+			$userInfos =DB.dbGetOne("UserBaseInfo",JSON.stringify($finalDataPay));
+			$money={"Money":$userInfos.Money-$dataParsel.Price_Install}
+			DB.dbUpdateOne("UserBaseInfo",JSON.stringify($finalDataPay),$money);
+			$finalDataPay.Id_parsel              = $dataParsel.Id_parsel;
+			$finalDataPay.Id_map                 = $dataParsel.Id_map;
+			$finalDataPay.Current_CoolDown_Time  = $dataParsel.Base_CoolDown_Time;
+			$finalDataPay.Agronom_buff           = 0;
+			$finalDataPay.Id_Agronom             = -1;
+			$finalDataPay.Parsel_Status          = 1;
+			$finalDataPay.Resource               = 0;
+			$finalDataPay.Fertility              = 1;
 
-			//DB.dbSendOne("ParselUser",$finZap);
-		  /*$datas=DB.dbGetMore("ParselUser",data);
+			DB.dbSendOne("ParselUser",$finalDataPay);
+		  $datas=DB.dbGetOne("ParselUser",data);
 			for (var $key in $datas) {
 				delete $datas[$key]["_id"];
 				delete $datas[$key]["Id_User"];
 				delete $datas[$key]["Id_map"];
-			}*/
+			}
 			socket.emit('buyParsel', $dataParsel);
 		}
 	});
