@@ -38,15 +38,15 @@ exports.getParselIsUser=function (socket,iosockets){
 		}
 	});
 }
-userInfos=-1;
-parselinfo=-1;
+userInfos=null;
+parselinfo=null;
 exports.buyParsel=function (socket,iosockets){
 	socket.on("buyParsel",function(data){
     $finZap=JSON.parse(data);
 
     $finalDataPay={"Id_User":$finZap.Id_User};
-		var $userData;
-		var $dataParsel;
+		var $userData=null;
+		var $dataParsel=null;
 		$dataParsel="";
 
 
