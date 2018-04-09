@@ -41,14 +41,13 @@ exports.DataWork = {
 					var datas = _db.db("banandata");
 					var collection = datas.collection(table);
 					var infos = JSON.parse(data);
-					$res=infos;
-					/*$res=collection.find(infos);/*.then(function(res){
+
+					collection.findOne(infos,function(res){
 						result=res;
 						console.log("___________");
 						console.log(data);
 						console.log(result);
-
-					});*/
+					});
 
 		}
 		return $res;
