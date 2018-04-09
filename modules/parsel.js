@@ -53,7 +53,7 @@ exports.buyParsel=function (socket,iosockets){
 		if(data!=null) {
 
 				$userData =   DB.getOther(function(res){$dataParsel=res},"UserBaseInfo", JSON.stringify($finalDataPay));//DB.dbGetOne("UserBaseInfo", JSON.stringify($finalDataPay));
-				$dataParsel = DB.dbGetOne("ParselsBase", JSON.stringify($finalDataPay));
+				
 			//	$dataParsel = DB.dbGetOne("ParselsBase", JSON.stringify($finZap));
 			/*$money='{"Money":'+$userData.Money-$dataParsel.Price_Install+'}';
 			/*DB.dbUpdateOne("UserBaseInfo",JSON.stringify($finalDataPay),$money);
