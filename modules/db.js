@@ -33,7 +33,7 @@ exports.DataWork = {
 			_db.close();
 		}
 	},
-	dbGetOne: function (table, data) {
+	dbGetOnes: function (table, data) {
 		$res=12;
 		if(_db!=null){
 
