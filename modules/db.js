@@ -1,5 +1,5 @@
 var MongoClient = require('mongodb').MongoClient;
-var dat=null;
+dat=null;
 MongoClient.connect("mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata", function (err, db) {
 	setDB(db);
 	dat = db.db("banandata");
@@ -102,14 +102,17 @@ exports.dbSendMore=function(table,data){
 
 
 exports.dbGetOne=function(table,data){
-	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
+	/*MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
 		resu=collection.findOne(infos);
 		db.close();
-	});
-return result;
+	});*/
+	var collection = dat.collection(table);
+	var infos = JSON.parse(data);
+	resu=collection.findOne(infos);
+return resu;
 }
 
 exports.getMaxValParam=function(table,param){
