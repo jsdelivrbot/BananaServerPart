@@ -67,9 +67,10 @@ exports.dbGetOne=function(table,data){
 		collection.findOne(infos).then(function(res){
 			result=res;
 		});
+		return "150";
 		db.close();
 	});
-return result;
+
 }
 
 exports.getMaxValParam=function(table,param){
