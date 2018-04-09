@@ -49,8 +49,8 @@ exports.buyParsel=function (socket,iosockets){
 		if(data!=null) {
 			$dataParsel=DB.dbGetOne("ParselsBase",JSON.stringify($finZap));
 
-			/*$money='{"Money":'+$userInfos.Money-$dataParsel.Price_Install+'}';
-			DB.dbUpdateOne("UserBaseInfo",JSON.stringify($finalDataPay),$money);
+			$money='{"Money":'+$userInfos.Money-$dataParsel.Price_Install+'}';
+			/*DB.dbUpdateOne("UserBaseInfo",JSON.stringify($finalDataPay),$money);
 			$finalDataPay.Id_parsel              = $dataParsel.Id_parsel;
 			$finalDataPay.Id_map                 = $dataParsel.Id_map;
 			$finalDataPay.Current_CoolDown_Time  = $dataParsel.Base_CoolDown_Time;
@@ -68,7 +68,6 @@ exports.buyParsel=function (socket,iosockets){
 				delete $datas[$key]["Id_map"];
 			}*/
 			socket.emit('buyParsel', $userData);
-			socket.emit('buyParsel', $dataParsel);
 		}
 	});
 }
