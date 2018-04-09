@@ -1,5 +1,5 @@
 var DB=require("./db.js");
-var async = require('async');
+
 exports.getParselsBase=function (socket,iosockets){
 	socket.on("getParselsBase",function(data){
 		$datas=DB.dbGetMore("ParselsBase",data);
