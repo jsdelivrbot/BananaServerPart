@@ -42,11 +42,11 @@ exports.DataWork = {
 					var collection = datas.collection(table);
 					var infos = JSON.parse(data);
 
-					collection.findOne(infos,function(res){
-						result=res;
+					collection.findOne(data,function(res){
+						$res=res;
 						console.log("___________");
 						console.log(data);
-						console.log(result);
+						console.log($res);
 					});
 
 		}
