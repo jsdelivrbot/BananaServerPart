@@ -1,6 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
 var async = require('async');
-var result=null;
+result=null;
 max=null;
 var _db=null;
 function setMax(maximum){
@@ -36,10 +36,10 @@ exports.DataWork = {
 					var collection = datas.collection(table);
 					var infos = JSON.parse(data);
 					collection.findOne(infos).then(function(res) {
-						result=res;
+						setResult(res);
 					});
-					return result;
 		}
+		return result;
 	}
 }
 
