@@ -66,8 +66,10 @@ exports.dbGetOne=function(table,data){
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
 		async.parallel([function() { // делаем первый запрос к базе
-			res=collection.findOne(infos);
-			setResult(res);
+			collection.findOne(infos,function(err,res){
+				setResult(res);
+			});
+
 		}]);
 		console.log(result);
 		db.close();
