@@ -14,7 +14,6 @@ function setResult(res){
 	result= res;
 }
 
-}
 function getResult(){
 	return result;
 }
