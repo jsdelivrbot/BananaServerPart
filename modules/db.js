@@ -64,13 +64,12 @@ exports.dbGetOne=function(table,data){
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
 		collection.findOne(infos).then(function(res){
-			console.log(res);
 			setResult(res);
 			db.close();
 		});
 	});
 return result;
-
+	setResult(null);
 }
 
 exports.getMaxValParam=function(table,param){
