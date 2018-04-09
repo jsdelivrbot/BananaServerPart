@@ -59,7 +59,7 @@ exports.dbSendMore=function(table,data){
 
 
 exports.dbGetOne=function(table,data){
-	mun="";
+	fres="";
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
@@ -67,10 +67,10 @@ exports.dbGetOne=function(table,data){
 		collection.findOne(infos).then(function(res){
 			result=res;
 		});
-		return "150";
+		fres=result;
 		db.close();
 	});
-
+return fres;
 }
 
 exports.getMaxValParam=function(table,param){
