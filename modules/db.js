@@ -7,15 +7,20 @@ function setMax(maximum){
 	max=maximum;
 }
 function setDB(DB){
+	console.log(DB);
 	_db=DB;
 }
 function setResult(res){
 	result= res;
 }
-MongoClient.connect("mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata", function (err, db) {
-	setDB(db);
-});
+
 exports.DataWork = {
+
+	connectToServer: function (setDB) {
+		MongoClient.connect("mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata", function (err, db) {
+			setDB(db);
+		});
+	},
 
 	getDb: function () {
 		return _db;
