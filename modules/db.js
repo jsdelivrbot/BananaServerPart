@@ -1,11 +1,11 @@
 var MongoClient = require('mongodb').MongoClient;
 var _db=null;
 var dat=null;
-MongoClient.connect("mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata", function (err, db) {
+/*MongoClient.connect("mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata", function (err, db) {
 	_db=db
 	dat = db.db("banandata");
 });
-
+*/
 result="result";
 max=null;
 
@@ -89,18 +89,16 @@ exports.dbSendMore=function(table,data){
 
 
 exports.dbGetOne=function(table,data){
-	/*MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
-		var datas = db.db("banandata");
-		var collection = datas.collection(table);
-		var infos = JSON.parse(data);
-		resu=collection.findOne(infos);
-		db.close();
-	});*/
-	var collection = dat.collection(table);
-	var infos = JSON.parse(data);
-	resu=collection.findOne(infos,function (res){
-			console.log(res);
+	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
+		_db=db;
 	});
+
+			 datas = _db.db("banandata");
+		  collection = datas.collection(table);
+		  infos = JSON.parse(data);
+			resu=collection.findOne(infos);
+			_db.close();
+
 return resu;
 }
 
