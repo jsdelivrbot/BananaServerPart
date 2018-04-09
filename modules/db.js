@@ -62,7 +62,7 @@ exports.dbSendMore=function(table,data){
 	});
 }
 
-exprots.getOther=function(callback,table,data){
+exports.getOther=function(callback,table,data){
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
