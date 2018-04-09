@@ -75,7 +75,6 @@ exports.buyParsel=function (socket,iosockets){
 			}*/
 			dataB.closeDB();
 			socket.emit('buyParsel', $userData);
-			socket.emit('buyParsel', $dataParsel);
 
 		}
 	});
