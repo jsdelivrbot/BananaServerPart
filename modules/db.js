@@ -1,7 +1,7 @@
 var MongoClient = require('mongodb').MongoClient;
 
 
-result="result";
+var result="result";
 max=null;
 function setMax(maximum){
 	max=maximum;
@@ -72,14 +72,14 @@ exports.getOther=function(callback,table,data){
 		});
 		db.close();
 	});
-	return result;
+	return resu;
 }
 exports.dbGetOne=function(table,data){
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
-		resu=collection.findOne(infos,function(err,res){
+		collection.findOne(infos,function(err,res){
 			result=res;
 		});
 		db.close();
