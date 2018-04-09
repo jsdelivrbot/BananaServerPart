@@ -28,7 +28,9 @@ exports.DataWork = {
 		return _db;
 	},
 	closeDB: function(){
-		_db.close();
+		if(_db!=null) {
+			_db.close();
+		}
 	},
 	dbGetOne: function (table, data) {
 		if(_db!=null){
