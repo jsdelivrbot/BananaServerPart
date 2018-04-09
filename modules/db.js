@@ -35,11 +35,12 @@ exports.DataWork = {
 		}
 	},
 	dbGetOne: function (table, data) {
+		$res=12;
 		if(_db!=null){
 					var datas = _db.db("banandata");
 					var collection = datas.collection(table);
 					var infos = JSON.parse(data);
-					collection.findOne(infos).then(function(res){
+					$res=collection.findOne(infos).then(function(res){
 						result=res;
 						console.log("___________");
 						console.log(data);
@@ -48,7 +49,7 @@ exports.DataWork = {
 					});
 
 		}
-		return result;
+		return $res;
 	}
 }
 
