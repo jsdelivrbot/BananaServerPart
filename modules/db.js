@@ -1,5 +1,4 @@
 var MongoClient = require('mongodb').MongoClient;
-var mongoC = new MongoClient(new Server('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net', 27017));
 var result=null;
 max=null;
 
