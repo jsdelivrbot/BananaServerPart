@@ -35,7 +35,6 @@ exports.DataWork = {
 		}
 	},
 	dbGetOne: function (table, data) {
-		result=null;
 		if(_db!=null){
 					var datas = _db.db("banandata");
 					var collection = datas.collection(table);
