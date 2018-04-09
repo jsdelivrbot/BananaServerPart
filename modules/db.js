@@ -38,13 +38,11 @@ exports.DataWork = {
 			console.log("__________");
 			console.log(infos);
 			console.log(table);
-			var resu=null;
+			resu=null;
 			collection.findOne(infos).then(function(res) {
-				resu=res;
+				result=res;
 			});
-			console.log(resu);
-
-					return resu;
+					return result;
 			}else{
 
 			}
