@@ -43,6 +43,7 @@ exports.DataWork = {
 					$result=collection.find(infos).limit(1);
 					console.log("___________");
 					console.log(data);
+					console.log($result);
 		}
 		return $result;
 	}
