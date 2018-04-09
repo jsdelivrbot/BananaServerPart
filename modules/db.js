@@ -46,7 +46,7 @@ exports.DataWork = {
 							$res=res;
 							console.log("___________");
 							console.log(data);
-							console.log($res);
+							console.log(res);
 					});
 
 		}
