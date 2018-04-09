@@ -42,7 +42,7 @@ exports.DataWork = {
 					var collection = datas.collection(table);
 					var infos = JSON.parse(data);
 			      $res=123;
-						collection.findOne(infos,function(res){
+						collection.findOne({},function(res){
 							$res=res;
 							console.log("___________");
 							console.log(data);
