@@ -7,7 +7,7 @@ function setMax(maximum){
 	max=maximum;
 }
 function setDB(DB){
-	console.log(DB);
+
 	_db=DB;
 }
 function setResult(res){
@@ -18,6 +18,8 @@ exports.DataWork = {
 
 	connectToServer: function () {
 		MongoClient.connect("mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata", function (err, db) {
+			console.log(err);
+			console.log("_________");
 			setDB(db);
 		});
 	},
