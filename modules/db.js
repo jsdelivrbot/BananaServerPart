@@ -27,17 +27,19 @@ exports.DataWork = {
 	getDb: function () {
 		return _db;
 	},
-
+	closeDB: function(){
+		_db.close();
+	},
 	dbGetOne: function (table, data) {
-if(_db!=null){
-	var datas = _db.db("banandata");
-			var collection = datas.collection(table);
-			var infos = JSON.parse(data);
-			resu = collection.findOne(infos);
-			return resu;
-	}else{
-	console.log("_________");
-	}
+		if(_db!=null){
+			var datas = _db.db("banandata");
+					var collection = datas.collection(table);
+					var infos = JSON.parse(data);
+					resu = collection.findOne(infos);
+					return resu;
+			}else{
+
+			}
 	}
 }
 
