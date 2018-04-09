@@ -24,7 +24,7 @@ exports.DataWork = {
 	},
 
 	dbGetOne: function (table, data) {
-			var datas = db.db("banandata");
+			var datas = _db.db("banandata");
 			var collection = datas.collection(table);
 			var infos = JSON.parse(data);
 			resu = collection.findOne(infos);
