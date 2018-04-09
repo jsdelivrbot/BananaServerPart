@@ -1,4 +1,5 @@
 var DB=require("./db.js");
+var async = require('async');
 exports.getParselsBase=function (socket,iosockets){
 	socket.on("getParselsBase",function(data){
 		$datas=DB.dbGetMore("ParselsBase",data);
@@ -48,8 +49,11 @@ exports.buyParsel=function (socket,iosockets){
 		$dataParsel="";
 		delete $finZap["Id_User"];
 		if(data!=null) {
-			$userData =DB.dbGetOne("UserBaseInfo",JSON.stringify($finalDataPay));
-			$dataParsel=DB.dbGetOne("ParselsBase",JSON.stringify($finZap));
+			async.parallel([function() {
+				$userData = DB.dbGetOne("UserBaseInfo", JSON.stringify($finalDataPay));
+			},function() {
+				$dataParsel = DB.dbGetOne("ParselsBase", JSON.stringify($finZap));
+			}])
 			/*$money='{"Money":'+$userData.Money-$dataParsel.Price_Install+'}';
 			/*DB.dbUpdateOne("UserBaseInfo",JSON.stringify($finalDataPay),$money);
 			$finalDataPay.Id_parsel              = $dataParsel.Id_parsel;
