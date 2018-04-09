@@ -111,7 +111,9 @@ exports.dbGetOne=function(table,data){
 	});*/
 	var collection = dat.collection(table);
 	var infos = JSON.parse(data);
-	resu=collection.findOne(infos);
+	resu=collection.findOne(infos,function (res){
+			console.log(res);
+	});
 return resu;
 }
 
