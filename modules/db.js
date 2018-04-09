@@ -31,11 +31,14 @@ exports.DataWork = {
 		}
 	},
 	dbGetOne: function (table, data) {
+		console.log(table);
+		console.log(data);
 		if(_db!=null){
 					var datas = _db.db("banandata");
 					var collection = datas.collection(table);
 					var infos = JSON.parse(data);
 					collection.findOne(infos).then(function(res) {
+						console.log(res);
 						setResult(res);
 					});
 		}
