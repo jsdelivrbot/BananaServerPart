@@ -37,7 +37,8 @@ exports.DataWork = {
 			var datas = _db.db("banandata");
 					var collection = datas.collection(table);
 					var infos = JSON.parse(data);
-					resu = collection.findOne(infos);
+					var resu = collection.findOne(infos);
+					console.log(resu);
 					return resu;
 			}else{
 
