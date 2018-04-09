@@ -44,8 +44,8 @@ exports.buyParsel=function (socket,iosockets){
     $finZap=JSON.parse(data);
 		delete $finZap["Id_User"];
 		if(data!=null) {
-			$dataParsel=DB.dbGetOne("ParselsBase",data);
-			
+			$dataParsel=DB.dbGetOne("ParselsBase",$finZap);
+
 			//DB.dbSendOne("ParselUser",$finZap);
 		  /*$datas=DB.dbGetMore("ParselUser",data);
 			for (var $key in $datas) {
