@@ -64,7 +64,10 @@ exports.dbGetOne=function(table,data){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
-		setResult(collection.findOne(infos));
+		collection.findOne(infos).then(function(res){
+			console.log(infos);
+		});
+		setResult();
 		db.close();
 	});
 return result;
