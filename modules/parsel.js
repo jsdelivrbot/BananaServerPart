@@ -42,20 +42,17 @@ exports.getParselIsUser=function (socket,iosockets){
 exports.buyParsel=function (socket,iosockets){
 	socket.on("buyParsel",function(data){
     $finZap=JSON.parse(data);
-    $finZap["Resource"]="0";
-		$finZap["Fertility"]="3";
-		$finZap["Parsel_Status"]="3";
-		$finZap["Id_Agronom"]="-1";
-		$finZap["Agronom_buff"]="0";
+		delete $finZap["Id_User"];
 		if(data!=null) {
-			DB.dbSendOne("ParselUser",$finZap);
-		  $datas=DB.dbGetMore("ParselUser",data);
+			$dataParsel=DB.dbGetOne("ParselsBase",data);
+			//DB.dbSendOne("ParselUser",$finZap);
+		  /*$datas=DB.dbGetMore("ParselUser",data);
 			for (var $key in $datas) {
 				delete $datas[$key]["_id"];
 				delete $datas[$key]["Id_User"];
 				delete $datas[$key]["Id_map"];
-			}
-			socket.emit('buyParsel', $datas);
+			}*/
+			socket.emit('buyParsel', $dataParsel);
 		}
 	});
 }
