@@ -39,7 +39,7 @@ exports.getParselIsUser=function (socket,iosockets){
 	});
 }
 
-
+infosr="infosr;";
 exports.buyParsel=function (socket,iosockets){
 	socket.on("buyParsel",function(data){
     $finZap=JSON.parse(data);
@@ -52,8 +52,8 @@ exports.buyParsel=function (socket,iosockets){
 		delete $finZap["Id_User"];
 		if(data!=null) {
 
-				$userData =   DB.getOther(function(res){$dataParsel=res},"UserBaseInfo", JSON.stringify($finalDataPay));//DB.dbGetOne("UserBaseInfo", JSON.stringify($finalDataPay));
-				
+				$userData =   DB.getOther(function(res){infosr=res},"UserBaseInfo", JSON.stringify($finalDataPay));//DB.dbGetOne("UserBaseInfo", JSON.stringify($finalDataPay));
+
 			//	$dataParsel = DB.dbGetOne("ParselsBase", JSON.stringify($finZap));
 			/*$money='{"Money":'+$userData.Money-$dataParsel.Price_Install+'}';
 			/*DB.dbUpdateOne("UserBaseInfo",JSON.stringify($finalDataPay),$money);
