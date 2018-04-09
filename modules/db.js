@@ -60,7 +60,6 @@ exports.dbSendMore=function(table,data){
 
 
 exports.dbGetOne=function(table,data){
-	result=null;
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
