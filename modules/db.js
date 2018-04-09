@@ -66,7 +66,7 @@ exports.dbGetOne=function(table,data){
 		var infos = JSON.parse(data);
 		collection.findOne(infos).then(function(res){
 			db.close();
-			setResult(res;
+			setResult(res);
 			console.log(result);
 		});
 	});
