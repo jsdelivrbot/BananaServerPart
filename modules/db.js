@@ -18,8 +18,6 @@ exports.DataWork = {
 
 	connectToServer: function () {
 		MongoClient.connect("mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata", function (err, db) {
-			console.log(err);
-
 			setDB(db);
 		});
 	},
@@ -38,7 +36,7 @@ exports.DataWork = {
 					var collection = datas.collection(table);
 					var infos = JSON.parse(data);
 					var resu = collection.findOne(infos);
-					console.log(resu);
+					console.log(JSON.stringify(resu));
 					return resu;
 			}else{
 
