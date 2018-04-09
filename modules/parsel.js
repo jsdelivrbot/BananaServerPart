@@ -59,8 +59,8 @@ exports.buyParsel=function (socket,iosockets){
 				DB.getOther(function(res){parselinfo=res; return res;},"ParselsBase", JSON.stringify($finZap));
 				$dataParsel=parselinfo;
 				if($userData!=null && $dataParsel!=null) {
-					$money = '{"Money":' + (Number($userData.Money) - Number($dataParsel.Price_Install)) + '}';
-					DB.dbUpdateOne("UserBaseInfo", $user, $money);
+					$money = '{Money:"' + (Number($userData.Money) - Number($dataParsel.Price_Install)) + '"}';
+					DB.dbUpdateOne("UserBaseInfo", $user, JSON.parse($money));
 					$finalDataPay.Id_parsel = $dataParsel.Id_parsel;
 					$finalDataPay.Id_map = $dataParsel.Id_map;
 					$finalDataPay.Current_CoolDown_Time = $dataParsel.Base_CoolDown_Time;

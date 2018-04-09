@@ -1,7 +1,7 @@
 var MongoClient = require('mongodb').MongoClient;
 
 
-var result="result";
+var result=null;
 max=null;
 function setMax(maximum){
 	max=maximum;
@@ -33,8 +33,6 @@ exports.dbUpdateOne=function(table,dataFilter,dataUpdate){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = dataUpdate;
-		console.log(infos);
-		console.log(dataFilter);
 		collection.updateOne(dataFilter,{$set:infos}, function(err, result){
 
 			db.close();
