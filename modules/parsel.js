@@ -45,6 +45,7 @@ exports.buyParsel=function (socket,iosockets){
     $finZap=JSON.parse(data);
 
     $finalDataPay={"Id_User":$finZap.Id_User};
+    $user={"Id_User":$finZap.Id_User};
 		var $userData=null;
 		var $dataParsel=null;
 		$dataParsel="";
@@ -59,7 +60,7 @@ exports.buyParsel=function (socket,iosockets){
 				$dataParsel=parselinfo;
 				if($userData!=null && $dataParsel!=null) {
 					$money = '{"Money":' + (Number($userData.Money) - Number($dataParsel.Price_Install)) + '}';
-					DB.dbUpdateOne("UserBaseInfo", {"Id_User":$finZap.Id_User}, $money);
+					DB.dbUpdateOne("UserBaseInfo", $user, $money);
 					$finalDataPay.Id_parsel = $dataParsel.Id_parsel;
 					$finalDataPay.Id_map = $dataParsel.Id_map;
 					$finalDataPay.Current_CoolDown_Time = $dataParsel.Base_CoolDown_Time;
