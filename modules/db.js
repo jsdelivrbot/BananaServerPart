@@ -1,29 +1,25 @@
 var MongoClient = require('mongodb').MongoClient;
-var async = require('async');
+var _db=null;
+MongoClient.connect("mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata", function (err, db) {
+	_db=db;
+});
+
 result="result";
 max=null;
-var _db=null;
+
 function setMax(maximum){
 	max=maximum;
 }
-function setDB(DB){
 
-	_db=DB;
-}
 function setResult(res){
 	result= res;
 }
 
-function getResult(){
-	return result;
-}
 
 exports.DataWork = {
 
 	connectToServer: function () {
-		MongoClient.connect("mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata", function (err, db) {
-			setDB(db);
-		});
+
 	},
 
 	getDb: function () {
