@@ -38,7 +38,7 @@ exports.getParselIsUser=function (socket,iosockets){
 		}
 	});
 }
-
+infosr=-1;
 exports.buyParsel=function (socket,iosockets){
 	socket.on("buyParsel",function(data){
     $finZap=JSON.parse(data);
@@ -48,7 +48,7 @@ exports.buyParsel=function (socket,iosockets){
 		var $dataParsel;
 		$dataParsel="";
 
-		infosr=-1;
+
 		delete $finZap["Id_User"];
 		if(data!=null) {
 
