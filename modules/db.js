@@ -37,6 +37,7 @@ exports.DataWork = {
 					var infos = JSON.parse(data);
 			console.log("__________");
 			console.log(infos);
+			console.log(table);
 			var resu = collection.findOne(infos);
 			console.log(resu);
 
