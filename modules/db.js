@@ -1,6 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
 var Server = require('mongodb').Server;
-mongoC = new MongoClient(new Server('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net', 27017));
+mongoC = new MongoClient(new Server('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net/banandata', 27017));
 result=null;
 max=null;
 
