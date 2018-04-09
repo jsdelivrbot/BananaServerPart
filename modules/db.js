@@ -65,10 +65,10 @@ exports.dbGetOne=function(table,data){
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
 		collection.findOne(infos).then(function(res){
-			console.log(res);
+			db.close();
+			setResult(res;
+			console.log(result);
 		});
-		setResult();
-		db.close();
 	});
 return result;
 }
