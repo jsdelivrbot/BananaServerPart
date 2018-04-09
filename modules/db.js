@@ -2,7 +2,7 @@ var MongoClient = require('mongodb').MongoClient;
 var async = require('async');
 var result=null;
 max=null;
-
+var _db;
 function setMax(maximum){
 	max=maximum;
 }
@@ -10,6 +10,30 @@ function setMax(maximum){
 function setResult(res){
 	result= res;
 }
+
+exports.DataWork = {
+
+	connectToServer: function (callback) {
+		MongoClient.connect("mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata", function (err, db) {
+			_db = db;
+			return callback(err);
+		});
+	},
+
+	getDb: function () {
+		return _db;
+	},
+
+	dbGetOne: function (table, data) {
+			var datas = db.db("banandata");
+			var collection = datas.collection(table);
+			var infos = JSON.parse(data);
+			resu = collection.findOne(infos);
+			db.close();
+			return resu;
+	}
+}
+
 exports.dbSendOne=function(table,data){
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
@@ -64,11 +88,8 @@ exports.dbGetOne=function(table,data){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
-		collection.findOne(infos).then(function(res){
-			db.close();
-			setResult(res);
-			console.log(result);
-		});
+		resu=collection.findOne(infos);
+		db.close();
 	});
 return result;
 }
