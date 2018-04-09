@@ -59,16 +59,17 @@ exports.dbSendMore=function(table,data){
 
 
 exports.dbGetOne=function(table,data){
-	
+
 	res=MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
 		res=collection.findOne(infos);
+		console.log(res);
 		return res;
 		db.close();
 	});
-return res;
+//return 123;
 }
 
 exports.getMaxValParam=function(table,param){
