@@ -12,25 +12,20 @@ function setDB(DB){
 function setResult(res){
 	result= res;
 }
-
+MongoClient.connect("mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata", function (err, db) {
+	setDB(db);
+});
 exports.DataWork = {
-
-	connectToServer: function (setDB) {
-		MongoClient.connect("mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata", function (err, db) {
-			setDB(db);
-		});
-	},
 
 	getDb: function () {
 		return _db;
 	},
 
 	dbGetOne: function (table, data) {
-			
+
 			var collection = _db.collection(table);
 			var infos = JSON.parse(data);
 			resu = collection.findOne(infos);
-			db.close();
 			return resu;
 	}
 }

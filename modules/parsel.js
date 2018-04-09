@@ -48,7 +48,7 @@ exports.buyParsel=function (socket,iosockets){
 		var $userData;
 		var $dataParsel;
 		var dataB=DB.DataWork;
-		dataB.connectToServer();
+
 		$dataParsel="";
 		delete $finZap["Id_User"];
 		if(data!=null) {
