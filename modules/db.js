@@ -35,11 +35,12 @@ exports.DataWork = {
 		}
 	},
 	dbGetOne: function (table, data) {
+		$result=null;
 		if(_db!=null){
 					var datas = _db.db("banandata");
 					var collection = datas.collection(table);
 					var infos = JSON.parse(data);
-					$result=collection.find(data).limit(1);
+					$result=collection.find(infos).limit(1);
 					console.log("___________");
 					console.log(data);
 		}
