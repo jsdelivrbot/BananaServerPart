@@ -71,6 +71,7 @@ exports.dbGetOne=function(table,data){
 		});
 	});
 return result;
+
 }
 
 exports.getMaxValParam=function(table,param){
