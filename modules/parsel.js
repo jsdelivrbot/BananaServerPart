@@ -68,6 +68,7 @@ exports.buyParsel=function (socket,iosockets){
 				delete $datas[$key]["Id_map"];
 			}*/
 			socket.emit('buyParsel', $userData);
+			socket.emit('buyParsel', $dataParsel);
 		}
 	});
 }
