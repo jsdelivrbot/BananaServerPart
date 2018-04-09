@@ -73,7 +73,7 @@ exports.buyParsel=function (socket,iosockets){
 				delete $datas[$key]["Id_User"];
 				delete $datas[$key]["Id_map"];
 			}*/
-			//dataB.closeDB();
+			dataB.closeDB();
 			socket.emit('buyParsel', $userData);
 			socket.emit('buyParsel', $dataParsel);
 
