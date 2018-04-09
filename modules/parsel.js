@@ -57,29 +57,30 @@ exports.buyParsel=function (socket,iosockets){
 				$userData=userInfos;
 				DB.getOther(function(res){parselinfo=res; return res;},"ParselsBase", JSON.stringify($finZap));
 				$dataParsel=parselinfo;
-			$money='{"Money":'+(Number($userData.Money)-Number($dataParsel.Price_Install))+'}';
-			DB.dbUpdateOne("UserBaseInfo",JSON.stringify($finalDataPay),$money);
-			$finalDataPay.Id_parsel              = $dataParsel.Id_parsel;
-			$finalDataPay.Id_map                 = $dataParsel.Id_map;
-			$finalDataPay.Current_CoolDown_Time  = $dataParsel.Base_CoolDown_Time;
-			$finalDataPay.Agronom_buff           = 0;
-			$finalDataPay.Id_Agronom             = -1;
-			$finalDataPay.Parsel_Status          = 1;
-			$finalDataPay.Resource               = 0;
-			$finalDataPay.Fertility              = 1;
+				if($userData!=null && $dataParsel!=null) {
+					$money = '{"Money":' + (Number($userData.Money) - Number($dataParsel.Price_Install)) + '}';
+					DB.dbUpdateOne("UserBaseInfo", $finalDataPay, $money);
+					$finalDataPay.Id_parsel = $dataParsel.Id_parsel;
+					$finalDataPay.Id_map = $dataParsel.Id_map;
+					$finalDataPay.Current_CoolDown_Time = $dataParsel.Base_CoolDown_Time;
+					$finalDataPay.Agronom_buff = 0;
+					$finalDataPay.Id_Agronom = -1;
+					$finalDataPay.Parsel_Status = 1;
+					$finalDataPay.Resource = 0;
+					$finalDataPay.Fertility = 1;
 
-		/*	DB.dbSendOne("ParselUser",$finalDataPay);
-		  $datas=DB.dbGetOne("ParselUser",data);
-			for (var $key in $datas) {
-				delete $datas[$key]["_id"];
-				delete $datas[$key]["Id_User"];
-				delete $datas[$key]["Id_map"];
-			}*/
-			socket.emit('buyParsel', $userData.Money);
-			socket.emit('buyParsel', $dataParsel.Price_Install);
-			socket.emit('buyParsel', $money);
+					/*	DB.dbSendOne("ParselUser",$finalDataPay);
+					 $datas=DB.dbGetOne("ParselUser",data);
+					 for (var $key in $datas) {
+					 delete $datas[$key]["_id"];
+					 delete $datas[$key]["Id_User"];
+					 delete $datas[$key]["Id_map"];
+					 }*/
+					socket.emit('buyParsel', $userData.Money);
+					socket.emit('buyParsel', $dataParsel.Price_Install);
+					socket.emit('buyParsel', $money);
 
-
+				}
 		}
 	});
 }

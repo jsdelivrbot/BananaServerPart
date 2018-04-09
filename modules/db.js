@@ -46,7 +46,7 @@ exports.dbInsertOne=function(table,dataInsert){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		collection.insert(dataInsert);
-
+		db.close();
 	});
 }
 
