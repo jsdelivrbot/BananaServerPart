@@ -44,7 +44,7 @@ exports.DataWork = {
 						result=res;
 						console.log("___________");
 						console.log(data);
-						console.log($result);
+						console.log(result);
 
 					});
 
