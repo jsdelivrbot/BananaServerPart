@@ -1,6 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
 var async = require('async');
-result=null;
+result="result";
 max=null;
 var _db=null;
 function setMax(maximum){
