@@ -35,11 +35,10 @@ exports.DataWork = {
 					var datas = _db.db("banandata");
 					var collection = datas.collection(table);
 					var infos = JSON.parse(data);
-					resu=null;
 					collection.findOne(infos).then(function(res) {
 						result=res;
 					});
-						return result;
+					return result;
 		}
 	}
 }
