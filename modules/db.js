@@ -65,9 +65,11 @@ exports.dbGetOne=function(table,data){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
-		res=collection.findOne(infos);
-		console.log(res);
-		return res;
+		async.parallel([function() { // делаем первый запрос к базе
+			res=collection.findOne(infos);
+			setResult(res);
+		}]);
+		console.log(result);
 		db.close();
 	});
 //return 123;
