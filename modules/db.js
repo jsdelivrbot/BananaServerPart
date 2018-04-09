@@ -1,26 +1,19 @@
 var MongoClient = require('mongodb').MongoClient;
-dat=null;
+var _db=null;
+var dat=null;
 MongoClient.connect("mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata", function (err, db) {
-	setDB(db);
+	_db=db
 	dat = db.db("banandata");
 });
 
 result="result";
 max=null;
-var _db=null;
+
 function setMax(maximum){
 	max=maximum;
 }
-function setDB(DB){
-
-	_db=DB;
-}
 function setResult(res){
 	result= res;
-}
-
-function getResult(){
-	return result;
 }
 
 exports.DataWork = {
@@ -39,13 +32,7 @@ exports.DataWork = {
 
 					var collection = dat.collection(table);
 					var infos = JSON.parse(data);
-			      $res=123;
-						collection.findOne({},function(res){
-							$res=res;
-							console.log("___________");
-							console.log(table);
-							console.log(res);
-					});
+					$res=collection.findOne({});
 
 		}
 		return $res;
