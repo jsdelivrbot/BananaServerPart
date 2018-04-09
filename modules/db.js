@@ -1,6 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
-var _db=null;
-var dat=null;
+_db=null;
+dat=null;
 /*MongoClient.connect("mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata", function (err, db) {
 	_db=db
 	dat = db.db("banandata");
@@ -93,7 +93,7 @@ exports.dbGetOne=function(table,data){
 		_db=db;
 	});
 
-			 datas = _db.db("banandata");
+			datas = _db.db("banandata");
 		  collection = datas.collection(table);
 		  infos = JSON.parse(data);
 			resu=collection.findOne(infos);
