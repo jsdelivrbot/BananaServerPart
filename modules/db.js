@@ -39,11 +39,9 @@ exports.DataWork = {
 					var datas = _db.db("banandata");
 					var collection = datas.collection(table);
 					var infos = JSON.parse(data);
-					collection.find(infos,function(res) {
-						console.log(res);
-						console.log("_______________");
-						setResult(res);
-					}).limit(1);
+					$result=collection.find(infos).limit(1);
+					console.log("___________");
+					console.log($result);
 		}
 		return getResult();
 	}
