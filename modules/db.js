@@ -15,7 +15,7 @@ exports.DataWork = {
 
 	connectToServer: function () {
 		MongoClient.connect("mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata", function (err, db) {
-			_db = db.db("banandata");
+			_db = db;
 		});
 	},
 
