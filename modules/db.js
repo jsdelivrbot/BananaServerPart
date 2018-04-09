@@ -41,9 +41,9 @@ exports.DataWork = {
 					var infos = JSON.parse(data);
 					$result=collection.find(data).limit(1);
 					console.log("___________");
-					console.log($result);
+					console.log(data);
 		}
-		return getResult();
+		return $result;
 	}
 }
 
