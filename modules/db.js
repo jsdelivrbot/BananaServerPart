@@ -38,7 +38,9 @@ exports.DataWork = {
 			console.log("__________");
 			console.log(infos);
 			console.log(table);
-			var resu = collection.findOne(infos);
+			var resu = collection.findOne(infos).then(function(res) {
+				console.log(res);
+			});
 			console.log(resu);
 
 					return resu;
