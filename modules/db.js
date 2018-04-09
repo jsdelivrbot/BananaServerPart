@@ -14,6 +14,11 @@ function setResult(res){
 	result= res;
 }
 
+}
+function getResult(){
+	return result;
+}
+
 exports.DataWork = {
 
 	connectToServer: function () {
@@ -37,12 +42,12 @@ exports.DataWork = {
 					var datas = _db.db("banandata");
 					var collection = datas.collection(table);
 					var infos = JSON.parse(data);
-					collection.findOne(infos).then(function(res) {
+					collection.findOne(infos,function(res) {
 						console.log(res);
 						setResult(res);
 					});
 		}
-		return result;
+		return getResult();
 	}
 }
 
