@@ -38,7 +38,8 @@ exports.getParselIsUser=function (socket,iosockets){
 		}
 	});
 }
-infosr=-1;
+userInfos=-1;
+parselinfo=-1;
 exports.buyParsel=function (socket,iosockets){
 	socket.on("buyParsel",function(data){
     $finZap=JSON.parse(data);
@@ -52,15 +53,12 @@ exports.buyParsel=function (socket,iosockets){
 		delete $finZap["Id_User"];
 		if(data!=null) {
 
-				DB.getOther(function(res){infosr=res; return res;},"UserBaseInfo", JSON.stringify($finalDataPay));//DB.dbGetOne("UserBaseInfo", JSON.stringify($finalDataPay));
-				$userData=infosr;
-				$userData1=$userData;
-				DB.getOther(function(res){infosr=res; return res;},"ParselsBase", JSON.stringify($finZap));
-				$dataParsel=infosr;
-				$dataParsel1=$dataParsel;
-			//	$dataParsel = DB.dbGetOne("ParselsBase", JSON.stringify($finZap));
-			/*$money='{"Money":'+$userData.Money-$dataParsel.Price_Install+'}';
-			/*DB.dbUpdateOne("UserBaseInfo",JSON.stringify($finalDataPay),$money);
+				DB.getOther(function(res){userInfos=res; return res;},"UserBaseInfo", JSON.stringify($finalDataPay));//DB.dbGetOne("UserBaseInfo", JSON.stringify($finalDataPay));
+				$userData=userInfos;
+				DB.getOther(function(res){parselinfo=res; return res;},"ParselsBase", JSON.stringify($finZap));
+				$dataParsel=parselinfo;
+			$money='{"Money":'+$userData.Money-$dataParsel.Price_Install+'}';
+			DB.dbUpdateOne("UserBaseInfo",JSON.stringify($finalDataPay),$money);
 			$finalDataPay.Id_parsel              = $dataParsel.Id_parsel;
 			$finalDataPay.Id_map                 = $dataParsel.Id_map;
 			$finalDataPay.Current_CoolDown_Time  = $dataParsel.Base_CoolDown_Time;
@@ -77,8 +75,8 @@ exports.buyParsel=function (socket,iosockets){
 				delete $datas[$key]["Id_User"];
 				delete $datas[$key]["Id_map"];
 			}*/
-			socket.emit('buyParsel', $userData1);
-			socket.emit('buyParsel', $dataParsel1);
+			socket.emit('buyParsel', $money);
+
 
 		}
 	});
