@@ -32,11 +32,11 @@ exports.DataWork = {
 	},
 	dbGetOne: function (table, data) {
 		if(_db!=null){
-			var datas = _db;
+			var datas = _db.db("banandata");
 					var collection = datas.collection(table);
 					var infos = JSON.parse(data);
 					var resu = collection.findOne(infos);
-					console.log(JSON.stringify(resu));
+					console.log(data);
 					return resu;
 			}else{
 
