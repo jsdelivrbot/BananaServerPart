@@ -44,12 +44,10 @@ exports.buyParsel=function (socket,iosockets){
     $finZap=JSON.parse(data);
     $finalDataPay={"Id_User":$finZap.Id_User};
 		$userData =DB.dbGetOne("UserBaseInfo",JSON.stringify($finalDataPay));
-		console.log($userData);
 		$dataParsel="";
 		delete $finZap["Id_User"];
 		if(data!=null) {
 			$dataParsel=DB.dbGetOne("ParselsBase",JSON.stringify($finZap));
-			console.log($dataParsel);
 			/*$money='{"Money":'+$userData.Money-$dataParsel.Price_Install+'}';
 			/*DB.dbUpdateOne("UserBaseInfo",JSON.stringify($finalDataPay),$money);
 			$finalDataPay.Id_parsel              = $dataParsel.Id_parsel;
