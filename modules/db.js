@@ -30,7 +30,8 @@ exports.DataWork = {
 
 	dbGetOne: function (table, data) {
 if(_db!=null){
-			var collection = _db.collection(table);
+	var datas = _db.db("banandata");
+			var collection = datas.collection(table);
 			var infos = JSON.parse(data);
 			resu = collection.findOne(infos);
 			return resu;
