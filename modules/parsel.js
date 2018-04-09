@@ -72,10 +72,12 @@ exports.buyParsel=function (socket,iosockets){
 
 					 DB.dbSendOne("ParselUser",$finalDataPay);
 					 $datas=DB.dbGetOne("ParselUser",data);
-					 delete $datas["_id"];
-					 delete $datas["Id_User"];
-					 delete $datas["Id_map"];
-					socket.emit('buyParsel', $datas);
+					 if($datas!=null) {
+						 delete $datas["_id"];
+						 delete $datas["Id_User"];
+						 delete $datas["Id_map"];
+						 socket.emit('buyParsel', $datas);
+					 }
 
 
 				}
