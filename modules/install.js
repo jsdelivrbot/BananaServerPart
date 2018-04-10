@@ -38,7 +38,8 @@ exports.setInstallInfo=function (socket,iosockets){
 				$money = {"Money": Number(parselInfos.Money) - Number(parselBase.Price_Install)};
 				DB.dbUpdateOne("UserBaseInfo", $user, $money);
 				DB.dbUpdateOne("ParselUser", $val, $resource);
-				$datas = DB.dbGetOne("ParselUser", data);
+
+				$datas = DB.dbGetOne("ParselUser", $val);
 				if ($datas != null) {
 					delete $datas["_id"];
 					delete $datas["Id_User"];
