@@ -14,8 +14,8 @@ exports.getInstallInfo=function (socket,iosockets){
 	});
 }
 
-parselInfos=null;
-parselBase=null;
+var parselInfos=null;
+var parselBases=null;
 exports.setInstallInfo=function (socket,iosockets){
 	socket.on("setInstallInfo",function(data){
 
@@ -33,9 +33,10 @@ exports.setInstallInfo=function (socket,iosockets){
 				return res;
 			}, "UserBaseInfo", JSON.stringify($user));
 			DB.getOther(function (res) {
-				parselBase = res;
+				parselBases = res;
 				return res;
 			}, "ParselsBase", JSON.stringify($parselIndex));
+			console.log($parselIndex);
 			console.log(parselBase);
 			if (parselInfos != null && parselBase != null) {
 				$money = {"Money": Number(parselInfos.Money) - Number(parselBase.Price_Install)};
