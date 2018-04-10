@@ -1,5 +1,5 @@
 var DB=require("./db.js");
-var max_level=4;
+var max_level=2;
 exports.getWarehouse=function (socket,iosockets){
 	socket.on("getWarehouse",function(data){
 		$datas=DB.dbGetOne("Warehouse",data);
@@ -27,14 +27,10 @@ exports.getWarehouseResources=function (socket,iosockets){
 
 		$val = JSON.parse(data);
 		if ($val != null) {
-			console.log("__________");
-			console.log($val);
 			$datas = DB.dbGetOne("Warehouse", JSON.stringify($val));
 			console.log($datas);
 			if ($datas != null) {
-
-			console.log($datas);
-			if ($datas.Level == max_level) {
+			if ($datas.Level >= max_level) {
 				DB.dbUpdateOne("Warehouse", JSON.stringify($val), {"Price_warehouse": "-1"});
 				$datas = DB.dbGetOne("Warehouse", JSON.stringify($val));
 			}
