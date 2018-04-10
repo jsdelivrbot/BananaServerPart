@@ -27,6 +27,7 @@ exports.getWarehouseResources=function (socket,iosockets){
 		$val=data;
 		if($val!=null) {
 			$datas = DB.dbGetOne("Warehouse", data);
+			console.log($datas);
 			if($datas.Level==max_level) {
 				DB.dbUpdateOne("Warehouse", JSON.parse($val), {"Price_warehouse":"-1"});
 				$datas = DB.dbGetOne("Warehouse", data);
