@@ -21,11 +21,15 @@ exports.setInstallInfo=function (socket,iosockets){
 
 		if(data!=null) {
 			$val=JSON.parse(data);
+
 			$resource={"Resource":$val.SelectedResource};
 			$user={"Id_User":$val.Id_User};
 			delete $val.SelectedResource;
+			$parselIndex=JSON.parse(data);
+			delete $parselIndex.Id_User;
+			delete $parselIndex.SelectedResource;
 			DB.getOther(function(res){parselInfos=res; return res;},"UserBaseInfo", JSON.stringify($user));
-			DB.getOther(function(res){parselBase=res; return res;},"ParselsBase", JSON.stringify($finalDataPay));
+			DB.getOther(function(res){parselBase=res; return res;},"ParselsBase", JSON.stringify($user));
 			$money = {"Money":Number(parselInfos.Money) - Number(parselBase.Price_Install)};
 			DB.dbUpdateOne("UserBaseInfo", $user, $money);
 
