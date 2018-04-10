@@ -26,8 +26,7 @@ exports.setInstallInfo=function (socket,iosockets){
 			var $user = {"Id_User": $val.Id_User};
 			delete $val.SelectedResource;
 			var $parselIndex = {"Id_map": $val.Id_map, "Id_parsel": $val.Id_parsel};
-			var $getInfos=$parselIndex;
-			$getInfos.Id_User=$val.Id_User;
+			var $getInfos={"Id_User":$val.Id_User,"Id_map": $val.Id_map, "Id_parsel": $val.Id_parsel};
 			DB.getOther(function (res) {
 				parselInfos = res;
 			}, "UserBaseInfo", JSON.stringify($user));
