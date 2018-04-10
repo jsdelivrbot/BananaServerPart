@@ -14,21 +14,30 @@ exports.getInstallInfo=function (socket,iosockets){
 	});
 }
 
-
+parselInfos=null;
+parselBase=null;
 exports.setInstallInfo=function (socket,iosockets){
 	socket.on("setInstallInfo",function(data){
-		$val=JSON.parse(data);
-		if($val!=null) {
-			$json={"Directors_bonus":"7895"};
+
+		if(data!=null) {
+			$val=JSON.parse(data);
+			$resource={"Resource":$val.SelectedResource};
+			$user={"Id_User":$val.Id_User};
+			delete $val.SelectedResource;
+			DB.getOther(function(res){parselInfos=res; return res;},"UserBaseInfo", JSON.stringify($user));
+			DB.getOther(function(res){parselBase=res; return res;},"ParselsBase", JSON.stringify($finalDataPay));
+			$money = {"Money":Number(parselInfos.Money) - Number(parselBase.Price_Install)};
+			DB.dbUpdateOne("UserBaseInfo", $user, $money);
+
 			DB.dbUpdateOne("InstallInfo", $val, $json);
-			$datas = DB.dbGetMore("InstallInfo", data);
+			DB.dbUpdateOne("ParselUser", $val, $resource);
+			$datas = DB.dbGetOne("ParselUser", data);
 			if ($datas != null) {
-				for (var $key in $datas) {
-					delete $datas[$key]["_id"];
-					delete $datas[$key]["Id_User"];
-					delete $datas[$key]["Id_map"];
-					delete $datas[$key]["Id_parsel"];
-				}
+
+					delete $datas["_id"];
+					delete $datas["Id_User"];
+					delete $datas["Id_map"];
+
 				socket.emit('setInstallInfo', $datas);
 			}
 		}
