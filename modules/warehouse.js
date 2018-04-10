@@ -29,14 +29,14 @@ exports.getWarehouseResources=function (socket,iosockets){
 		if ($val != null) {
 			console.log("__________");
 			console.log($val);
-			$datas = DB.dbGetOne("Warehouse", $val);
+			$datas = DB.dbGetOne("Warehouse", JSON.stringify($val));
 			console.log($datas);
 			if ($datas != null) {
 
 			console.log($datas);
 			if ($datas.Level == max_level) {
-				DB.dbUpdateOne("Warehouse", $val, {"Price_warehouse": "-1"});
-				$datas = DB.dbGetOne("Warehouse", $val);
+				DB.dbUpdateOne("Warehouse", JSON.stringify($val), {"Price_warehouse": "-1"});
+				$datas = DB.dbGetOne("Warehouse", JSON.stringify($val));
 			}
 			if ($datas != null) {
 				delete $datas["_id"];
