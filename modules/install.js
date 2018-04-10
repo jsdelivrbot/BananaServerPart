@@ -28,8 +28,10 @@ exports.setInstallInfo=function (socket,iosockets){
 			$parselIndex=JSON.parse(data);
 			delete $parselIndex.Id_User;
 			delete $parselIndex.SelectedResource;
+			console.log($user);
+			console.log(parselBase);
 			DB.getOther(function(res){parselInfos=res; return res;},"UserBaseInfo", JSON.stringify($user));
-			DB.getOther(function(res){parselBase=res; return res;},"ParselsBase", JSON.stringify($user));
+			DB.getOther(function(res){parselBase=res; return res;},"ParselsBase", JSON.stringify($parselIndex));
 
 			console.log(parselInfos);
 			console.log(parselBase);
