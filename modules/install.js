@@ -29,7 +29,7 @@ exports.setInstallInfo=function (socket,iosockets){
 			delete $parselIndex.Id_User;
 			delete $parselIndex.SelectedResource;
 			console.log($user);
-			console.log(parselBase);
+			console.log($parselIndex);
 			DB.getOther(function(res){parselInfos=res; return res;},"UserBaseInfo", JSON.stringify($user));
 			DB.getOther(function(res){parselBase=res; return res;},"ParselsBase", JSON.stringify($parselIndex));
 
