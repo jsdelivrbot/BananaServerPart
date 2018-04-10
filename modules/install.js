@@ -26,6 +26,8 @@ exports.setInstallInfo=function (socket,iosockets){
 			$user = {"Id_User": $val.Id_User};
 			delete $val.SelectedResource;
 			$parselIndex = {"Id_map": $val.Id_map, "Id_parsel": $val.Id_parsel};
+			$getInfos=$parselIndex;
+			$getInfos.Id_User=$val.Id_User;
 			DB.getOther(function (res) {
 				parselInfos = res;
 				return res;
@@ -37,9 +39,9 @@ exports.setInstallInfo=function (socket,iosockets){
 			if (parselInfos != null && parselInfos != null) {
 				$money = {"Money": Number(parselInfos.Money) - Number(parselBase.Price_Install)};
 				DB.dbUpdateOne("UserBaseInfo", $user, $money);
-				DB.dbUpdateOne("ParselUser", $val, $resource);
-				console.log($val);
-				$datas = DB.dbGetOne("ParselUser", JSON.stringify($val));
+				DB.dbUpdateOne("ParselUser", $getInfos, $resource);
+
+				$datas = DB.dbGetOne("ParselUser", JSON.stringify($getInfos));
 				if ($datas != null) {
 					delete $datas["_id"];
 					delete $datas["Id_User"];
