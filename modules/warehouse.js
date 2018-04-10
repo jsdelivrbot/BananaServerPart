@@ -28,6 +28,7 @@ exports.getWarehouseResources=function (socket,iosockets){
 		$val = JSON.parse(data);
 		if ($val != null) {
 			console.log("__________");
+			console.log($val);
 			$datas = DB.dbGetOne("Warehouse", $val);
 			console.log($datas);
 			if ($datas != null) {
