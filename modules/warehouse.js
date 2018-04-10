@@ -29,16 +29,15 @@ exports.getWarehouseResources=function (socket,iosockets){
 		if ($val != null) {
 			$datas = DB.dbGetOne("Warehouse", JSON.stringify($val));
 			$user={"Id_User":$val.Id_User};
+			console.log()$user;
 			if ($datas != null) {
 			if ($datas.Level >= max_level) {
 				DB.dbUpdateOne("Warehouse", JSON.stringify($user), {"Price_warehouse": "-1"});
 				$datas = DB.dbGetOne("Warehouse", JSON.stringify($val));
 			}
-			if ($datas != null) {
 				delete $datas["_id"];
 				delete $datas["Id_User"];
 				socket.emit('upgradeWarehouse', $datas);
-			}
 		}
 	}
 	});
