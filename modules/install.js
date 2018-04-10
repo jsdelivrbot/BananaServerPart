@@ -31,22 +31,23 @@ exports.setInstallInfo=function (socket,iosockets){
 			DB.getOther(function(res){parselInfos=res; return res;},"UserBaseInfo", JSON.stringify($user));
 			DB.getOther(function(res){parselBase=res; return res;},"ParselsBase", JSON.stringify($parselIndex));
 
-			console.log(parselInfos);
-			console.log(parselBase);
-			/*$money = {"Money":Number(parselInfos.Money) - Number(parselBase.Price_Install)};
-			DB.dbUpdateOne("UserBaseInfo", $user, $money);
+			if(parselInfos!=null&&parselInfos!=null) {
+				console.log(parselInfos);
+				console.log(parselBase);
+				$money = {"Money":Number(parselInfos.Money) - Number(parselBase.Price_Install)};
+				/* DB.dbUpdateOne("UserBaseInfo", $user, $money);
 
-			DB.dbUpdateOne("InstallInfo", $val, $json);
-			DB.dbUpdateOne("ParselUser", $val, $resource);
-			$datas = DB.dbGetOne("ParselUser", data);
-			if ($datas != null) {
+				 DB.dbUpdateOne("InstallInfo", $val, $json);
+				 DB.dbUpdateOne("ParselUser", $val, $resource);
+				 $datas = DB.dbGetOne("ParselUser", data);
+				 if ($datas != null) {
 
-					delete $datas["_id"];
-					delete $datas["Id_User"];
-					delete $datas["Id_map"];
+				 delete $datas["_id"];
+				 delete $datas["Id_User"];
+				 delete $datas["Id_map"];
 
-				socket.emit('setInstallInfo', $datas);*/
-
+				 socket.emit('setInstallInfo', $datas);*/
+			}
 		}
 	});
 }
