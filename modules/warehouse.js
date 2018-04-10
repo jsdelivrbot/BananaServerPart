@@ -36,7 +36,7 @@ exports.getWarehouseResources=function (socket,iosockets){
 				console.log(Number(max_level));
 				console.log($user);
 				$str={"Price_warehouse": "-1"};
-				DB.dbUpdateOne("Warehouse", JSON.stringify($user), JSON.stringify($str));
+				DB.dbUpdateOne("Warehouse", $user, $str);
 				$datas = DB.dbGetOne("Warehouse", JSON.stringify($val));
 			}
 				delete $datas["_id"];
