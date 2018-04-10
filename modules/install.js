@@ -20,13 +20,13 @@ exports.setInstallInfo=function (socket,iosockets){
 	socket.on("setInstallInfo",function(data){
 
 		if(data!=null) {
-			$val = JSON.parse(data);
+			var $val = JSON.parse(data);
 
-			$resource = {"Resource": $val.SelectedResource};
-			$user = {"Id_User": $val.Id_User};
+			var $resource = {"Resource": $val.SelectedResource};
+			var $user = {"Id_User": $val.Id_User};
 			delete $val.SelectedResource;
-			$parselIndex = {"Id_map": $val.Id_map, "Id_parsel": $val.Id_parsel};
-			$getInfos=$parselIndex;
+			var $parselIndex = {"Id_map": $val.Id_map, "Id_parsel": $val.Id_parsel};
+			var $getInfos=$parselIndex;
 			$getInfos.Id_User=$val.Id_User;
 			DB.getOther(function (res) {
 				parselInfos = res;
