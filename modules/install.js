@@ -20,33 +20,34 @@ exports.setInstallInfo=function (socket,iosockets){
 	socket.on("setInstallInfo",function(data){
 
 		if(data!=null) {
-			$val=JSON.parse(data);
+			$val = JSON.parse(data);
 
-			$resource={"Resource":$val.SelectedResource};
-			$user={"Id_User":$val.Id_User};
+			$resource = {"Resource": $val.SelectedResource};
+			$user = {"Id_User": $val.Id_User};
 			delete $val.SelectedResource;
-			$parselIndex={"Id_map":$val.Id_map,"Id_parsel":$val.Id_parsel};
+			$parselIndex = {"Id_map": $val.Id_map, "Id_parsel": $val.Id_parsel};
 			console.log($user);
 			console.log($parselIndex);
-			DB.getOther(function(res){parselInfos=res; return res;},"UserBaseInfo", JSON.stringify($user));
-			DB.getOther(function(res){parselBase=res; return res;},"ParselsBase", JSON.stringify($parselIndex));
-
-			if(parselInfos!=null&&parselInfos!=null) {
-
-				$money = {"Money":Number(parselInfos.Money) - Number(parselBase.Price_Install)};
-				console.log($money);
-				/* DB.dbUpdateOne("UserBaseInfo", $user, $money);
-
-				 DB.dbUpdateOne("InstallInfo", $val, $json);
-				 DB.dbUpdateOne("ParselUser", $val, $resource);
-				 $datas = DB.dbGetOne("ParselUser", data);
-				 if ($datas != null) {
-
-				 delete $datas["_id"];
-				 delete $datas["Id_User"];
-				 delete $datas["Id_map"];
-
-				 socket.emit('setInstallInfo', $datas);*/
+			DB.getOther(function (res) {
+				parselInfos = res;
+				return res;
+			}, "UserBaseInfo", JSON.stringify($user));
+			DB.getOther(function (res) {
+				parselBase = res;
+				return res;
+			}, "ParselsBase", JSON.stringify($parselIndex));
+			if (parselInfos != null && parselInfos != null) {
+				$money = {"Money": Number(parselInfos.Money) - Number(parselBase.Price_Install)};
+				DB.dbUpdateOne("UserBaseInfo", $user, $money);
+				DB.dbUpdateOne("InstallInfo", $val, $json);
+				DB.dbUpdateOne("ParselUser", $val, $resource);
+				$datas = DB.dbGetOne("ParselUser", data);
+				if ($datas != null) {
+					delete $datas["_id"];
+					delete $datas["Id_User"];
+					delete $datas["Id_map"];
+					socket.emit('setInstallInfo', $datas);
+				}
 			}
 		}
 	});
