@@ -28,16 +28,16 @@ exports.setInstallInfo=function (socket,iosockets){
 			$parselIndex={"Id_map":$val.Id_map,"Id_parsel":$val.Id_parsel};
 			console.log($user);
 			console.log($parselIndex);
-			DB.getOther(function(res){parselInfos=res; return res;},"UserBaseInfo", JSON.stringify($user));
+			DB.getOther(function(res){parselInfos=res; return res;},"UserBaseInfo", $user);
 			DB.getOther(function(res){parselBase=res; return res;},"ParselsBase", JSON.stringify($parselIndex));
 
 			console.log(parselInfos);
 			console.log(parselBase);
-			$money = {"Money":Number(parselInfos.Money) - Number(parselBase.Price_Install)};
+			/*$money = {"Money":Number(parselInfos.Money) - Number(parselBase.Price_Install)};
 			DB.dbUpdateOne("UserBaseInfo", $user, $money);
 
 			DB.dbUpdateOne("InstallInfo", $val, $json);
-			DB.dbUpdateOne("ParselUser", $val, $resource);
+			DB.dbUpdateOne("ParselUser", $val, $resource);*/
 			$datas = DB.dbGetOne("ParselUser", data);
 			if ($datas != null) {
 
