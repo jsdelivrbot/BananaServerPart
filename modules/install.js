@@ -36,7 +36,8 @@ exports.setInstallInfo=function (socket,iosockets){
 				parselBase = res;
 				return res;
 			}, "ParselsBase", JSON.stringify($parselIndex));
-			if (parselInfos != null && parselInfos != null) {
+			console.log(parselBase);
+			if (parselInfos != null && parselBase != null) {
 				$money = {"Money": Number(parselInfos.Money) - Number(parselBase.Price_Install)};
 				DB.dbUpdateOne("UserBaseInfo", $user, $money);
 				DB.dbUpdateOne("ParselUser", $getInfos, $resource);
