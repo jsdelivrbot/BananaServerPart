@@ -34,7 +34,7 @@ exports.setInstallInfo=function (socket,iosockets){
 				parselBases = res;
 			}, "ParselsBase", JSON.stringify($parselIndex));
 			console.log($parselIndex);
-			console.log(parselBases);
+			console.log($val);
 			console.log($resource);
 			if (parselInfos != null && parselBases != null) {
 				$money = {"Money": Number(parselInfos.Money) - Number(parselBases.Price_Install)};
