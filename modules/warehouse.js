@@ -24,12 +24,12 @@ exports.getWarehouseResources=function (socket,iosockets){
 
 	exports.upgradeWarehouse=function (socket,iosockets){
 	socket.on("upgradeWarehouse",function(data) {
-		console.log(data);
-		console.log("____________");
+
 		$val = JSON.parse(data);
 		if ($val != null) {
-			console.log($val);
+			console.log("__________");
 			$datas = DB.dbGetOne("Warehouse", $val);
+			console.log($datas);
 			if ($datas != null) {
 
 			console.log($datas);
