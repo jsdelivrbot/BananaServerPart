@@ -23,13 +23,16 @@ exports.getWarehouseResources=function (socket,iosockets){
 }
 
 	exports.upgradeWarehouse=function (socket,iosockets){
-	socket.on("upgradeWarehouse",function(data){
-		$val=JSON.parse(data);
-		if($val!=null) {
+	socket.on("upgradeWarehouse",function(data) {
+		$val = JSON.parse(data);
+		if ($val != null) {
+			console.log($val);
 			$datas = DB.dbGetOne("Warehouse", $val);
+			if ($datas != null) {
+
 			console.log($datas);
-			if($datas.Level==max_level) {
-				DB.dbUpdateOne("Warehouse", $val, {"Price_warehouse":"-1"});
+			if ($datas.Level == max_level) {
+				DB.dbUpdateOne("Warehouse", $val, {"Price_warehouse": "-1"});
 				$datas = DB.dbGetOne("Warehouse", $val);
 			}
 			if ($datas != null) {
@@ -38,6 +41,7 @@ exports.getWarehouseResources=function (socket,iosockets){
 				socket.emit('upgradeWarehouse', $datas);
 			}
 		}
+	}
 	});
 }
 
