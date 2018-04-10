@@ -30,6 +30,9 @@ exports.setInstallInfo=function (socket,iosockets){
 			delete $parselIndex.SelectedResource;
 			DB.getOther(function(res){parselInfos=res; return res;},"UserBaseInfo", JSON.stringify($user));
 			DB.getOther(function(res){parselBase=res; return res;},"ParselsBase", JSON.stringify($user));
+
+			console.log(parselInfos);
+			console.log(parselBase);
 			$money = {"Money":Number(parselInfos.Money) - Number(parselBase.Price_Install)};
 			DB.dbUpdateOne("UserBaseInfo", $user, $money);
 
