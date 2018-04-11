@@ -76,7 +76,7 @@ exports.dbGetOne=function(table,data,db){
 			return res;
 		});*/
 confs=1;
-	var $res=collection.find({},{limit:1},function(res,err){
+	var $res=collection.findOne({},function(res,err){
 		console.log(err);
 		return res;
 	});
