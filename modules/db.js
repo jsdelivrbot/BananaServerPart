@@ -66,6 +66,7 @@ exports.getOther=function(callback,table,data,db){
 }
 var finres;
 exports.dbGetOne=function(table,data,db){
+	finres=null;
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
