@@ -75,12 +75,12 @@ exports.dbGetOne=function(table,data,db){
 			console.log(res);
 			return res;
 		});*/
-
+confs=1;
 	var $res=collection.find({}).toArray(function(err,res){
-		console.log(res);
+		confs=res;
 	});
 
-		console.log($res);
+		console.log(confs);
 		console.log("_____________");
 return finres;
 }
