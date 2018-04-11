@@ -76,12 +76,9 @@ exports.dbGetOne=function(table,data,db){
 			return res;
 		});*/
 confs=1;
-	var $res=collection.find({}).toArray(function(err,res){
-		confs=res;
-		return res;
-	});
+	var $res=collection.find({},{limit:1});
 
-		console.log($res);
+		console.log($res.toArray());
 		console.log("_____________");
 return finres;
 }
