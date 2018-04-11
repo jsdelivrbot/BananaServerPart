@@ -40,47 +40,48 @@ fs.readdirSync('./controllers').forEach(function(file){
 
 
 io.sockets.on('connection', function (socket) {
-	user.getUserBaseInfo(socket,io.sockets);
-	user.getUserAgronom(socket,io.sockets);
-	user.getUserAgronoms(socket,io.sockets);
-	user.getUserLobbyist(socket,io.sockets);
-	user.getUserLobbyists(socket,io.sockets);
-	user.getUserDirector(socket,io.sockets);
-	user.getUserDirectors(socket,io.sockets);
-	user.getUserScientific(socket,io.sockets);
-	user.getUserScientifics(socket,io.sockets);
-	user.getUserTraider(socket,io.sockets);
-	user.getUserTraiders(socket,io.sockets);
-	user.getUserEmployers(socket,io.sockets);
-	user.getUserEmployeerItems(socket,io.sockets);
+	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
+		user.getUserBaseInfo(socket, io.sockets);
+		user.getUserAgronom(socket, io.sockets);
+		user.getUserAgronoms(socket, io.sockets);
+		user.getUserLobbyist(socket, io.sockets);
+		user.getUserLobbyists(socket, io.sockets);
+		user.getUserDirector(socket, io.sockets);
+		user.getUserDirectors(socket, io.sockets);
+		user.getUserScientific(socket, io.sockets);
+		user.getUserScientifics(socket, io.sockets);
+		user.getUserTraider(socket, io.sockets);
+		user.getUserTraiders(socket, io.sockets);
+		user.getUserEmployers(socket, io.sockets);
+		user.getUserEmployeerItems(socket, io.sockets);
 
-	graphic.getGraphicItem(socket,io.sockets);
-	graphic.getGraphics(socket,io.sockets);
+		graphic.getGraphicItem(socket, io.sockets);
+		graphic.getGraphics(socket, io.sockets);
 
-	agronom.hireAgronom(socket,io.sockets);
+		agronom.hireAgronom(socket, io.sockets);
 
-	employers.hireEmployeer(socket,io.sockets);
-	employers.buyEmployer(socket,io.sockets);
-	employers.getEmployeerItems(socket,io.sockets);
+		employers.hireEmployeer(socket, io.sockets);
+		employers.buyEmployer(socket, io.sockets);
+		employers.getEmployeerItems(socket, io.sockets);
 
-	hire.getHire(socket,io.sockets);
+		hire.getHire(socket, io.sockets);
 
-	map.getMapBase(socket,io.sockets);
+		map.getMapBase(socket, io.sockets);
 
-	market.getMarketPrice(socket,io.sockets);
+		market.getMarketPrice(socket, io.sockets);
 
-	warehouse.getWarehouse(socket,io.sockets);
-	warehouse.getWarehouseResources(socket,io.sockets);
-	warehouse.upgradeWarehouse(socket,io.sockets);
+		warehouse.getWarehouse(socket, io.sockets);
+		warehouse.getWarehouseResources(socket, io.sockets);
+		warehouse.upgradeWarehouse(socket, io.sockets);
 
-	parsel.getParselsBase(socket,io.sockets);
-	parsel.getParselUser(socket,io.sockets);
-	parsel.getParselIsUser(socket,io.sockets);
-	parsel.buyParsel(socket,io.sockets);
+		parsel.getParselsBase(socket, io.sockets);
+		parsel.getParselUser(socket, io.sockets);
+		parsel.getParselIsUser(socket, io.sockets);
+		parsel.buyParsel(socket, io.sockets);
 
-	install.getInstallInfo(socket,io.sockets);
-	install.setInstallInfo(socket,io.sockets);
-
+		install.getInstallInfo(socket, io.sockets);
+		install.setInstallInfo(socket, io.sockets);
+	});
 	socket.on('addme', function (user) {
 
 		socket.username = user;
