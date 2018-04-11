@@ -17,7 +17,6 @@ exports.dbSendOne=function(table,data,db){
 		var collection = datas.collection(table);
 		var infos = data;
 		collection.insertOne(infos, function(err, result){
-			db.close();
 		});
 }
 
@@ -30,7 +29,6 @@ exports.dbUpdateOne=function(table,dataFilter,dataUpdate,db){
 		var infos = dataUpdate;
 		collection.updateOne(dataFilter,{$set:infos}, function(err, result){
 
-			db.close();
 		});
 
 }
@@ -41,7 +39,6 @@ exports.dbInsertOne=function(table,dataInsert,db){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		collection.insert(dataInsert);
-		db.close();
 }
 
 
@@ -50,7 +47,6 @@ exports.dbSendMore=function(table,data,db){
 		var collection = datas.collection(table);
 		var infos = data;
 		collection.insertMany(infos, function(err, result){
-			db.close();
 		});
 }
 
@@ -62,27 +58,33 @@ exports.getOther=function(callback,table,data,db){
 		collection.findOne(infos,function(err,res){
 			callback(res);
 		});
-		db.close();
+}
+
+
+exports.getOtherMore=function(callback,table,data,db){
+
+	var datas = db.db("banandata");
+	var collection = datas.collection(table);
+	var infos = JSON.parse(data);
+	collection.find(infos,function(err,res){
+		callback(res);
+	});
 }
 var finres;
+var oldres;
 exports.dbGetOne=function(table,data,db){
 	finres=null;
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
-		/*var $res=collection.findOne(infos).then(function(res,err){
+		collection.findOne(infos).then(function(res,err){
 			finres=res;
-			console.log(res);
 			return res;
-		});*/
-	var $res=collection.findOne({},function(err,res){
-		console.log(res);
-		return res;
-	});
-
-		console.log($res);
-		console.log("_____________");
-return finres;
+		});
+if(oldres!=finres){
+	return finres;
+	finres=oldres;
+}
 }
 
 exports.getMaxValParam=function(table,param,db){
@@ -112,9 +114,11 @@ exports.dbGetMore=function(table,data,db){
 		var collection = datas.collection(table);
 		var infos = data;
 		collection.find(data).toArray(function(err,res){
-			setResult(res);
+			finres=res;
 			 
 	});
-
-	return result;
+	if(oldres!=finres){
+		return finres;
+		finres=oldres;
+	}
 }

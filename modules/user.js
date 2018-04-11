@@ -1,9 +1,10 @@
 
 var DB=require("./db.js");
+var dataUBI=null;
 exports.getUserBaseInfo=function (socket,iosockets,db){
     socket.on("getUserBaseInfo",function(data){
-	    $datas=DB.dbGetOne("UserBaseInfo",data,db);
-	    if($datas!=null) {
+	    DB.getOther(function(res){dataUBI=res;},"UserBaseInfo", data,db);
+	    if(dataUBI!=null) {
 		      delete $datas["_id"];
 		      delete $datas["Id_User"];
 		    socket.emit('getUserBaseInfo', $datas);
