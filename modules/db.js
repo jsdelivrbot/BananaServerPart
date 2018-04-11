@@ -86,7 +86,7 @@ exports.dbGetOne=function(table,data,db){
 			result=res;
 			console.log(res);
 			return res;
-		}*/).limit(1);
+		}*/);
 	//});
 	console.log($res);
 return null;
