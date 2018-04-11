@@ -3,7 +3,6 @@ var DB=require("./db.js");
 var dataUBI=null;
 exports.getUserBaseInfo=function (socket,iosockets,db){
     socket.on("getUserBaseInfo",function(data){
-	    dataUBI=null;
 	    DB.getOther(function(res){dataUBI=res;},"UserBaseInfo", data,db);
 	    if(dataUBI!=null) {
 		      delete dataUBI["_id"];

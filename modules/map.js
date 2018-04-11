@@ -1,11 +1,12 @@
 var DB=require("./db.js");
+var dataMB=null;
 exports.getMapBase=function (socket,iosockets,db){
 	socket.on("getMapBase",function(data){
-		$datas=DB.dbGetOne("Map",data,db);
-		if($datas!=null) {
-			delete $datas["_id"];
-			delete $datas["Id_map"];
-			socket.emit('getMapBase', $datas);
+		DB.getOther(function(res){dataMB=res;},"Map", data,db);
+		if(dataMB!=null) {
+			delete dataMB["_id"];
+			delete dataMB["Id_map"];
+			socket.emit('getMapBase', dataMB);
 		}
 	});
 }

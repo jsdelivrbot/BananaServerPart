@@ -1,6 +1,6 @@
 
 var DB=require("./db.js");
-
+var dataHA=null;
 exports.hireAgronom=function (socket,iosockets,db){
 	socket.on("hireAgronom",function(data) {
 		if (data != null) {
@@ -8,13 +8,13 @@ exports.hireAgronom=function (socket,iosockets,db){
 			$agronomHireStatus = {"Hire_status": $agronomInfo.Hire_status};
 			delete $agronomInfo["Hire_status"];
 			DB.dbUpdateOne("hireAgronom", $agronomInfo, $agronomHireStatus,db);
-			$datas = DB.dbGetOne("hireAgronom", data,db);
-			if ($datas != null) {
-				delete $datas["_id"];
-				delete $datas["Id_User"];
-				delete $datas["Id_map"];
-				delete $datas["Id_parsel"];
-				socket.emit('hireAgronom', $datas);
+			DB.getOther(function(res){dataHA=res;},"hireAgronom", data,db);
+			if (dataHA != null) {
+				delete dataHA["_id"];
+				delete dataHA["Id_User"];
+				delete dataHA["Id_map"];
+				delete dataHA["Id_parsel"];
+				socket.emit('hireAgronom', dataHA);
 			}else{
 				socket.emit('hireAgronom', "-1");
 			}

@@ -1,12 +1,13 @@
 
 
 var DB=require("./db.js");
+var dataMP=null;
 exports.getMarketPrice=function (socket,iosockets){
 	socket.on("getMarketPrice",function(data){
-		$datas=DB.dbGetOne("MarketPrice","{}",db);
-		if($datas!=null) {
-			delete $datas["_id"];
-			socket.emit('getMarketPrice', $datas);
+		DB.getOther(function(res){dataMP=res;},"MarketPrice", "{}",db);
+		if(dataMP!=null) {
+			delete dataMP["_id"];
+			socket.emit('getMarketPrice', dataMP);
 		}
 	});
 }

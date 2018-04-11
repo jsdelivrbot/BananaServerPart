@@ -1,15 +1,16 @@
 var DB=require("./db.js");
+var dataII=null;
 exports.getInstallInfo=function (socket,iosockets,db){
 	socket.on("getInstallInfo",function(data){
-		$datas=DB.dbGetMore("InstallInfo",data,db);
-		if($datas!=null) {
-			for (var $key in $datas) {
-				delete $datas[$key]["_id"];
-				delete $datas[$key]["Id_User"];
-				delete $datas[$key]["Id_map"];
-				delete $datas[$key]["Id_parsel"];
+		DB.getOtherMore(function(res){dataII=res;},"InstallInfo", data,db);
+		if(dataII!=null) {
+			for (var $key in dataII) {
+				delete dataII[$key]["_id"];
+				delete dataII[$key]["Id_User"];
+				delete dataII[$key]["Id_map"];
+				delete dataII[$key]["Id_parsel"];
 			}
-			socket.emit('getInstallInfo', $datas);
+			socket.emit('getInstallInfo', dataII);
 		}
 	});
 }
