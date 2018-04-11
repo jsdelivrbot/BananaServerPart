@@ -70,11 +70,18 @@ exports.dbGetOne=function(table,data,db){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
-		var $res=collection.findOne(infos).then(function(res,err){
+		/*var $res=collection.findOne(infos).then(function(res,err){
 			finres=res;
 			console.log(res);
 			return res;
-		});
+		});*/
+
+	var $res=collection.findOne(infos).toArray(function(err,res){
+		console.log(res);
+		console.log("_________");
+		console.log(err);
+	});
+
 		console.log($res);
 		console.log("_____________");
 return finres;
