@@ -41,7 +41,6 @@ fs.readdirSync('./controllers').forEach(function(file){
 
 io.sockets.on('connection', function (socket) {
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
-		console.log(err);
 		user.getUserBaseInfo(socket, io.sockets,db);
 		user.getUserAgronom(socket, io.sockets,db);
 		user.getUserAgronoms(socket, io.sockets,db);
