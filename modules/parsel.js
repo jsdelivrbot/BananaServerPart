@@ -27,7 +27,7 @@ exports.getParselUser=function (socket,iosockets,db){
 }
 
 exports.getParselsUser=function (socket,iosockets,db){
-	socket.on("getParselIsUser",function(data){
+	socket.on("getParselsUser",function(data){
 		$datas=DB.dbGetMore("ParselUser",data,db);
 		if($datas!=null) {
 			for (var $key in $datas) {
