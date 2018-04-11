@@ -7,8 +7,8 @@ exports.hireAgronom=function (socket,iosockets,db){
 			$agronomInfo = JSON.parse(data);
 			$agronomHireStatus = {"Hire_status": $agronomInfo.Hire_status};
 			delete $agronomInfo["Hire_status"];
-			DB.dbUpdateOne("hireAgronom", $agronomInfo, $agronomHireStatus);
-			$datas = DB.dbGetOne("hireAgronom", data);
+			DB.dbUpdateOne("hireAgronom", $agronomInfo, $agronomHireStatus,db);
+			$datas = DB.dbGetOne("hireAgronom", data,db);
 			if ($datas != null) {
 				delete $datas["_id"];
 				delete $datas["Id_User"];

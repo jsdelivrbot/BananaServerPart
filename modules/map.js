@@ -1,7 +1,7 @@
 var DB=require("./db.js");
 exports.getMapBase=function (socket,iosockets,db){
 	socket.on("getMapBase",function(data){
-		$datas=DB.dbGetOne("Map",data);
+		$datas=DB.dbGetOne("Map",data,db);
 		if($datas!=null) {
 			delete $datas["_id"];
 			delete $datas["Id_map"];

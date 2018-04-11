@@ -2,7 +2,7 @@ var DB=require("./db.js");
 var max_level=2;
 exports.getWarehouse=function (socket,iosockets,db){
 	socket.on("getWarehouse",function(data){
-		$datas=DB.dbGetOne("Warehouse",data);
+		$datas=DB.dbGetOne("Warehouse",data,db);
 		if($datas!=null) {
 			delete $datas["_id"];
 			delete $datas["Id_User"];
@@ -13,7 +13,7 @@ exports.getWarehouse=function (socket,iosockets,db){
 
 exports.getWarehouseResources=function (socket,iosockets,db){
 	socket.on("getWarehouseResources",function(data){
-		$datas=DB.dbGetOne("WarehouseResources",data);
+		$datas=DB.dbGetOne("WarehouseResources",data,db);
 		if($datas!=null) {
 			delete $datas["_id"];
 			delete $datas["Id_User"];
@@ -26,14 +26,14 @@ exports.getWarehouseResources=function (socket,iosockets,db){
 	socket.on("upgradeWarehouse",function(data) {
 		$val = JSON.parse(data);
 		if ($val != null) {
-			$datas = DB.dbGetOne("Warehouse", JSON.stringify($val));
+			$datas = DB.dbGetOne("Warehouse", JSON.stringify($val),db);
 			$user={"Id_User":$val.Id_User};
 			if ($datas != null) {
 			if (Number($datas["Level"]) >= Number(max_level)) {
 				$str={"Price_warehouse": "-1"};
-				DB.dbUpdateOne("Warehouse", $user, $str);
-				DB.dbUpdateOne("Warehouse", $user, $str);
-				$datas = DB.dbGetOne("Warehouse", JSON.stringify($val));
+				DB.dbUpdateOne("Warehouse", $user, $str,db);
+				DB.dbUpdateOne("Warehouse", $user, $str,db);
+				$datas = DB.dbGetOne("Warehouse", JSON.stringify($val),db);
 			}
 				delete $datas["_id"];
 				delete $datas["Id_User"];

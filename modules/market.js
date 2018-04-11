@@ -1,9 +1,9 @@
 
 
 var DB=require("./db.js");
-exports.getMarketPrice=function (socket,iosockets,db){
+exports.getMarketPrice=function (socket,iosockets){
 	socket.on("getMarketPrice",function(data){
-		$datas=DB.dbGetOne("MarketPrice","{}");
+		$datas=DB.dbGetOne("MarketPrice","{}",db);
 		if($datas!=null) {
 			delete $datas["_id"];
 			socket.emit('getMarketPrice', $datas);

@@ -2,7 +2,7 @@ var DB=require("./db.js");
 
 exports.getParselsBase=function (socket,iosockets,db){
 	socket.on("getParselsBase",function(data){
-		$datas=DB.dbGetMore("ParselsBase",data);
+		$datas=DB.dbGetMore("ParselsBase",data,db);
 		if($datas!=null) {
 			for (var $key in $datas) {
 				delete $datas[$key]["_id"];
@@ -16,7 +16,7 @@ exports.getParselsBase=function (socket,iosockets,db){
 
 exports.getParselUser=function (socket,iosockets,db){
 	socket.on("getParselUser",function(data){
-		$datas=DB.dbGetOne("ParselUser",data);
+		$datas=DB.dbGetOne("ParselUser",data,db);
 		if($datas!=null) {
 			delete $datas["_id"];
 			delete $datas["Id_User"];
@@ -28,7 +28,7 @@ exports.getParselUser=function (socket,iosockets,db){
 
 exports.getParselIsUser=function (socket,iosockets,db){
 	socket.on("getParselIsUser",function(data){
-		$datas=DB.dbGetMore("ParselUser",data);
+		$datas=DB.dbGetMore("ParselUser",data,db);
 		if($datas!=null) {
 			for (var $key in $datas) {
 				delete $datas[$key]["_id"];
@@ -54,13 +54,13 @@ exports.buyParsel=function (socket,iosockets,db){
 		delete $finZap["Id_User"];
 		if(data!=null) {
 
-				DB.getOther(function(res){userInfos=res; return res;},"UserBaseInfo", JSON.stringify($finalDataPay));
+				DB.getOther(function(res){userInfos=res; return res;},"UserBaseInfo", JSON.stringify($finalDataPay),db);
 				$userData=userInfos;
-				DB.getOther(function(res){parselinfo=res; return res;},"ParselsBase", JSON.stringify($finZap));
+				DB.getOther(function(res){parselinfo=res; return res;},"ParselsBase", JSON.stringify($finZap),db);
 				$dataParsel=parselinfo;
 				if($userData!=null && $dataParsel!=null) {
 					$money = {"Money":Number($userData.Money) - Number($dataParsel.Price_Unlock)};
-					DB.dbUpdateOne("UserBaseInfo", $user, $money);
+					DB.dbUpdateOne("UserBaseInfo", $user, $money,db);
 					$finalDataPay.Id_parsel = $dataParsel["Id_parsel"];
 					$finalDataPay.Id_map = $dataParsel["Id_map"];
 					$finalDataPay.Current_CoolDown_Time = $dataParsel["Base_CoolDown_Time"];
@@ -70,8 +70,8 @@ exports.buyParsel=function (socket,iosockets,db){
 					$finalDataPay.Resource = 0;
 					$finalDataPay.Fertility = 1;
 
-					 DB.dbSendOne("ParselUser",$finalDataPay);
-					 $datas=DB.dbGetOne("ParselUser",data);
+					 DB.dbSendOne("ParselUser",$finalDataPay,db);
+					 $datas=DB.dbGetOne("ParselUser",data,db);
 					 if($datas!=null) {
 						 delete $datas["_id"];
 						 delete $datas["Id_User"];

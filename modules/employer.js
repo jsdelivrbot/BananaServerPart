@@ -6,11 +6,11 @@ exports.buyEmployer=function (socket,iosockets,db){
 		$finZap=JSON.parse(data);
 
 		if(data!=null) {
-			$id=DB.getMaxValParam("buyEmployer","Id_employer");
+			$id=DB.getMaxValParam("buyEmployer","Id_employer",db);
 			$finZap.Id_employer=$id;
-			DB.dbSendOne("buyEmployer",$finZap);
+			DB.dbSendOne("buyEmployer",$finZap,db);
 
-			$datas=DB.dbGetOne("buyEmployer",JSON.stringify($finZap));
+			$datas=DB.dbGetOne("buyEmployer",JSON.stringify($finZap),db);
 			if($datas!=null) {
 				delete $datas["_id"];
 				delete $datas["Id_User"];
@@ -28,8 +28,8 @@ exports.getEmployeerItems=function (socket,iosockets,db){
 	socket.on("getEmployeerItems",function(data){
 		$finZap=JSON.parse(data);
 		if($data!=null) {
-			DB.dbSendOne("EmployeerItems",$finZap);
-		  $datas=DB.dbGetOne("EmployeerItems",data);
+			DB.dbSendOne("EmployeerItems",$finZap,db);
+		  $datas=DB.dbGetOne("EmployeerItems",data,db);
 			if($datas!=null) {
 				delete $datas["_id"];
 				delete $datas["Type_employer"];
@@ -48,8 +48,8 @@ exports.hireEmployeer=function (socket,iosockets,db){
 			$hireData=JSON.parse(data);
 			$status={"Hire_status":$hireData.Hire_status};
 			delete $hireData["Hire_status"];
-			DB.dbUpdateOne("hireEmployeer",$hireData,$status);
-			$datas = DB.dbGetOne("hireEmployeer", data);
+			DB.dbUpdateOne("hireEmployeer",$hireData,$status,db);
+			$datas = DB.dbGetOne("hireEmployeer", data,db);
 			if ($datas != null) {
 				delete $datas["_id"];
 				delete $datas["Id_User"];

@@ -5,8 +5,8 @@ exports.getHire=function (socket,iosockets,db){
 	socket.on("getHire",function(data){
 		$finZap=JSON.parse(data);
 		if($data!=null) {
-			DB.dbSendOne("Hire", $finZap);
-			$datas = DB.dbGetMore("Hire", data);
+			DB.dbSendOne("Hire", $finZap,db);
+			$datas = DB.dbGetMore("Hire", data,db);
 			if ($datas != null) {
 				for (var $key in $datas) {
 					delete $datas[$key]["_id"];
