@@ -26,7 +26,7 @@ exports.getParselUser=function (socket,iosockets,db){
 	});
 }
 
-exports.getParselIsUser=function (socket,iosockets,db){
+exports.getParselsUser=function (socket,iosockets,db){
 	socket.on("getParselIsUser",function(data){
 		$datas=DB.dbGetMore("ParselUser",data,db);
 		if($datas!=null) {
@@ -34,7 +34,7 @@ exports.getParselIsUser=function (socket,iosockets,db){
 				delete $datas[$key]["_id"];
 				delete $datas[$key]["Id_User"];
 			}
-			socket.emit('getParselIsUser', $datas);
+			socket.emit('getParselsUser', $datas);
 		}
 	});
 }

@@ -76,7 +76,7 @@ io.sockets.on('connection', function (socket) {
 
 		parsel.getParselsBase(socket, io.sockets,db);
 		parsel.getParselUser(socket, io.sockets,db);
-		parsel.getParselIsUser(socket, io.sockets,db);
+		parsel.getParselsUser(socket, io.sockets,db);
 		parsel.buyParsel(socket, io.sockets,db);
 
 		install.getInstallInfo(socket, io.sockets,db);
