@@ -42,19 +42,19 @@ fs.readdirSync('./controllers').forEach(function(file){
 io.sockets.on('connection', function (socket) {
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		user.getUserBaseInfo(socket, io.sockets,db);
-		user.getUserAgronom(socket, io.sockets);
-		user.getUserAgronoms(socket, io.sockets);
-		user.getUserLobbyist(socket, io.sockets);
-		user.getUserLobbyists(socket, io.sockets);
-		user.getUserDirector(socket, io.sockets);
-		user.getUserDirectors(socket, io.sockets);
-		user.getUserScientific(socket, io.sockets);
-		user.getUserScientifics(socket, io.sockets);
-		user.getUserTraider(socket, io.sockets);
-		user.getUserTraiders(socket, io.sockets);
-		user.getUserEmployers(socket, io.sockets);
-		user.getUserEmployeerItems(socket, io.sockets);
-
+		user.getUserAgronom(socket, io.sockets,db);
+		user.getUserAgronoms(socket, io.sockets,db);
+		user.getUserLobbyist(socket, io.sockets,db);
+		user.getUserLobbyists(socket, io.sockets,db);
+		user.getUserDirector(socket, io.sockets,db);
+		user.getUserDirectors(socket, io.sockets,db);
+		user.getUserScientific(socket, io.sockets,db);
+		user.getUserScientifics(socket, io.sockets,db);
+		user.getUserTraider(socket, io.sockets,db);
+		user.getUserTraiders(socket, io.sockets,db);
+		user.getUserEmployers(socket, io.sockets,db);
+		user.getUserEmployeerItems(socket, io.sockets,db);
+/*
 		graphic.getGraphicItem(socket, io.sockets);
 		graphic.getGraphics(socket, io.sockets);
 
@@ -80,7 +80,7 @@ io.sockets.on('connection', function (socket) {
 		parsel.buyParsel(socket, io.sockets);
 
 		install.getInstallInfo(socket, io.sockets);
-		install.setInstallInfo(socket, io.sockets);
+		install.setInstallInfo(socket, io.sockets);*/
 	});
 	socket.on('addme', function (user) {
 

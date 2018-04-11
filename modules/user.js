@@ -13,9 +13,9 @@ exports.getUserBaseInfo=function (socket,iosockets,db){
 
 
 
-exports.getUserAgronom=function (socket,iosockets){
+exports.getUserAgronom=function (socket,iosockets,db){
 	socket.on("getUserAgronom",function(data){
-		$datas=DB.dbGetOne("UserAgronom",data);
+		$datas=DB.dbGetOne("UserAgronom",data,db);
 		if($datas!=null) {
 			delete $datas["_id"];
 			delete $datas["Id_User"];
@@ -25,9 +25,9 @@ exports.getUserAgronom=function (socket,iosockets){
 	});
 }
 
-exports.getUserAgronoms=function (socket,iosockets){
+exports.getUserAgronoms=function (socket,iosockets,db){
 	socket.on("getUserAgronoms",function(data){
-		$datas=DB.dbGetMore("UserAgronom",data);
+		$datas=DB.dbGetMore("UserAgronom",data,db);
 		if($datas!=null) {
 			for (var $key in $datas) {
 				delete $datas[$key]["_id"];
@@ -39,9 +39,9 @@ exports.getUserAgronoms=function (socket,iosockets){
 	});
 }
 
-exports.getUserLobbyist=function (socket,iosockets){
+exports.getUserLobbyist=function (socket,iosockets,db){
 	socket.on("getUserLobbyist",function(data){
-		$datas=DB.dbGetOne("UserLobbyist",data);
+		$datas=DB.dbGetOne("UserLobbyist",data,db);
 		if($datas!=null) {
 			delete $datas["_id"];
 			delete $datas["Id_User"];
@@ -51,9 +51,9 @@ exports.getUserLobbyist=function (socket,iosockets){
 }
 
 
-exports.getUserLobbyists=function (socket,iosockets){
+exports.getUserLobbyists=function (socket,iosockets,db){
 	socket.on("getUserLobbyists",function(data){
-		$datas=DB.dbGetMore("UserLobbyist",data);
+		$datas=DB.dbGetMore("UserLobbyist",data,db);
 		if($datas!=null) {
 			for (var $key in $datas) {
 				delete $datas[$key]["_id"];
@@ -65,9 +65,9 @@ exports.getUserLobbyists=function (socket,iosockets){
 }
 
 
-exports.getUserDirector=function (socket,iosockets){
+exports.getUserDirector=function (socket,iosockets,db){
 	socket.on("getUserDirector",function(data){
-		$datas=DB.dbGetOne("UserDirector",data);
+		$datas=DB.dbGetOne("UserDirector",data,db);
 		if($datas!=null) {
 			delete $datas["_id"];
 			delete $datas["Id_User"];
@@ -76,9 +76,9 @@ exports.getUserDirector=function (socket,iosockets){
 	});
 }
 
-exports.getUserDirectors=function (socket,iosockets){
+exports.getUserDirectors=function (socket,iosockets,db){
 	socket.on("getUserDirectors",function(data){
-		$datas=DB.dbGetMore("UserDirector",data);
+		$datas=DB.dbGetMore("UserDirector",data,db);
 		if($datas!=null) {
 			for (var $key in $datas) {
 				delete $datas[$key]["_id"];
@@ -90,9 +90,9 @@ exports.getUserDirectors=function (socket,iosockets){
 }
 
 
-exports.getUserScientific=function (socket,iosockets){
+exports.getUserScientific=function (socket,iosockets,db){
 	socket.on("getUserScientific",function(data){
-		$datas=DB.dbGetOne("UserScientific",data);
+		$datas=DB.dbGetOne("UserScientific",data,db);
 		if($datas!=null) {
 			delete $datas["_id"];
 			delete $datas["Id_User"];
@@ -103,9 +103,9 @@ exports.getUserScientific=function (socket,iosockets){
 
 
 
-exports.getUserScientifics=function (socket,iosockets){
+exports.getUserScientifics=function (socket,iosockets,db){
 	socket.on("getUserScientifics",function(data){
-		$datas=DB.dbGetMore("UserScientific",data);
+		$datas=DB.dbGetMore("UserScientific",data,db);
 		if($datas!=null) {
 			for (var $key in $datas) {
 				delete $datas[$key]["_id"];
@@ -117,9 +117,9 @@ exports.getUserScientifics=function (socket,iosockets){
 }
 
 
-exports.getUserTraider=function (socket,iosockets){
+exports.getUserTraider=function (socket,iosockets,db){
 	socket.on("getUserTraider",function(data){
-		$datas=DB.dbGetOne("UserTraider",data);
+		$datas=DB.dbGetOne("UserTraider",data,db);
 		if($datas!=null) {
 			delete $datas["_id"];
 			delete $datas["Id_User"];
@@ -129,9 +129,9 @@ exports.getUserTraider=function (socket,iosockets){
 }
 
 
-exports.getUserTraiders=function (socket,iosockets){
+exports.getUserTraiders=function (socket,iosockets,db){
 	socket.on("getUserTraiders",function(data){
-		$datas=DB.dbGetMore("UserTraider",data);
+		$datas=DB.dbGetMore("UserTraider",data,db);
 		if($datas!=null) {
 			for (var $key in $datas) {
 				delete $datas[$key]["_id"];
@@ -142,9 +142,9 @@ exports.getUserTraiders=function (socket,iosockets){
 	});
 }
 
-exports.getUserEmployer=function (socket,iosockets){
+exports.getUserEmployer=function (socket,iosockets,db){
 	socket.on("getUserEmployer",function(data){
-		$datas=DB.dbGetOne("UserEmployer",data);
+		$datas=DB.dbGetOne("UserEmployer",data,db);
 		if($datas!=null) {
 			delete $datas["_id"];
 			delete $datas["Id_User"];
@@ -153,9 +153,9 @@ exports.getUserEmployer=function (socket,iosockets){
 	});
 }
 
-exports.getUserEmployers=function (socket,iosockets){
+exports.getUserEmployers=function (socket,iosockets,db){
 	socket.on("getUserEmployers",function(data){
-		$datas=DB.dbGetMore("UserEmployer",data);
+		$datas=DB.dbGetMore("UserEmployer",data,db);
 		if($datas!=null) {
 			for (var $key in $datas) {
 				delete $datas[$key]["_id"];
@@ -167,16 +167,16 @@ exports.getUserEmployers=function (socket,iosockets){
 }
 
 
-exports.getUserEmployeerItems=function (socket,iosockets){
+exports.getUserEmployeerItems=function (socket,iosockets,db){
 	socket.on("getUserEmployeerItems",function(data){
-		$datas=DB.dbGetMore("UserEmployeerItems",data);
+		$datas=DB.dbGetMore("UserEmployeerItems",data,db);
 		if($datas!=null) {
 			for (var $key in $datas) {
 				delete $datas[$key]["_id"];
 				delete $datas[$key]["Id_User"];
 				delete $datas[$key]["Type_employer"];
 			}
-			socket.emit('getUserEmployeerItems', $datas);
+			socket.emit('getUserEmployeerItems', $datas,db);
 		}
 	});
 }
