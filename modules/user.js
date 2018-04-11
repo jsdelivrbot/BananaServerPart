@@ -4,9 +4,7 @@ var dataUBI=null;
 exports.getUserBaseInfo=function (socket,iosockets,db){
     socket.on("getUserBaseInfo",function(data){
 	    DB.getOther(function(res){dataUBI=res;},"UserBaseInfo", data,db);
-
 	    if(dataUBI!=null) {
-		    console.log(dataUBI);
 		      delete dataUBI["_id"];
 		      delete dataUBI["Id_User"];
 		    socket.emit('getUserBaseInfo', dataUBI);
