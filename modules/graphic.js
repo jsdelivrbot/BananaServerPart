@@ -1,6 +1,6 @@
 
 var DB=require("./db.js");
-exports.getGraphicItem=function (socket,iosockets){
+exports.getGraphicItem=function (socket,iosockets,db){
 	socket.on("getGraphicItem",function(data){
 		$datas=DB.dbGetOne("GraphicItem",data);
 		if($datas!=null) {
@@ -11,7 +11,7 @@ exports.getGraphicItem=function (socket,iosockets){
 }
 
 
-exports.getGraphics=function (socket,iosockets){
+exports.getGraphics=function (socket,iosockets,db){
 	socket.on("getGraphics",function(data){
 		$datas=DB.dbGetMore("GraphicItem","{}");
 		if($datas!=null) {

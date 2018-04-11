@@ -13,21 +13,18 @@ function setResult(res){
 
 
 exports.dbSendOne=function(table,data,db){
-	//MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = data;
 		collection.insertOne(infos, function(err, result){
 			db.close();
 		});
-	//});
 }
 
 
 
 exports.dbUpdateOne=function(table,dataFilter,dataUpdate,db){
 
-	//MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = dataUpdate;
@@ -35,35 +32,30 @@ exports.dbUpdateOne=function(table,dataFilter,dataUpdate,db){
 
 			db.close();
 		});
-	//});
+
 }
 
 
 exports.dbInsertOne=function(table,dataInsert,db){
 
-	//MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		collection.insert(dataInsert);
 		db.close();
-	//});
 }
 
 
 exports.dbSendMore=function(table,data,db){
-	//MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = data;
 		collection.insertMany(infos, function(err, result){
 			db.close();
 		});
-	//});
 }
 
 exports.getOther=function(callback,table,data,db){
 
-	//MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
@@ -71,8 +63,6 @@ exports.getOther=function(callback,table,data,db){
 			callback(res);
 		});
 		db.close();
-	//});
-
 }
 var finres;
 exports.dbGetOne=function(table,data,db){
@@ -87,7 +77,6 @@ return finres;
 }
 
 exports.getMaxValParam=function(table,param,db){
-	//MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		$a=collection.find({}).toArray(function(err,res){
@@ -106,8 +95,6 @@ exports.getMaxValParam=function(table,param,db){
 			setMax($val);
 			
 		});
-
-	//});
 return max;
 }
 

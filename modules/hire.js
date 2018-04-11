@@ -1,7 +1,7 @@
 
 
 var DB=require("./db.js");
-exports.getHire=function (socket,iosockets){
+exports.getHire=function (socket,iosockets,db){
 	socket.on("getHire",function(data){
 		$finZap=JSON.parse(data);
 		if($data!=null) {

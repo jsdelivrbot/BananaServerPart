@@ -1,5 +1,5 @@
 var DB=require("./db.js");
-exports.getInstallInfo=function (socket,iosockets){
+exports.getInstallInfo=function (socket,iosockets,db){
 	socket.on("getInstallInfo",function(data){
 		$datas=DB.dbGetMore("InstallInfo",data);
 		if($datas!=null) {
@@ -16,7 +16,7 @@ exports.getInstallInfo=function (socket,iosockets){
 
 var parselInfos=null;
 var parselBases=null;
-exports.setInstallInfo=function (socket,iosockets){
+exports.setInstallInfo=function (socket,iosockets,db){
 	socket.on("setInstallInfo",function(data){
 
 		if(data!=null) {

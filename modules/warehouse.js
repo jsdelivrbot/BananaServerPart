@@ -1,6 +1,6 @@
 var DB=require("./db.js");
 var max_level=2;
-exports.getWarehouse=function (socket,iosockets){
+exports.getWarehouse=function (socket,iosockets,db){
 	socket.on("getWarehouse",function(data){
 		$datas=DB.dbGetOne("Warehouse",data);
 		if($datas!=null) {
@@ -11,7 +11,7 @@ exports.getWarehouse=function (socket,iosockets){
 	});
 }
 
-exports.getWarehouseResources=function (socket,iosockets){
+exports.getWarehouseResources=function (socket,iosockets,db){
 	socket.on("getWarehouseResources",function(data){
 		$datas=DB.dbGetOne("WarehouseResources",data);
 		if($datas!=null) {
@@ -22,7 +22,7 @@ exports.getWarehouseResources=function (socket,iosockets){
 	});
 }
 
-	exports.upgradeWarehouse=function (socket,iosockets){
+	exports.upgradeWarehouse=function (socket,iosockets,db){
 	socket.on("upgradeWarehouse",function(data) {
 		$val = JSON.parse(data);
 		if ($val != null) {

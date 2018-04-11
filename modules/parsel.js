@@ -1,6 +1,6 @@
 var DB=require("./db.js");
 
-exports.getParselsBase=function (socket,iosockets){
+exports.getParselsBase=function (socket,iosockets,db){
 	socket.on("getParselsBase",function(data){
 		$datas=DB.dbGetMore("ParselsBase",data);
 		if($datas!=null) {
@@ -14,7 +14,7 @@ exports.getParselsBase=function (socket,iosockets){
 }
 
 
-exports.getParselUser=function (socket,iosockets){
+exports.getParselUser=function (socket,iosockets,db){
 	socket.on("getParselUser",function(data){
 		$datas=DB.dbGetOne("ParselUser",data);
 		if($datas!=null) {
@@ -26,7 +26,7 @@ exports.getParselUser=function (socket,iosockets){
 	});
 }
 
-exports.getParselIsUser=function (socket,iosockets){
+exports.getParselIsUser=function (socket,iosockets,db){
 	socket.on("getParselIsUser",function(data){
 		$datas=DB.dbGetMore("ParselUser",data);
 		if($datas!=null) {
@@ -40,7 +40,7 @@ exports.getParselIsUser=function (socket,iosockets){
 }
 userInfos=null;
 parselinfo=null;
-exports.buyParsel=function (socket,iosockets){
+exports.buyParsel=function (socket,iosockets,db){
 	socket.on("buyParsel",function(data){
     $finZap=JSON.parse(data);
 

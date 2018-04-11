@@ -1,7 +1,7 @@
 
 var DB=require("./db.js");
 
-exports.hireAgronom=function (socket,iosockets){
+exports.hireAgronom=function (socket,iosockets,db){
 	socket.on("hireAgronom",function(data) {
 		if (data != null) {
 			$agronomInfo = JSON.parse(data);

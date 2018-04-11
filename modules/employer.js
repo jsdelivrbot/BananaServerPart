@@ -1,6 +1,6 @@
 
 var DB=require("./db.js");
-exports.buyEmployer=function (socket,iosockets){
+exports.buyEmployer=function (socket,iosockets,db){
 	socket.on("buyEmployer",function(data){
 
 		$finZap=JSON.parse(data);
@@ -24,7 +24,7 @@ exports.buyEmployer=function (socket,iosockets){
 }
 
 
-exports.getEmployeerItems=function (socket,iosockets){
+exports.getEmployeerItems=function (socket,iosockets,db){
 	socket.on("getEmployeerItems",function(data){
 		$finZap=JSON.parse(data);
 		if($data!=null) {
@@ -42,7 +42,7 @@ exports.getEmployeerItems=function (socket,iosockets){
 }
 
 
-exports.hireEmployeer=function (socket,iosockets){
+exports.hireEmployeer=function (socket,iosockets,db){
 	socket.on("hireEmployeer",function(data){
 		if(data) {
 			$hireData=JSON.parse(data);
