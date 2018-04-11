@@ -15,7 +15,6 @@ var market = require("./modules/market.js");
 var warehouse = require("./modules/warehouse.js");
 var parsel = require("./modules/parsel.js");
 var install = require("./modules/install.js");
-var DB=require("./modules/db.js");
 var MongoClient = require('mongodb').MongoClient;
 
 

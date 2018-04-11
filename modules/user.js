@@ -1,5 +1,5 @@
 
-
+var DB=require("./modules/db.js");
 exports.getUserBaseInfo=function (socket,iosockets,db){
     socket.on("getUserBaseInfo",function(data){
 	    $datas=DB.dbGetOne("UserBaseInfo",data,db);
