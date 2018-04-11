@@ -81,8 +81,10 @@ exports.dbGetOne=function(table,data,db){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
+		console.log(infos);
 		collection.findOne(infos,function(err,res){
 			result=res;
+			console.log(res);
 		});
 		db.close();
 	//});
