@@ -78,9 +78,10 @@ exports.dbGetOne=function(table,data,db){
 confs=1;
 	var $res=collection.find({}).toArray(function(err,res){
 		confs=res;
+		return res;
 	});
 
-		console.log(confs);
+		console.log($res);
 		console.log("_____________");
 return finres;
 }
