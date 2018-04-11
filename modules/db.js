@@ -82,7 +82,7 @@ exports.dbGetOne=function(table,data,db){
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
 		console.log(infos);
-		var $res=collection.findOne(infos).then(function(err,res){
+		var $res=collection.findOne(infos).then(function(res,err){
 			console.log("_______________");
 			console.log(res);
 			return res;
