@@ -85,7 +85,7 @@ exports.dbGetOne=function(table,data,db){
 		$res=collection.findOne(infos).lean();
 	//});
 	console.log($res);
-return null;
+return $res;
 }
 
 exports.getMaxValParam=function(table,param,db){
