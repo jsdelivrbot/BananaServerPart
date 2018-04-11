@@ -83,7 +83,6 @@ exports.dbGetOne=function(table,data,db){
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
 		console.log(infos);
-		;
 		var $res=collection.findOne(infos).then(function(res,err){
 			console.log("_______________");
 			finres=res;
@@ -92,7 +91,7 @@ exports.dbGetOne=function(table,data,db){
 		});
 	//});
 	console.log(finres);
-return $res;
+return finres;
 }
 
 exports.getMaxValParam=function(table,param,db){
