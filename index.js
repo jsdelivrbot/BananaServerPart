@@ -15,6 +15,7 @@ var market = require("./modules/market.js");
 var warehouse = require("./modules/warehouse.js");
 var parsel = require("./modules/parsel.js");
 var install = require("./modules/install.js");
+var DB=require("./modules/db.js");
 var MongoClient = require('mongodb').MongoClient;
 
 
@@ -41,7 +42,7 @@ fs.readdirSync('./controllers').forEach(function(file){
 
 io.sockets.on('connection', function (socket) {
 	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
-		user.getUserBaseInfo(socket, io.sockets);
+		user.getUserBaseInfo(socket, io.sockets,db);
 		user.getUserAgronom(socket, io.sockets);
 		user.getUserAgronoms(socket, io.sockets);
 		user.getUserLobbyist(socket, io.sockets);

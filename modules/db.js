@@ -14,7 +14,7 @@ function setResult(res){
 
 
 
-exports.dbSendOne=function(table,data){
+exports.dbSendOne=function(table,data,db){
 	//MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
@@ -27,7 +27,7 @@ exports.dbSendOne=function(table,data){
 
 
 
-exports.dbUpdateOne=function(table,dataFilter,dataUpdate){
+exports.dbUpdateOne=function(table,dataFilter,dataUpdate,db){
 
 	//MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
@@ -41,7 +41,7 @@ exports.dbUpdateOne=function(table,dataFilter,dataUpdate){
 }
 
 
-exports.dbInsertOne=function(table,dataInsert){
+exports.dbInsertOne=function(table,dataInsert,db){
 
 	//MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
@@ -52,7 +52,7 @@ exports.dbInsertOne=function(table,dataInsert){
 }
 
 
-exports.dbSendMore=function(table,data){
+exports.dbSendMore=function(table,data,db){
 	//MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
@@ -63,7 +63,7 @@ exports.dbSendMore=function(table,data){
 	//});
 }
 
-exports.getOther=function(callback,table,data){
+exports.getOther=function(callback,table,data,db){
 
 	//MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
@@ -76,7 +76,7 @@ exports.getOther=function(callback,table,data){
 	//});
 
 }
-exports.dbGetOne=function(table,data){
+exports.dbGetOne=function(table,data,db){
 	//MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
@@ -89,7 +89,7 @@ exports.dbGetOne=function(table,data){
 return result;
 }
 
-exports.getMaxValParam=function(table,param){
+exports.getMaxValParam=function(table,param,db){
 	//MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
@@ -114,7 +114,7 @@ exports.getMaxValParam=function(table,param){
 return max;
 }
 
-exports.dbGetMore=function(table,data){
+exports.dbGetMore=function(table,data,db){
 	//MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
