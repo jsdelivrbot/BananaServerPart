@@ -76,11 +76,11 @@ exports.dbGetOne=function(table,data,db){
 			return res;
 		});*/
 confs=1;
-	var $res=collection.find({},{limit:1});
+	var $res=collection.find({},{limit:1},function(res,err){
+		return res;
+	});
 
-		console.log($res.exec(function(err,res){
-			return res;
-		}));
+		console.log($res);
 		console.log("_____________");
 return finres;
 }
