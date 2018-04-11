@@ -38,9 +38,9 @@ fs.readdirSync('./controllers').forEach(function(file){
 	}
 })
 
-
+MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 io.sockets.on('connection', function (socket) {
-	MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
+
 		user.getUserBaseInfo(socket, io.sockets,db);
 		user.getUserAgronom(socket, io.sockets,db);
 		user.getUserAgronoms(socket, io.sockets,db);
@@ -54,34 +54,34 @@ io.sockets.on('connection', function (socket) {
 		user.getUserTraiders(socket, io.sockets,db);
 		user.getUserEmployers(socket, io.sockets,db);
 		user.getUserEmployeerItems(socket, io.sockets,db);
-/*
-		graphic.getGraphicItem(socket, io.sockets);
-		graphic.getGraphics(socket, io.sockets);
 
-		agronom.hireAgronom(socket, io.sockets);
+		graphic.getGraphicItem(socket, io.sockets,db);
+		graphic.getGraphics(socket, io.sockets,db);
 
-		employers.hireEmployeer(socket, io.sockets);
-		employers.buyEmployer(socket, io.sockets);
-		employers.getEmployeerItems(socket, io.sockets);
+		agronom.hireAgronom(socket, io.sockets,db);
 
-		hire.getHire(socket, io.sockets);
+		employers.hireEmployeer(socket, io.sockets,db);
+		employers.buyEmployer(socket, io.sockets,db);
+		employers.getEmployeerItems(socket, io.sockets,db);
 
-		map.getMapBase(socket, io.sockets);
+		hire.getHire(socket, io.sockets,db);
 
-		market.getMarketPrice(socket, io.sockets);
+		map.getMapBase(socket, io.sockets,db);
 
-		warehouse.getWarehouse(socket, io.sockets);
-		warehouse.getWarehouseResources(socket, io.sockets);
-		warehouse.upgradeWarehouse(socket, io.sockets);
+		market.getMarketPrice(socket, io.sockets,db);
 
-		parsel.getParselsBase(socket, io.sockets);
-		parsel.getParselUser(socket, io.sockets);
-		parsel.getParselIsUser(socket, io.sockets);
-		parsel.buyParsel(socket, io.sockets);
+		warehouse.getWarehouse(socket, io.sockets,db);
+		warehouse.getWarehouseResources(socket, io.sockets,db);
+		warehouse.upgradeWarehouse(socket, io.sockets,db);
 
-		install.getInstallInfo(socket, io.sockets);
-		install.setInstallInfo(socket, io.sockets);*/
-	});
+		parsel.getParselsBase(socket, io.sockets,db);
+		parsel.getParselUser(socket, io.sockets,db);
+		parsel.getParselIsUser(socket, io.sockets,db);
+		parsel.buyParsel(socket, io.sockets,db);
+
+		install.getInstallInfo(socket, io.sockets,db);
+		install.setInstallInfo(socket, io.sockets,db);
+
 	socket.on('addme', function (user) {
 
 		socket.username = user;
@@ -96,4 +96,5 @@ io.sockets.on('connection', function (socket) {
 	socket.on('disconect', function () {
 		io.sockets.emit('chat', 'Server', socket.username + 'left');
 	});
+});
 });

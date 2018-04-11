@@ -1,8 +1,6 @@
-var MongoClient = require('mongodb').MongoClient;
-
 
 var result=null;
-max=null;
+var max=null;
 function setMax(maximum){
 	max=maximum;
 }
@@ -78,19 +76,13 @@ exports.getOther=function(callback,table,data,db){
 }
 var finres;
 exports.dbGetOne=function(table,data,db){
-	//MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
-		console.log(infos);
 		var $res=collection.findOne(infos).then(function(res,err){
-			console.log("_______________");
 			finres=res;
-			console.log(finres);
 			return res;
 		});
-	//});
-	console.log(finres);
 return finres;
 }
 
@@ -120,14 +112,12 @@ return max;
 }
 
 exports.dbGetMore=function(table,data,db){
-	//MongoClient.connect('mongodb://Singuliarity1:Qazxswedc1@lobster-lab.net:27017/banandata', function(err, db) {
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = data;
 		collection.find(data).toArray(function(err,res){
 			setResult(res);
-			db.close();
-		//})
+			 
 	});
 
 	return result;
