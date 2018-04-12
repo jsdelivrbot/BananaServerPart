@@ -3,17 +3,18 @@ var DB=require("./db.js");
 var dataUBI;
 exports.getUserBaseInfo=function (socket,iosockets,db){
     socket.on("getUserBaseInfo",function(data){
-	    var prom=new Promise(function(resolve, reject) {
+	    setImmediate(function immediate () {
+
 		    DB.getOther(function (res) {
 			    dataUBI = res;
 		    }, "UserBaseInfo", data, db);
 		    console.log(dataUBI);
+	    });
 		    if (dataUBI != null) {
 			    delete dataUBI["_id"];
 			    delete dataUBI["Id_User"];
 			    socket.emit('getUserBaseInfo', dataUBI);
 		    }
-	    });
   });
 }
 
