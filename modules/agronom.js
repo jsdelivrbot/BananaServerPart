@@ -25,7 +25,7 @@ exports.hireAgronom=function (socket,iosockets,db){
 			}catch(e){
 			socket.emit('hireAgronom', "Invalid request format");
 		}
-		}
+		}}
 	);
 }
 
