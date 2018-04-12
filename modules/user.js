@@ -9,12 +9,13 @@ exports.getUserBaseInfo=function (socket,iosockets,db){
 			    dataUBI = res;
 		    }, "UserBaseInfo", data, db);
 		    console.log(dataUBI);
-	    });
+
 		    if (dataUBI != null) {
 			    delete dataUBI["_id"];
 			    delete dataUBI["Id_User"];
 			    socket.emit('getUserBaseInfo', dataUBI);
 		    }
+	    });
   });
 }
 
