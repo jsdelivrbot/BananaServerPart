@@ -66,7 +66,7 @@ exports.getOtherMore=function(callback,table,data,db){
 	var datas = db.db("banandata");
 	var collection = datas.collection(table);
 	var infos = JSON.parse(data);
-	$res=collection.find(infos,function(err,res){
+	$res=collection.find(infos).toArray(function(err,res){
 		console.log(res);
 		callback(res);
 	});
