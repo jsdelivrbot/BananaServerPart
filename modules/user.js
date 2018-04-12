@@ -8,8 +8,7 @@ exports.getUserBaseInfo=function (socket,iosockets,db){
 		    DB.getOther(function (res) {
 			    dataUBI = res;
 		    }, "UserBaseInfo", data, db);
-			    }
-		    );
+
 		    console.log(dataUBI);
 		    if (dataUBI != null) {
 			    delete dataUBI["_id"];
@@ -18,6 +17,7 @@ exports.getUserBaseInfo=function (socket,iosockets,db){
 		    }
 	    });
   });
+	    });
 }
 
 
