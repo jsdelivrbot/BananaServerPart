@@ -74,6 +74,7 @@ exports.hireEmployeer=function (socket,iosockets,db){
 		}catch(e){
 			socket.emit('hireEmployeer', "Invalid request format");
 		}
+	}
 	});
 }
 
