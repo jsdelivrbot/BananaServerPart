@@ -32,7 +32,6 @@ exports.getEmployeerItems=function (socket,iosockets,db){
 	socket.on("getEmployeerItems",function(data){
 		try {
 			$finZap = JSON.parse(data);
-			if ($data != null) {
 				DB.dbSendOne("EmployeerItems", $finZap, db);
 				DB.getOther(function (res) {
 					if (res != null) {
@@ -43,8 +42,6 @@ exports.getEmployeerItems=function (socket,iosockets,db){
 						socket.emit('getEmployeerItems', "-1");
 					}
 				}, "EmployeerItems", data, db);
-
-			}
 		}catch(e){
 			socket.emit('EmployeerItems', "Invalid request format");
 		}
@@ -54,7 +51,6 @@ exports.getEmployeerItems=function (socket,iosockets,db){
 
 exports.hireEmployeer=function (socket,iosockets,db){
 	socket.on("hireEmployeer",function(data){
-		if(data) {
 			try {
 				$hireData = JSON.parse(data);
 				$status = {"Hire_status": $hireData.Hire_status};
@@ -74,7 +70,6 @@ exports.hireEmployeer=function (socket,iosockets,db){
 		}catch(e){
 			socket.emit('hireEmployeer', "Invalid request format");
 		}
-	}
 	});
 }
 
