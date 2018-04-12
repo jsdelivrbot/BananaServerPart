@@ -60,7 +60,7 @@ exports.getOther=function(callback,table,data,db){
 				callback(res);
 			});
 		}catch (err){
-			console.log("GetError");
+			callback("Invalid request format");
 		}
 		return $res;
 

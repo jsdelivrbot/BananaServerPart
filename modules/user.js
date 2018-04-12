@@ -5,8 +5,10 @@ exports.getUserBaseInfo=function (socket,iosockets,db){
 	      $result=DB.getOther(function (res) {
 		      if (res != null )
 		      {
-			      delete res["_id"];
-			      delete res["Id_User"];
+			      if (typeof(res) != "string") {
+				      delete res["_id"];
+				      delete res["Id_User"];
+			      }
 			      socket.emit('getUserBaseInfo', res);
 		      }
 		    }, "UserBaseInfo", data, db);
@@ -33,12 +35,15 @@ exports.getUserAgronoms=function (socket,iosockets,db){
 		$datas=DB.dbGetMore("UserAgronom",data,db);
 		DB.getOtherMore(function(res){
 			if(res!=null) {
-				for (var $key in res) {
-					delete res[$key]["_id"];
-					delete res[$key]["Id_User"];
+				if (typeof(res) != "string") {
+					for (var $key in res) {
+						delete res[$key]["_id"];
+						delete res[$key]["Id_User"];
+					}
 				}
-			}
 				socket.emit('getUserAgronoms', res);
+			}
+
 		},"UserAgronom", data,db);
 	});
 }
