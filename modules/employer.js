@@ -66,13 +66,11 @@ exports.hireEmployeer=function (socket,iosockets,db){
 						delete res["Id_User"];
 						delete res["Hire_position"];
 						socket.emit('hireEmployeer', res);
-					}
+					}else{
+					socket.emit('hireEmployeer', "-1");
+				}
 				}, "hireEmployeer", data, db);
-			}
-		else
-			{
-				socket.emit('hireEmployeer', "-1");
-			}
+
 		}catch(e){
 			socket.emit('hireEmployeer', "Invalid request format");
 		}
