@@ -22,10 +22,7 @@ exports.hireAgronom=function (socket,iosockets,db){
 				}
 
 			},"hireAgronom", data,db);
-
-		} else {
-			socket.emit('hireAgronom', "-1");
-		}}catch(e){
+			}catch(e){
 			socket.emit('hireAgronom', "Invalid request format");
 		}
 		}
