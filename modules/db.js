@@ -54,7 +54,6 @@ exports.getOther=function(callback,table,data,db){
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
 		collection.findOne(infos,function(err,res){
-			console.log(res);
 			callback(res);
 		});
 }
