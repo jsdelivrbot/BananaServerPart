@@ -27,9 +27,7 @@ exports.dbUpdateOne=function(table,dataFilter,dataUpdate,db){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = dataUpdate;
-		collection.updateOne(dataFilter,{$set:infos}, function(err, result){
-
-		});
+		collection.updateOne(dataFilter,{$set:infos}, function(err, result){});
 
 }
 
@@ -50,12 +48,13 @@ exports.dbSendMore=function(table,data,db){
 		});
 }
 
-exports.getOther=function(callback,table,data,db){
+exports.getOther=async function(callback,table,data,db){
 
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
 		collection.findOne(infos,function(err,res){
+			console.log(res);
 			callback(res);
 		});
 }

@@ -1,7 +1,7 @@
 
 var DB=require("./db.js");
 var dataUBI=null;
-exports.getUserBaseInfo=async function (socket,iosockets,db){
+exports.getUserBaseInfo=function (socket,iosockets,db){
     socket.on("getUserBaseInfo",function(data){
 	    DB.getOther(function(res){dataUBI=res;},"UserBaseInfo", data,db);
 	    if(dataUBI!=null) {
