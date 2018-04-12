@@ -3,6 +3,7 @@ var DB=require("./db.js");
 exports.getInstallInfo=function (socket,iosockets,db){
 	socket.on("getInstallInfo",function(data){
 		DB.getOtherMore(function(res){
+			console.log(res);
 			if(res!=null) {
 				for (var $key in res) {
 					delete res[$key]["_id"];
