@@ -2,7 +2,6 @@ var DB=require("./db.js");
 
 exports.getParselsBase=function (socket,iosockets,db){
 	socket.on("getParselsBase",function(data){
-
 		DB.getOtherMore(function(res){
 			if(res!=null) {
 				if(!isNaN(res[0])) {
