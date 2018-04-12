@@ -4,12 +4,12 @@ var dataUBI;
 exports.getUserBaseInfo=function (socket,iosockets,db){
     socket.on("getUserBaseInfo",function(data){
 	    setImmediate(function immediate () {
-		    setTimeout(function(){
+		    process.nextTick(function(){
 		    DB.getOther(function (res) {
 			    dataUBI = res;
 		    }, "UserBaseInfo", data, db);
 		    console.log(dataUBI);}
-		    ,0);
+		    );
 		    if (dataUBI != null) {
 			    delete dataUBI["_id"];
 			    delete dataUBI["Id_User"];
