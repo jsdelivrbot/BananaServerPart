@@ -52,6 +52,7 @@ io.sockets.on('connection', function (socket) {
 		user.getUserScientifics(socket, io.sockets,db);
 		user.getUserTraider(socket, io.sockets,db);
 		user.getUserTraiders(socket, io.sockets,db);
+		user.getUserEmployer(socket, io.sockets,db);
 		user.getUserEmployers(socket, io.sockets,db);
 		user.getUserEmployeerItems(socket, io.sockets,db);
 
