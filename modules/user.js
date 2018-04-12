@@ -41,8 +41,6 @@ exports.getUserAgronoms=function (socket,iosockets,db){
 				socket.emit('getUserAgronoms', res);
 		},"UserAgronom", data,db);
 
-		}
-
 	});
 }
 
