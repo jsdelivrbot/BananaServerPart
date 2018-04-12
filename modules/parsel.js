@@ -4,7 +4,9 @@ exports.getParselsBase=function (socket,iosockets,db){
 	socket.on("getParselsBase",function(data){
 		DB.getOtherMore(function(res){
 			if(res!=null) {
+				console.log(res.count());
 				for (var $key in res) {
+					console.log($key);
 					delete res[$key]["_id"];
 					delete res[$key]["Id_map"];
 				}
