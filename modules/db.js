@@ -48,12 +48,12 @@ exports.dbSendMore=function(table,data,db){
 		});
 }
 
-exports.getOther=async function(callback,table,data,db){
+exports.getOther=function(callback,table,data,db){
 
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
-		collection.findOne(infos,function(err,res){
+		collection.findOne(infos).then(function(err,res){
 			console.log(res);
 			callback(res);
 		});
