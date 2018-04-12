@@ -19,9 +19,12 @@ exports.getUserBaseInfo=function (socket,iosockets,db){
 exports.getUserAgronom=function (socket,iosockets,db){
 	socket.on("getUserAgronom",function(data){
 		DB.getOther(function(res){
+
 			if(res!=null) {
-				delete res["_id"];
-				delete res["Id_User"];
+				if (typeof(res) != "string") {
+					delete res["_id"];
+					delete res["Id_User"];
+				}
 				socket.emit('getUserAgronom', res);
 			}
 		},"UserAgronom", data,db);
@@ -52,8 +55,10 @@ exports.getUserLobbyist=function (socket,iosockets,db){
 	socket.on("getUserLobbyist",function(data){
 		DB.getOther(function(res){
 			if(res!=null) {
-				delete res["_id"];
-				delete res["Id_User"];
+				if (typeof(res) != "string") {
+					delete res["_id"];
+					delete res["Id_User"];
+				}
 				socket.emit('getUserLobbyist', res);
 			}
 		},"UserLobbyist", data,db);
@@ -65,9 +70,11 @@ exports.getUserLobbyists=function (socket,iosockets,db){
 	socket.on("getUserLobbyists",function(data){
 		DB.getOtherMore(function(res){
 			if(res!=null) {
-				for (var $key in res) {
-					delete res[$key]["_id"];
-					delete res[$key]["Id_User"];
+				if (typeof(res) != "string") {
+					for (var $key in res) {
+						delete res[$key]["_id"];
+						delete res[$key]["Id_User"];
+					}
 				}
 				socket.emit('getUserLobbyists', res);
 			}
@@ -80,8 +87,10 @@ exports.getUserDirector=function (socket,iosockets,db){
 	socket.on("getUserDirector",function(data){
 		DB.getOther(function(res){
 			if(res!=null) {
-				delete res["_id"];
-				delete res["Id_User"];
+				if (typeof(res) != "string") {
+					delete res["_id"];
+					delete res["Id_User"];
+				}
 				socket.emit('getUserDirector', res);
 			}},"UserDirector", data,db);
 
@@ -92,9 +101,11 @@ exports.getUserDirectors=function (socket,iosockets,db){
 	socket.on("getUserDirectors",function(data){
 		DB.getOtherMore(function(res){
 			if(res!=null) {
-				for (var $key in res) {
-					delete res[$key]["_id"];
-					delete res[$key]["Id_User"];
+				if (typeof(res) != "string") {
+					for (var $key in res) {
+						delete res[$key]["_id"];
+						delete res[$key]["Id_User"];
+					}
 				}
 				socket.emit('getUserDirectors', res);
 			}
@@ -107,8 +118,10 @@ exports.getUserScientific=function (socket,iosockets,db){
 	socket.on("getUserScientific",function(data){
 		DB.getOther(function(res){dataUS=res;},"UserScientific", data,db);
 		if(dataUS!=null) {
-			delete dataUS["_id"];
-			delete dataUS["Id_User"];
+			if (typeof(res) != "string") {
+				delete dataUS["_id"];
+				delete dataUS["Id_User"];
+			}
 			socket.emit('getUserScientific', dataUS);
 		}
 		});
@@ -119,9 +132,11 @@ exports.getUserScientifics=function (socket,iosockets,db){
 	socket.on("getUserScientifics",function(data){
 		DB.getOtherMore(function(res){
 			if(res!=null) {
-				for (var $key in res) {
-					delete res[$key]["_id"];
-					delete res[$key]["Id_User"];
+				if (typeof(res) != "string") {
+					for (var $key in res) {
+						delete res[$key]["_id"];
+						delete res[$key]["Id_User"];
+					}
 				}
 				socket.emit('getUserScientifics', res);
 			}},"UserScientific", data,db);
@@ -134,8 +149,10 @@ exports.getUserTraider=function (socket,iosockets,db){
 	socket.on("getUserTraider",function(data){
 		DB.getOther(function(res){
 			if(res!=null) {
-				delete res["_id"];
-				delete res["Id_User"];
+				if (typeof(res) != "string") {
+					delete res["_id"];
+					delete res["Id_User"];
+				}
 				socket.emit('getUserTraider', res);
 			}},"UserTraider", data,db);
 
@@ -147,9 +164,11 @@ exports.getUserTraiders=function (socket,iosockets,db){
 	socket.on("getUserTraiders",function(data){
 		DB.getOtherMore(function(res){
 			if(res!=null) {
-				for (var $key in res) {
-					delete res[$key]["_id"];
-					delete res[$key]["Id_User"];
+				if (typeof(res) != "string") {
+					for (var $key in res) {
+						delete res[$key]["_id"];
+						delete res[$key]["Id_User"];
+					}
 				}
 				socket.emit('getUserTraiders', res);
 			}},"UserTraider", data,db);
@@ -162,8 +181,10 @@ exports.getUserEmployer=function (socket,iosockets,db){
 	socket.on("getUserEmployer",function(data){
 		DB.getOther(function(res){
 			if(res!=null) {
-				delete res["_id"];
-				delete res["Id_User"];
+				if (typeof(res) != "string") {
+					delete res["_id"];
+					delete res["Id_User"];
+				}
 				socket.emit('getUserEmployer', res);
 			}},"UserEmployer", data,db);
 
@@ -174,9 +195,11 @@ exports.getUserEmployers=function (socket,iosockets,db){
 	socket.on("getUserEmployers",function(data){
 		DB.getOtherMore(function(res){
 			if(res!=null) {
-				for (var $key in res) {
-					delete res[$key]["_id"];
-					delete res[$key]["Id_User"];
+				if (typeof(res) != "string") {
+					for (var $key in res) {
+						delete res[$key]["_id"];
+						delete res[$key]["Id_User"];
+					}
 				}
 				socket.emit('getUserEmployers', res);
 			}},"UserEmployer", data,db);
@@ -188,11 +211,12 @@ exports.getUserEmployeerItems=function (socket,iosockets,db){
 	socket.on("getUserEmployeerItems",function(data){
 		DB.getOtherMore(function(res){
 			if(res!=null) {
+				if (typeof(res) != "string") {
 				for (var $key in res) {
 					delete res[$key]["_id"];
 					delete res[$key]["Id_User"];
 					delete res[$key]["Type_employer"];
-				}
+				}}
 				socket.emit('getUserEmployeerItems', res);
 			}},"UserEmployeerItems", data,db);
 

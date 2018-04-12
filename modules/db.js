@@ -71,10 +71,15 @@ exports.getOtherMore=function(callback,table,data,db){
 
 	var datas = db.db("banandata");
 	var collection = datas.collection(table);
+	$res=null;
+	try {
 	var infos = JSON.parse(data);
 	$res=collection.find(infos).toArray(function(err,res){
 		callback(res);
 	});
+	}catch (err){
+		callback("Invalid request format");
+	}
 	return $res;
 }
 var finres;

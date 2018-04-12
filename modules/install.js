@@ -3,13 +3,14 @@ var DB=require("./db.js");
 exports.getInstallInfo=function (socket,iosockets,db){
 	socket.on("getInstallInfo",function(data){
 		DB.getOtherMore(function(res){
-			console.log(res);
 			if(res!=null) {
-				for (var $key in res) {
-					delete res[$key]["_id"];
-					delete res[$key]["Id_User"];
-					delete res[$key]["Id_map"];
-					delete res[$key]["Id_parsel"];
+				if (typeof(res) != "string") {
+					for (var $key in res) {
+						delete res[$key]["_id"];
+						delete res[$key]["Id_User"];
+						delete res[$key]["Id_map"];
+						delete res[$key]["Id_parsel"];
+					}
 				}
 				socket.emit('getInstallInfo', res);
 			}},"InstallInfo", data,db);
@@ -23,6 +24,7 @@ exports.setInstallInfo=function (socket,iosockets,db){
 	socket.on("setInstallInfo",function(data){
 
 		if(data!=null) {
+			try{
 			var $val = JSON.parse(data);
 			var $resource = {"Resource": $val.SelectedResource};
 			var $user = {"Id_User": $val.Id_User};
@@ -41,6 +43,7 @@ exports.setInstallInfo=function (socket,iosockets,db){
 				DB.dbUpdateOne("ParselUser", $getInfos, $resource,db);
 				$datas = DB.dbGetOne("ParselUser", JSON.stringify($getInfos),db);
 				if ($datas != null) {
+
 					delete $datas["_id"];
 					delete $datas["Id_User"];
 					delete $datas["Id_map"];
@@ -48,6 +51,9 @@ exports.setInstallInfo=function (socket,iosockets,db){
 				}
 			}
 		}
+		catch(e){
+			socket.emit('setInstallInfo', "Invalid request format");
+		}}
 	});
 }
 
