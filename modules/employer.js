@@ -43,7 +43,7 @@ exports.getEmployeerItems=function (socket,iosockets,db){
 					}
 				}, "EmployeerItems", data, db);
 		}catch(e){
-			socket.emit('EmployeerItems', "Invalid request format");
+			socket.emit('getEmployeerItems', "Invalid request format");
 		}
 	});
 }
