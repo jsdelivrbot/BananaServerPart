@@ -1,5 +1,5 @@
 var DB=require("./db.js");
-exports.getMarketPrice=function (socket,iosockets){
+exports.getMarketPrice=function (socket,iosockets,db){
 	socket.on("getMarketPrice",function(data){
 		DB.getOther(function(res){
 			if(res!=null) {
