@@ -53,9 +53,12 @@ exports.getOther=function(callback,table,data,db){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
-		collection.findOne(infos,function(err,res){
-			callback(res);
-		});
+		var promise=new Promise(function(resolve, reject){
+			collection.findOne(infos,function(err,res){
+				callback(res);
+			});
+		})
+
 }
 
 
