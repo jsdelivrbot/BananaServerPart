@@ -52,6 +52,7 @@ exports.getOther=function(callback,table,data,db){
 
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
+		$res=null;
 		try {
 			var infos = JSON.parse(data);
 
@@ -59,7 +60,7 @@ exports.getOther=function(callback,table,data,db){
 				callback(res);
 			});
 		}catch (err){
-			console.log(err);
+			console.log("GetError");
 		}
 		return $res;
 
