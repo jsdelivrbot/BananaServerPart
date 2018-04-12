@@ -1,25 +1,28 @@
 var DB=require("./db.js");
 var max_level=2;
-var dataW=null;
 exports.getWarehouse=function (socket,iosockets,db){
 	socket.on("getWarehouse",function(data){
-		DB.getOther(function(res){dataW=res;},"Warehouse", data,db);
-		if(dataW!=null) {
-			delete dataW["_id"];
-			delete dataW["Id_User"];
-			socket.emit('getWarehouse', dataW);
-		}
+		DB.getOther(function(res){
+			if(res!=null) {
+				delete res["_id"];
+				delete res["Id_User"];
+				socket.emit('getWarehouse', res);
+			}
+			},"Warehouse", data,db);
+
 	});
 }
-var dataWRs=null;
+
 exports.getWarehouseResources=function (socket,iosockets,db){
 	socket.on("getWarehouseResources",function(data){
-		DB.getOther(function(res){dataWRs=res;},"WarehouseResources", data,db);
-		if(dataWRs!=null) {
-			delete dataWRs["_id"];
-			delete dataWRs["Id_User"];
-			socket.emit('getWarehouseResources', dataWRs);
-		}
+		DB.getOther(function(res){
+			if(res!=null) {
+				delete res["_id"];
+				delete res["Id_User"];
+				socket.emit('getWarehouseResources', res);
+			}
+			},"WarehouseResources", data,db);
+
 	});
 }
 
@@ -37,10 +40,12 @@ var dataUW2=null;
 				$str={"Price_warehouse": "-1"};
 				DB.dbUpdateOne("Warehouse", $user, $str,db);
 			}
-				DB.getOther(function(res){dataUW2=res;},"Warehouse",  JSON.stringify($val),db);
-				delete dataUW2["_id"];
-				delete dataUW2["Id_User"];
-				socket.emit('upgradeWarehouse', dataUW2);
+				DB.getOther(function(res){
+					delete res["_id"];
+					delete res["Id_User"];
+					socket.emit('upgradeWarehouse', res);
+					},"Warehouse",  JSON.stringify($val),db);
+
 		}else{
 				socket.emit('upgradeWarehouse', "-1");
 			}

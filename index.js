@@ -88,7 +88,7 @@ io.sockets.on('connection', function (socket) {
 		io.sockets.emit('chat', socket.username + " on deck");
 	});
 	socket.on('sendchat', function (data) {
-		io.sockets.emit('chat', socket.username + ":" + data);
+		io.sockets.emit('sendchat', socket.username + ":" + data);
 
 	});
 

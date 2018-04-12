@@ -1,43 +1,43 @@
 var DB=require("./db.js");
 
-var dataPB=null;
-
 exports.getParselsBase=function (socket,iosockets,db){
 	socket.on("getParselsBase",function(data){
-		DB.getOtherMore(function(res){dataPB=res;},"ParselsBase", data,db);
-		if(dataPB!=null) {
-			for (var $key in dataPB) {
-				delete dataPB[$key]["_id"];
-				delete dataPB[$key]["Id_map"];
-			}
-			socket.emit('getParselsBase', dataPB);
-		}
+		DB.getOtherMore(function(res){
+			if(res!=null) {
+				for (var $key in res) {
+					delete res[$key]["_id"];
+					delete res[$key]["Id_map"];
+				}
+				socket.emit('getParselsBase', res);
+			}},"ParselsBase", data,db);
+
 	});
 }
 
-var dataPU=null;
 exports.getParselUser=function (socket,iosockets,db){
 	socket.on("getParselUser",function(data){
-		DB.getOther(function(res){dataPU=res;},"ParselUser", data,db);
-		if(dataPU!=null) {
-			delete dataPU["_id"];
-			delete dataPU["Id_User"];
-			delete dataPU["Id_map"];
-			socket.emit('getParselUser', dataPU);
-		}
+		DB.getOther(function(res){
+			if(res!=null) {
+				delete res["_id"];
+				delete res["Id_User"];
+				delete res["Id_map"];
+				socket.emit('getParselUser', res);
+			}},"ParselUser", data,db);
+
 	});
 }
-var dataPUs=null;
+
 exports.getParselsUser=function (socket,iosockets,db){
 	socket.on("getParselsUser",function(data){
-		DB.getOtherMore(function(res){dataPUs=res;},"ParselUser", data,db);
-		if(dataPUs!=null) {
-			for (var $key in dataPUs) {
-				delete dataPUs[$key]["_id"];
-				delete dataPUs[$key]["Id_User"];
-			}
-			socket.emit('getParselsUser', dataPUs);
-		}
+		DB.getOtherMore(function(res){
+			if(res!=null) {
+				for (var $key in res) {
+					delete res[$key]["_id"];
+					delete res[$key]["Id_User"];
+				}
+				socket.emit('getParselsUser', res);
+			}},"ParselUser", data,db);
+
 	});
 }
 userInfos=null;
@@ -74,13 +74,16 @@ exports.buyParsel=function (socket,iosockets,db){
 					$finalDataPay.Fertility = 1;
 
 					 DB.dbSendOne("ParselUser",$finalDataPay,db);
-					 DB.getOther(function(res){dataBP=res;},"ParselUser", data,db);
-					 if(dataBP!=null) {
-						 delete dataBP["_id"];
-						 delete dataBP["Id_User"];
-						 delete dataBP["Id_map"];
-						 socket.emit('buyParsel', dataBP);
-					 }
+					 DB.getOther(function(res){
+					 	if(res!=null) {
+						 delete res["_id"];
+						 delete res["Id_User"];
+						 delete res["Id_map"];
+						 socket.emit('buyParsel', res);
+					 }else{
+						  socket.emit('buyParsel', -1);
+					  }},"ParselUser", data,db);
+
 
 
 				}

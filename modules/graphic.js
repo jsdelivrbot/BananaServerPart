@@ -1,27 +1,28 @@
 
 var DB=require("./db.js");
 
-var dataGI=null;
 exports.getGraphicItem=function (socket,iosockets,db){
 	socket.on("getGraphicItem",function(data){
-		DB.getOther(function(res){dataGI=res;},"GraphicItem", data,db);
-		if(dataGI!=null) {
-			delete dataGI["_id"];
-			socket.emit('getGraphicItem', dataGI);
-		}
+		DB.getOther(function(res){
+			if(res!=null) {
+				delete res["_id"];
+				socket.emit('getGraphicItem', res);
+			}
+			},"GraphicItem", data,db);
+
 	});
 }
 
-var dataGs=null;
 exports.getGraphics=function (socket,iosockets,db){
 	socket.on("getGraphics",function(data){
-		DB.getOtherMore(function(res){dataGs=res;},"GraphicItem", data,db);
-		if(dataGs!=null) {
-			for (var $key in dataGs) {
-				delete dataGs[$key]["_id"];
-			}
-			socket.emit('getGraphics', dataGs);
-		}
+		DB.getOtherMore(function(res){
+			if(res!=null) {
+				for (var $key in res) {
+					delete res[$key]["_id"];
+				}
+				socket.emit('getGraphics', res);
+			}},"GraphicItem", data,db);
+
 	});
 }
 
