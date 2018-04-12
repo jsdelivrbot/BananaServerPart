@@ -5,10 +5,10 @@ exports.getUserBaseInfo=function (socket,iosockets,db){
     socket.on("getUserBaseInfo",function(data){
 	      $result=DB.getOther(function (res) {
 			    dataUBI = res;
+		      console.log(dataUBI);
 		    }, "UserBaseInfo", data, db);
 
-		    console.log(dataUBI);
-		    console.log($result);
+
 		    if (dataUBI != null )
 		    {
 			    delete dataUBI["_id"];
