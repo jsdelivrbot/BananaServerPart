@@ -4,17 +4,13 @@ var dataUBI;
 exports.getUserBaseInfo=function (socket,iosockets,db){
     socket.on("getUserBaseInfo",function(data){
 	      $result=DB.getOther(function (res) {
-			    dataUBI = res;
-		      console.log(dataUBI);
+		      if (res != null )
+		      {
+			      delete res["_id"];
+			      delete res["Id_User"];
+			      socket.emit('getUserBaseInfo', res);
+		      }
 		    }, "UserBaseInfo", data, db);
-
-
-		    if (dataUBI != null )
-		    {
-			    delete dataUBI["_id"];
-			    delete dataUBI["Id_User"];
-			    socket.emit('getUserBaseInfo', dataUBI);
-		    }
 	    });
 }
 
