@@ -6,9 +6,10 @@ exports.getUserBaseInfo=function (socket,iosockets,db){
 	      $result=DB.getOther(function (res) {
 		      if (res != null )
 		      {
-			      delete res["_id"];
-			      delete res["Id_User"];
-			      socket.emit('getUserBaseInfo', res);
+			      dataUBI=res;
+			      delete dataUBI["_id"];
+			      delete dataUBI["Id_User"];
+			      socket.emit('getUserBaseInfo', dataUBI);
 		      }
 		    }, "UserBaseInfo", data, db);
 	    });
