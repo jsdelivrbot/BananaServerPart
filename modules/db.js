@@ -53,7 +53,7 @@ exports.getOther=function(callback,table,data,db){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
 		var infos = JSON.parse(data);
-
+	console.log(infos);
 		$res=collection.findOne(infos,function(err,res){
 			callback(res);
 		});
