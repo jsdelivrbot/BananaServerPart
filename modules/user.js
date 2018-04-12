@@ -8,8 +8,9 @@ exports.getUserBaseInfo=function (socket,iosockets,db){
 		    DB.getOther(function (res) {
 			    dataUBI = res;
 		    }, "UserBaseInfo", data, db);
-		    console.log(dataUBI);}
+			    }
 		    );
+		    console.log(dataUBI);
 		    if (dataUBI != null) {
 			    delete dataUBI["_id"];
 			    delete dataUBI["Id_User"];
