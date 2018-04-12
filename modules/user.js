@@ -4,18 +4,20 @@ var dataUBI;
 exports.getUserBaseInfo=function (socket,iosockets,db){
     socket.on("getUserBaseInfo",function(data){
 	    setImmediate(function immediate () {
-		    process.nextTick(function(){
+		    process.nextTick(()=>{
 		    DB.getOther(function (res) {
 			    dataUBI = res;
 		    }, "UserBaseInfo", data, db);
-
-		    console.log(dataUBI);
-		    if (dataUBI != null) {
+		    });
+		    process.nextTick(()=>{console.log(dataUBI);});
+		    process.nextTick(()=> {if (dataUBI != null
+		    )
+		    {
 			    delete dataUBI["_id"];
 			    delete dataUBI["Id_User"];
 			    socket.emit('getUserBaseInfo', dataUBI);
 		    }
-	    });
+	    })
   });
 	    });
 }
