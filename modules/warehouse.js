@@ -38,31 +38,31 @@ var dataResWar=null;
 		try {
 
 			if (data != null) {
-				console.log(data);
+
 				$val = JSON.parse(data);
 				DB.getOther(function (res) {
 					dataUW1 = res;
 				}, "Warehouse", data, db);
 				$user = {"Id_User": $val.Id_User};
 
-				$Level='{"Level":"'+dataUW1["Level"]+'"}';
+				$Level='{"Level":"'+(dataUW1["Level"]+1)+'"}';
 				DB.getOther(function (res) {
 					dataResWar = res;
 					delete dataResWar._id;
 				}, "WarehouseList", $Level, db);
 
 				if (dataUW1 != null) {
-					/*if (Number(dataUW1["Level"]) >= Number(max_level)) {
+					if (Number(dataUW1["Level"]) >= Number(max_level)) {
 						$str = {"Price_warehouse": "-1"};
 						DB.dbUpdateOne("Warehouse", $user, $str, db);
+					}else{
+					 DB.dbUpdateOne("Warehouse", $user, JSON.stringify(dataResWar), db);
 					}
 					DB.getOther(function (res) {
 						delete res["_id"];
 						delete res["Id_User"];
 						socket.emit('upgradeWarehouse', res);
 					}, "Warehouse", JSON.stringify($val), db);
-*/
-					socket.emit('upgradeWarehouse', dataResWar);
 				} else {
 					socket.emit('upgradeWarehouse', "-1");
 				}
