@@ -51,7 +51,7 @@ var dataResWar=null;
 
 					delete dataResWar._id;
 				}, "WarehouseList", $Level, db);
-				console.log(dataResWar);
+
 				if (dataUW1 != null && dataResWar!=null) {
 
 					if (Number(dataUW1["Level"]) >= Number(max_level)) {
@@ -59,7 +59,8 @@ var dataResWar=null;
 						DB.dbUpdateOne("Warehouse", $user, dataResWar, db);
 					}else{
 
-					 DB.dbUpdateOne("Warehouse", $user, JSON.stringify(dataResWar), db);
+					 DB.dbUpdateOne("Warehouse", $user, dataResWar, db);
+						console.log(dataResWar);
 					}
 					DB.getOther(function (res) {
 						delete res["_id"];
