@@ -48,12 +48,12 @@ var dataResWar=null;
 				$Level='{"Level":"'+(parseInt(dataUW1["Level"])+1)+'"}';
 				DB.getOther(function (res) {
 					dataResWar = res;
+
 					delete dataResWar._id;
 				}, "WarehouseList", $Level, db);
-
+				console.log(dataResWar);
 				if (dataUW1 != null && dataResWar!=null) {
-					console.log($Level);
-					console.log(dataResWar);
+
 					if (Number(dataUW1["Level"]) >= Number(max_level)) {
 						dataResWar.Price_warehouse="-1";
 						DB.dbUpdateOne("Warehouse", $user, dataResWar, db);
