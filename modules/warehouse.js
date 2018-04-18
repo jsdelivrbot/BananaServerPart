@@ -59,7 +59,7 @@ var dataResWar=null;
 						socket.emit('upgradeWarehouse', res);
 					}, "Warehouse", JSON.stringify($val), db);
 */
-
+					socket.emit('upgradeWarehouse', dataResWar);
 				} else {
 					socket.emit('upgradeWarehouse', "-1");
 				}
