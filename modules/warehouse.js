@@ -51,10 +51,10 @@ var dataResWar=null;
 					delete dataResWar._id;
 				}, "WarehouseList", $Level, db);
 
-				if (dataUW1 != null) {
+				if (dataUW1 != null && dataResWar!=null) {
 					if (Number(dataUW1["Level"]) >= Number(max_level)) {
-						$str = {"Price_warehouse": "-1"};
-						DB.dbUpdateOne("Warehouse", $user, $str, db);
+						dataResWar.Price_warehouse="-1";
+						DB.dbUpdateOne("Warehouse", $user, dataResWar, db);
 					}else{
 					 DB.dbUpdateOne("Warehouse", $user, JSON.stringify(dataResWar), db);
 					}
@@ -62,7 +62,7 @@ var dataResWar=null;
 						delete res["_id"];
 						delete res["Id_User"];
 						socket.emit('upgradeWarehouse', res);
-					}, "Warehouse", JSON.stringify($val), db);
+					}, "Warehouse", JSON.stringify($user), db);
 				} else {
 					socket.emit('upgradeWarehouse', "-1");
 				}
