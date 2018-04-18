@@ -1,5 +1,5 @@
 var DB=require("./db.js");
-var max_level=2;
+var max_level=30;
 exports.getWarehouse=function (socket,iosockets,db){
 	socket.on("getWarehouse",function(data){
 		DB.getOther(function(res){
@@ -32,18 +32,24 @@ exports.getWarehouseResources=function (socket,iosockets,db){
 
 var dataUW1=null;
 var dataUW2=null;
+var dataResWar=null;
 	exports.upgradeWarehouse=function (socket,iosockets,db){
 	socket.on("upgradeWarehouse",function(data) {
 		try {
 			$val = JSON.parse(data);
 			if ($val != null) {
-				$datas = DB.dbGetOne("Warehouse", JSON.stringify($val), db);
 				DB.getOther(function (res) {
 					dataUW1 = res;
 				}, "Warehouse", data, db);
 				$user = {"Id_User": $val.Id_User};
+
+				$Level='{"Level":"'+dataUW1["Level"]+'"}';
+				DB.getOther(function (res) {
+					dataResWar = res;
+				}, "WarehouseList", $Level, db);
+
 				if (dataUW1 != null) {
-					if (Number(dataUW1["Level"]) >= Number(max_level)) {
+					/*if (Number(dataUW1["Level"]) >= Number(max_level)) {
 						$str = {"Price_warehouse": "-1"};
 						DB.dbUpdateOne("Warehouse", $user, $str, db);
 					}
@@ -52,7 +58,8 @@ var dataUW2=null;
 						delete res["Id_User"];
 						socket.emit('upgradeWarehouse', res);
 					}, "Warehouse", JSON.stringify($val), db);
-
+*/
+					socket.emit('upgradeWarehouse', "dataResWar");
 				} else {
 					socket.emit('upgradeWarehouse', "-1");
 				}
