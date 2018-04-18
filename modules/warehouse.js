@@ -46,6 +46,7 @@ var dataResWar=null;
 				$Level='{"Level":"'+dataUW1["Level"]+'"}';
 				DB.getOther(function (res) {
 					dataResWar = res;
+					delete dataResWar._id;
 				}, "WarehouseList", $Level, db);
 
 				if (dataUW1 != null) {
