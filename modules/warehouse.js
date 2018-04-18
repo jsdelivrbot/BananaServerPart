@@ -52,12 +52,13 @@ var dataResWar=null;
 				}, "WarehouseList", $Level, db);
 
 				if (dataUW1 != null && dataResWar!=null) {
+					console.log($Level);
+					console.log(dataResWar);
 					if (Number(dataUW1["Level"]) >= Number(max_level)) {
 						dataResWar.Price_warehouse="-1";
 						DB.dbUpdateOne("Warehouse", $user, dataResWar, db);
 					}else{
-						console.log($Level);
-						console.log(dataResWar);
+
 					 DB.dbUpdateOne("Warehouse", $user, JSON.stringify(dataResWar), db);
 					}
 					DB.getOther(function (res) {
