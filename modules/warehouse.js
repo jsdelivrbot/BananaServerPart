@@ -58,7 +58,7 @@ var dataResWar=null;
 						delete res["Id_User"];
 						socket.emit('upgradeWarehouse', res);
 					}, "Warehouse", JSON.stringify($val), db);
-*/
+*/        console.log(dataResWar);
 					socket.emit('upgradeWarehouse', dataResWar);
 				} else {
 					socket.emit('upgradeWarehouse', "-1");
