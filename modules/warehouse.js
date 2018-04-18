@@ -48,7 +48,7 @@ var dataResWar=null;
 					dataResWar = res;
 					delete dataResWar._id;
 				}, "WarehouseList", $Level, db);
-
+				console.log(dataResWar);
 				if (dataUW1 != null) {
 					/*if (Number(dataUW1["Level"]) >= Number(max_level)) {
 						$str = {"Price_warehouse": "-1"};
@@ -59,7 +59,7 @@ var dataResWar=null;
 						delete res["Id_User"];
 						socket.emit('upgradeWarehouse', res);
 					}, "Warehouse", JSON.stringify($val), db);
-*/        console.log(dataResWar);
+*/
 					socket.emit('upgradeWarehouse', dataResWar);
 				} else {
 					socket.emit('upgradeWarehouse', "-1");
