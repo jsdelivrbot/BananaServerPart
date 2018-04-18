@@ -36,8 +36,10 @@ var dataResWar=null;
 	exports.upgradeWarehouse=function (socket,iosockets,db){
 	socket.on("upgradeWarehouse",function(data) {
 		try {
-			$val = JSON.parse(data);
-			if ($val != null) {
+
+			if (data != null) {
+				console.log(data);
+				$val = JSON.parse(data);
 				DB.getOther(function (res) {
 					dataUW1 = res;
 				}, "Warehouse", data, db);
@@ -48,7 +50,7 @@ var dataResWar=null;
 					dataResWar = res;
 					delete dataResWar._id;
 				}, "WarehouseList", $Level, db);
-				console.log(dataResWar);
+
 				if (dataUW1 != null) {
 					/*if (Number(dataUW1["Level"]) >= Number(max_level)) {
 						$str = {"Price_warehouse": "-1"};
