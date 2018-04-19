@@ -16,7 +16,7 @@ exports.in=function(data){
 	try {
 		infor = JSON.parse(data);
 		$final=infor.length;
-		console.log($final);
+		console.log(infor);
 		for(var $i=0;$i<$final;$i++){
 		//	detectedType(infor[i]);
 		}
