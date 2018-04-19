@@ -15,11 +15,10 @@
 exports.in=function(data){
 	try {
 		infor = JSON.parse(data);
-		$final=infor.length;
-		console.log(infor);
-		console.log($final);
-		for(var $i=0;$i<$final;$i++){
-		//	detectedType(infor[i]);
+
+		for(var $key in infor){
+			console.log($key);
+			//	detectedType(infor[i]);
 		}
 		return infor;
 	}catch(e){
