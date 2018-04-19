@@ -3,6 +3,7 @@ var DB=require("./db.js");
 var transformData=require("./inout.js");
 exports.getUserBaseInfo=function (socket,iosockets,db){
     socket.on("getUserBaseInfo",function(data){
+	    console.log(data);
     	infor=transformData.in(data);
     	console.log(infor);
 	    if(infor) {
