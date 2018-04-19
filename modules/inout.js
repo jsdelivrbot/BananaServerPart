@@ -1,5 +1,5 @@
 
-/*function detectedType(data){
+function detectedType(data){
 	console.log(data);
 	switch(typeof(data)){
 		case "Number":
@@ -10,7 +10,7 @@
 			console.log("Number");
 			break;
 	}
-}*/
+}
 
 exports.in=function(data){
 	try {
