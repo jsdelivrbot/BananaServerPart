@@ -1,16 +1,19 @@
 
 function detectedType(data){
-	console.log(data);
-	console.log(typeof(data));
+	var $val;
 	switch(typeof(data)){
-		case "number":
-
-			console.log("number");
+			case "number":
+				$val=data;
 			break;
-		case "string":
-			console.log("number");
+			case "string":
+				if(parseFloat(data)){
+					$val=parseFloat(data);
+				}else{
+					$val=data;
+				}
 			break;
 	}
+	return $val;
 }
 
 exports.in=function(data){
@@ -18,7 +21,7 @@ exports.in=function(data){
 		infor = JSON.parse(data);
 
 		for(var $key in infor){
-				detectedType(infor[$key]);
+				console.log(detectedType(infor[$key]));
 		}
 		return infor;
 	}catch(e){
