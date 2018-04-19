@@ -1,5 +1,6 @@
 
 exports.in=function(data){
-	console.log(data);
+	infor=JSON.parse(data);
+	console.log(infor);
 };
 exports.out=function(data){};
