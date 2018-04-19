@@ -15,8 +15,7 @@ function setResult(res){
 exports.dbSendOne=function(table,data,db){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
-		var infos = data;
-		collection.insertOne(infos, function(err, result){
+		collection.insertOne(data, function(err, result){
 		});
 }
 
@@ -26,8 +25,7 @@ exports.dbUpdateOne=function(table,dataFilter,dataUpdate,db){
 
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
-		var infos = dataUpdate;
-		collection.updateOne(dataFilter,{$set:infos}, function(err, result){});
+		collection.updateOne(dataFilter,{$set:dataUpdate}, function(err, result){});
 
 }
 
@@ -43,8 +41,7 @@ exports.dbInsertOne=function(table,dataInsert,db){
 exports.dbSendMore=function(table,data,db){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
-		var infos = data;
-		collection.insertMany(infos, function(err, result){
+		collection.insertMany(data, function(err, result){
 		});
 }
 
@@ -54,9 +51,7 @@ exports.getOther=function(callback,table,data,db){
 		var collection = datas.collection(table);
 		$res=null;
 		try {
-			var infos = JSON.parse(data);
-
-			$res = collection.findOne(infos, function (err, res) {
+			$res = collection.findOne(data, function (err, res) {
 				callback(res);
 			});
 		}catch (err){
@@ -73,8 +68,7 @@ exports.getOtherMore=function(callback,table,data,db){
 	var collection = datas.collection(table);
 	$res=null;
 	try {
-	var infos = JSON.parse(data);
-	$res=collection.find(infos).toArray(function(err,res){
+	$res=collection.find(data).toArray(function(err,res){
 		callback(res);
 	});
 	}catch (err){
@@ -88,8 +82,7 @@ exports.dbGetOne=function(table,data,db){
 	finres=null;
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
-		var infos = JSON.parse(data);
-		collection.findOne(infos).then(function(res,err){
+		collection.findOne(data).then(function(res,err){
 			finres=res;
 			return res;
 		});
@@ -124,7 +117,6 @@ return max;
 exports.dbGetMore=function(table,data,db){
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
-		var infos = data;
 		collection.find(data).toArray(function(err,res){
 			finres=res;
 			 
