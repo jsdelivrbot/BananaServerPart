@@ -58,9 +58,7 @@ var dataResWar=null;
 						dataResWar.Price_warehouse="-1";
 						DB.dbUpdateOne("Warehouse", $user, dataResWar, db);
 					}else{
-
 					 DB.dbUpdateOne("Warehouse", $user, dataResWar, db);
-						console.log(dataResWar);
 					}
 					DB.getOther(function (res) {
 						delete res["_id"];

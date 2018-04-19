@@ -1,7 +1,9 @@
 
 var DB=require("./db.js");
+var transformData=require("./inout.js");
 exports.getUserBaseInfo=function (socket,iosockets,db){
     socket.on("getUserBaseInfo",function(data){
+	    transformData.in(data);
 	      $result=DB.getOther(function (res) {
 		      if (res != null )
 		      {
