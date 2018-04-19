@@ -1,6 +1,7 @@
 
 function detectedType(data){
 	console.log(data);
+	console.log(typeof(data));
 	switch(typeof(data)){
 		case "Number":
 
@@ -17,7 +18,7 @@ exports.in=function(data){
 		infor = JSON.parse(data);
 
 		for(var $key in infor){
-				detectedType(infor[i]);
+				detectedType(infor[$key]);
 		}
 		return infor;
 	}catch(e){
