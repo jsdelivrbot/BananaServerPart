@@ -17,7 +17,7 @@ exports.in=function(data){
 		infor = JSON.parse(data);
 
 		for(var $key in infor){
-			console.log($key);
+			console.log(infor[$key]);
 			//	detectedType(infor[i]);
 		}
 		return infor;
