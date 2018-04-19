@@ -3,12 +3,12 @@ function detectedType(data){
 	console.log(data);
 	console.log(typeof(data));
 	switch(typeof(data)){
-		case "Number":
+		case "number":
 
-			console.log("Number");
+			console.log("number");
 			break;
-		case "String":
-			console.log("Number");
+		case "string":
+			console.log("number");
 			break;
 	}
 }
