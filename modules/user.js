@@ -4,7 +4,7 @@ var transformData=require("./inout.js");
 exports.getUserBaseInfo=function (socket,iosockets,db){
     socket.on("getUserBaseInfo",function(data){
 	    transformData.in(data);
-	      $result=DB.getOther(function (res) {
+	      /*$result=DB.getOther(function (res) {
 		      if (res != null )
 		      {
 			      if (typeof(res) != "string") {
@@ -13,7 +13,7 @@ exports.getUserBaseInfo=function (socket,iosockets,db){
 			      }
 			      socket.emit('getUserBaseInfo', res);
 		      }
-		    }, "UserBaseInfo", data, db);
+		    }, "UserBaseInfo", data, db);*/
 	    });
 }
 
