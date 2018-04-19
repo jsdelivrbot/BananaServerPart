@@ -3,17 +3,20 @@ var DB=require("./db.js");
 var transformData=require("./inout.js");
 exports.getUserBaseInfo=function (socket,iosockets,db){
     socket.on("getUserBaseInfo",function(data){
-	    transformData.in(data);
-	      /*$result=DB.getOther(function (res) {
-		      if (res != null )
-		      {
-			      if (typeof(res) != "string") {
-				      delete res["_id"];
-				      delete res["Id_User"];
-			      }
-			      socket.emit('getUserBaseInfo', res);
-		      }
-		    }, "UserBaseInfo", data, db);*/
+	    if(transformData.in(data)) {
+		    DB.getOther(function (res) {
+		     if (res != null )
+		     {
+		     if (typeof(res) != "string") {
+		     delete res["_id"];
+		     delete res["Id_User"];
+		     }
+		     socket.emit('getUserBaseInfo', res);
+		     }
+		     }, "UserBaseInfo", transformData.in(data), db);
+	    }else{
+		    socket.emit('getUserBaseInfo', "Invalid request format");
+	    }
 	    });
 }
 

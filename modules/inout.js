@@ -2,10 +2,17 @@
 exports.in=function(data){
 	try {
 		infor = JSON.parse(data);
-		console.log("TRUE");
+		return infor;
 	}catch(e){
-		console.log("FALSE");
+		return false;
 	}
 
 };
-exports.out=function(data){};
+exports.out=function(data){
+	try {
+		infor = JSON.stringify(data);
+		return infor;
+	}catch(e){
+		return false;
+	}
+};
