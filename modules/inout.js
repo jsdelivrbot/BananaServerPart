@@ -1,6 +1,11 @@
 
 exports.in=function(data){
-	infor=JSON.parse(data);
-	console.log(infor);
+	try {
+		infor = JSON.parse(data);
+		console.log("TRUE");
+	}catch(e){
+		console.log("FALSE");
+	}
+
 };
 exports.out=function(data){};
