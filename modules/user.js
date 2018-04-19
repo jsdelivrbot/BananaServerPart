@@ -7,13 +7,14 @@ exports.getUserBaseInfo=function (socket,iosockets,db){
 
 	    if(infor) {
 		    DB.getOther(function (res) {
+			    console.log(res);
 		     if (res != null )
 		     {
 		        if (typeof(res) != "string") {
 		          delete res["_id"];
 		          delete res["Id_User"];
 		        }
-		        console.log(res);
+
 		      socket.emit('getUserBaseInfo', res);
 		     }
 		     }, "UserBaseInfo", infor, db);
