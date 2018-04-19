@@ -4,6 +4,7 @@ var transformData=require("./inout.js");
 exports.getUserBaseInfo=function (socket,iosockets,db){
     socket.on("getUserBaseInfo",function(data){
     	infor=transformData.in(data);
+    	console.log(infor);
 	    if(infor) {
 		    DB.getOther(function (res) {
 		     if (res != null )
