@@ -1,5 +1,6 @@
 var DB=require("./db.js");
 var max_level=30;
+var transformData=require("./inout.js");
 exports.getWarehouse=function (socket,iosockets,db){
 	socket.on("getWarehouse",function(data){
 		DB.getOther(function(res){
@@ -10,7 +11,7 @@ exports.getWarehouse=function (socket,iosockets,db){
 				}
 				socket.emit('getWarehouse', res);
 			}
-			},"Warehouse", data,db);
+			},"Warehouse", transformData.in(data),db);
 
 	});
 }
@@ -25,7 +26,7 @@ exports.getWarehouseResources=function (socket,iosockets,db){
 				}
 				socket.emit('getWarehouseResources', res);
 			}
-			},"WarehouseResources", data,db);
+			},"WarehouseResources", transformData.in(data),db);
 
 	});
 }

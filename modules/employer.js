@@ -1,10 +1,10 @@
 
 var DB=require("./db.js");
-
+var transformData=require("./inout.js");
 exports.buyEmployer=function (socket,iosockets,db){
 	socket.on("buyEmployer",function(data){
 		try {
-			$finZap = JSON.parse(data);
+			$finZap = transformData.in(data);
 			if (data != null) {
 				$id = DB.getMaxValParam("buyEmployer", "Id_employer", db);
 				$finZap.Id_employer = $id;
@@ -31,7 +31,7 @@ exports.buyEmployer=function (socket,iosockets,db){
 exports.getEmployeerItems=function (socket,iosockets,db){
 	socket.on("getEmployeerItems",function(data){
 		try {
-			$finZap = JSON.parse(data);
+			$finZap = transformData.in(data);
 				DB.dbSendOne("EmployeerItems", $finZap, db);
 				DB.getOther(function (res) {
 					if (res != null) {
@@ -41,7 +41,7 @@ exports.getEmployeerItems=function (socket,iosockets,db){
 					} else {
 						socket.emit('getEmployeerItems', "-1");
 					}
-				}, "EmployeerItems", data, db);
+				}, "EmployeerItems", $finZap, db);
 		}catch(e){
 			socket.emit('getEmployeerItems', "Invalid request format");
 		}
@@ -52,7 +52,7 @@ exports.getEmployeerItems=function (socket,iosockets,db){
 exports.hireEmployeer=function (socket,iosockets,db){
 	socket.on("hireEmployeer",function(data){
 			try {
-				$hireData = JSON.parse(data);
+				$hireData = transformData.in(data);
 				$status = {"Hire_status": $hireData.Hire_status};
 				delete $hireData["Hire_status"];
 				DB.dbUpdateOne("hireEmployeer", $hireData, $status, db);
@@ -65,7 +65,7 @@ exports.hireEmployeer=function (socket,iosockets,db){
 					}else{
 					socket.emit('hireEmployeer', "-1");
 				}
-				}, "hireEmployeer", data, db);
+				}, "hireEmployeer", transformData.in(data), db);
 
 		}catch(e){
 			socket.emit('hireEmployeer', "Invalid request format");

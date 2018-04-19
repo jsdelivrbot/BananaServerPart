@@ -1,7 +1,8 @@
 var DB=require("./db.js");
-
+var transformData=require("./inout.js");
 exports.getParselsBase=function (socket,iosockets,db){
 	socket.on("getParselsBase",function(data){
+		infor=transformData.in(data);
 		DB.getOtherMore(function(res){
 			if(res!=null) {
 				if (typeof(res) != "string") {
@@ -18,13 +19,14 @@ exports.getParselsBase=function (socket,iosockets,db){
 				}}else{
 					socket.emit('getParselsBase', res);
 				}
-			}},"ParselsBase", data,db);
+			}},"ParselsBase", infor,db);
 
 	});
 }
 
 exports.getParselUser=function (socket,iosockets,db){
 	socket.on("getParselUser",function(data){
+		infor=transformData.in(data);
 		DB.getOther(function(res){
 			if(res!=null) {
 				if (typeof(res) != "string") {
@@ -33,13 +35,14 @@ exports.getParselUser=function (socket,iosockets,db){
 					delete res["Id_map"];
 				}
 				socket.emit('getParselUser', res);
-			}},"ParselUser", data,db);
+			}},"ParselUser", infor,db);
 
 	});
 }
 
 exports.getParselsUser=function (socket,iosockets,db){
 	socket.on("getParselsUser",function(data){
+		infor=transformData.in(data);
 		DB.getOtherMore(function(res){
 			if(res!=null) {
 				if (typeof(res) != "string") {
@@ -48,7 +51,7 @@ exports.getParselsUser=function (socket,iosockets,db){
 					delete res[$key]["Id_User"];
 				}}
 				socket.emit('getParselsUser', res);
-			}},"ParselUser", data,db);
+			}},"ParselUser", infor,db);
 
 	});
 }
@@ -58,7 +61,7 @@ var dataBP=null;
 exports.buyParsel=function (socket,iosockets,db){
 	socket.on("buyParsel",function(data){
 		try {
-			$finZap = JSON.parse(data);
+			$finZap = transformData.in(data);
 
 			$finalDataPay = {"Id_User": $finZap.Id_User};
 			$user = {"Id_User": $finZap.Id_User};

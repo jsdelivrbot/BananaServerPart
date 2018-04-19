@@ -1,11 +1,11 @@
 
 var DB=require("./db.js");
-
+var transformData=require("./inout.js");
 exports.hireAgronom=function (socket,iosockets,db){
 	socket.on("hireAgronom",function(data) {
 		if (data != null) {
 			try{
-			$agronomInfo = JSON.parse(data);
+			$agronomInfo =transformData.in(data);
 			$agronomHireStatus = {"Hire_status": $agronomInfo.Hire_status};
 			delete $agronomInfo["Hire_status"];
 			DB.dbUpdateOne("hireAgronom", $agronomInfo, $agronomHireStatus,db);
@@ -21,7 +21,7 @@ exports.hireAgronom=function (socket,iosockets,db){
 					socket.emit('hireAgronom', "-1");
 				}
 
-			},"hireAgronom", data,db);
+			},"hireAgronom", transformData.in(data),db);
 			}catch(e){
 			socket.emit('hireAgronom', "Invalid request format");
 		}

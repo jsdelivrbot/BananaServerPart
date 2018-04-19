@@ -1,5 +1,5 @@
 var DB=require("./db.js");
-
+var transformData=require("./inout.js");
 exports.getInstallInfo=function (socket,iosockets,db){
 	socket.on("getInstallInfo",function(data){
 		DB.getOtherMore(function(res){
@@ -13,7 +13,7 @@ exports.getInstallInfo=function (socket,iosockets,db){
 					}
 				}
 				socket.emit('getInstallInfo', res);
-			}},"InstallInfo", data,db);
+			}},"InstallInfo", transformData.in(data),db);
 
 	});
 }

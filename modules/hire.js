@@ -1,7 +1,7 @@
 
 
 var DB=require("./db.js");
-
+var transformData=require("./inout.js");
 exports.getHire=function (socket,iosockets,db){
 	socket.on("getHire",function(data){
 		try {
@@ -18,7 +18,7 @@ exports.getHire=function (socket,iosockets,db){
 					} else {
 						socket.emit('getHire', "-1");
 					}
-				}, "Hire", data, db);
+				}, "Hire", transformData.in(data), db);
 
 			}
 		}catch(e){

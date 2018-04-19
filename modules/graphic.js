@@ -1,6 +1,6 @@
 
 var DB=require("./db.js");
-
+var transformData=require("./inout.js");
 exports.getGraphicItem=function (socket,iosockets,db){
 	socket.on("getGraphicItem",function(data){
 		DB.getOther(function(res){
@@ -8,7 +8,7 @@ exports.getGraphicItem=function (socket,iosockets,db){
 				delete res["_id"];
 				socket.emit('getGraphicItem', res);
 			}
-			},"GraphicItem", data,db);
+			},"GraphicItem",  transformData.in(data),db);
 
 	});
 }
@@ -21,7 +21,7 @@ exports.getGraphics=function (socket,iosockets,db){
 					delete res[$key]["_id"];
 				}
 				socket.emit('getGraphics', res);
-			}},"GraphicItem", data,db);
+			}},"GraphicItem",  transformData.in(data),db);
 
 	});
 }

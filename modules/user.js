@@ -4,10 +4,8 @@ var transformData=require("./inout.js");
 exports.getUserBaseInfo=function (socket,iosockets,db){
     socket.on("getUserBaseInfo",function(data){
     	infor=transformData.in(data);
-	    console.log(infor);
 	    if(infor) {
 		    DB.getOther(function (res) {
-			    console.log(res);
 		     if (res != null )
 		     {
 		        if (typeof(res) != "string") {
@@ -27,8 +25,8 @@ exports.getUserBaseInfo=function (socket,iosockets,db){
 
 exports.getUserAgronom=function (socket,iosockets,db){
 	socket.on("getUserAgronom",function(data){
+		infor=transformData.in(data);
 		DB.getOther(function(res){
-
 			if(res!=null) {
 				if (typeof(res) != "string") {
 					delete res["_id"];
@@ -36,7 +34,7 @@ exports.getUserAgronom=function (socket,iosockets,db){
 				}
 				socket.emit('getUserAgronom', res);
 			}
-		},"UserAgronom", data,db);
+		},"UserAgronom", infor,db);
 
 
 	});
@@ -44,7 +42,8 @@ exports.getUserAgronom=function (socket,iosockets,db){
 
 exports.getUserAgronoms=function (socket,iosockets,db){
 	socket.on("getUserAgronoms",function(data){
-		$datas=DB.dbGetMore("UserAgronom",data,db);
+		infor=transformData.in(data);
+		$datas=DB.dbGetMore("UserAgronom",infor,db);
 		DB.getOtherMore(function(res){
 			if(res!=null) {
 				if (typeof(res) != "string") {
@@ -56,12 +55,13 @@ exports.getUserAgronoms=function (socket,iosockets,db){
 				socket.emit('getUserAgronoms', res);
 			}
 
-		},"UserAgronom", data,db);
+		},"UserAgronom", infor,db);
 	});
 }
 
 exports.getUserLobbyist=function (socket,iosockets,db){
 	socket.on("getUserLobbyist",function(data){
+		infor=transformData.in(data);
 		DB.getOther(function(res){
 			if(res!=null) {
 				if (typeof(res) != "string") {
@@ -70,13 +70,14 @@ exports.getUserLobbyist=function (socket,iosockets,db){
 				}
 				socket.emit('getUserLobbyist', res);
 			}
-		},"UserLobbyist", data,db);
+		},"UserLobbyist", infor,db);
 
 	});
 }
 
 exports.getUserLobbyists=function (socket,iosockets,db){
 	socket.on("getUserLobbyists",function(data){
+		infor=transformData.in(data);
 		DB.getOtherMore(function(res){
 			if(res!=null) {
 				if (typeof(res) != "string") {
@@ -87,13 +88,14 @@ exports.getUserLobbyists=function (socket,iosockets,db){
 				}
 				socket.emit('getUserLobbyists', res);
 			}
-		},"UserLobbyist", data,db);
+		},"UserLobbyist", infor,db);
 
 	});
 }
 
 exports.getUserDirector=function (socket,iosockets,db){
 	socket.on("getUserDirector",function(data){
+		infor=transformData.in(data);
 		DB.getOther(function(res){
 			if(res!=null) {
 				if (typeof(res) != "string") {
@@ -101,13 +103,14 @@ exports.getUserDirector=function (socket,iosockets,db){
 					delete res["Id_User"];
 				}
 				socket.emit('getUserDirector', res);
-			}},"UserDirector", data,db);
+			}},"UserDirector", infor,db);
 
 	});
 }
 
 exports.getUserDirectors=function (socket,iosockets,db){
 	socket.on("getUserDirectors",function(data){
+		infor=transformData.in(data);
 		DB.getOtherMore(function(res){
 			if(res!=null) {
 				if (typeof(res) != "string") {
@@ -118,14 +121,15 @@ exports.getUserDirectors=function (socket,iosockets,db){
 				}
 				socket.emit('getUserDirectors', res);
 			}
-		},"UserDirector", data,db);
+		},"UserDirector", infor,db);
 
 	});
 }
 
 exports.getUserScientific=function (socket,iosockets,db){
 	socket.on("getUserScientific",function(data){
-		DB.getOther(function(res){dataUS=res;},"UserScientific", data,db);
+		infor=transformData.in(data);
+		DB.getOther(function(res){dataUS=res;},"UserScientific", infor,db);
 		if(dataUS!=null) {
 			if (typeof(res) != "string") {
 				delete dataUS["_id"];
@@ -139,6 +143,7 @@ exports.getUserScientific=function (socket,iosockets,db){
 
 exports.getUserScientifics=function (socket,iosockets,db){
 	socket.on("getUserScientifics",function(data){
+		infor=transformData.in(data);
 		DB.getOtherMore(function(res){
 			if(res!=null) {
 				if (typeof(res) != "string") {
@@ -148,7 +153,7 @@ exports.getUserScientifics=function (socket,iosockets,db){
 					}
 				}
 				socket.emit('getUserScientifics', res);
-			}},"UserScientific", data,db);
+			}},"UserScientific", infor,db);
 
 	});
 }
@@ -156,6 +161,7 @@ exports.getUserScientifics=function (socket,iosockets,db){
 
 exports.getUserTraider=function (socket,iosockets,db){
 	socket.on("getUserTraider",function(data){
+		infor=transformData.in(data);
 		DB.getOther(function(res){
 			if(res!=null) {
 				if (typeof(res) != "string") {
@@ -163,7 +169,7 @@ exports.getUserTraider=function (socket,iosockets,db){
 					delete res["Id_User"];
 				}
 				socket.emit('getUserTraider', res);
-			}},"UserTraider", data,db);
+			}},"UserTraider", infor,db);
 
 	});
 }
@@ -171,6 +177,7 @@ exports.getUserTraider=function (socket,iosockets,db){
 
 exports.getUserTraiders=function (socket,iosockets,db){
 	socket.on("getUserTraiders",function(data){
+		infor=transformData.in(data);
 		DB.getOtherMore(function(res){
 			if(res!=null) {
 				if (typeof(res) != "string") {
@@ -180,7 +187,7 @@ exports.getUserTraiders=function (socket,iosockets,db){
 					}
 				}
 				socket.emit('getUserTraiders', res);
-			}},"UserTraider", data,db);
+			}},"UserTraider", infor,db);
 
 	});
 }
@@ -188,6 +195,7 @@ exports.getUserTraiders=function (socket,iosockets,db){
 
 exports.getUserEmployer=function (socket,iosockets,db){
 	socket.on("getUserEmployer",function(data){
+		infor=transformData.in(data);
 		DB.getOther(function(res){
 			if(res!=null) {
 				if (typeof(res) != "string") {
@@ -195,13 +203,14 @@ exports.getUserEmployer=function (socket,iosockets,db){
 					delete res["Id_User"];
 				}
 				socket.emit('getUserEmployer', res);
-			}},"UserEmployer", data,db);
+			}},"UserEmployer", infor,db);
 
 	});
 }
 
 exports.getUserEmployers=function (socket,iosockets,db){
 	socket.on("getUserEmployers",function(data){
+		infor=transformData.in(data);
 		DB.getOtherMore(function(res){
 			if(res!=null) {
 				if (typeof(res) != "string") {
@@ -211,13 +220,14 @@ exports.getUserEmployers=function (socket,iosockets,db){
 					}
 				}
 				socket.emit('getUserEmployers', res);
-			}},"UserEmployer", data,db);
+			}},"UserEmployer", infor,db);
 
 	});
 }
 
 exports.getUserEmployeerItems=function (socket,iosockets,db){
 	socket.on("getUserEmployeerItems",function(data){
+		infor=transformData.in(data);
 		DB.getOtherMore(function(res){
 			if(res!=null) {
 				if (typeof(res) != "string") {
@@ -227,7 +237,7 @@ exports.getUserEmployeerItems=function (socket,iosockets,db){
 					delete res[$key]["Type_employer"];
 				}}
 				socket.emit('getUserEmployeerItems', res);
-			}},"UserEmployeerItems", data,db);
+			}},"UserEmployeerItems", infor,db);
 
 	});
 }

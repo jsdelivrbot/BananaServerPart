@@ -1,5 +1,5 @@
 var DB=require("./db.js");
-
+var transformData=require("./inout.js");
 exports.getMapBase=function (socket,iosockets,db){
 	socket.on("getMapBase",function(data){
 		DB.getOther(function(res){
@@ -9,7 +9,7 @@ exports.getMapBase=function (socket,iosockets,db){
 					delete res["Id_map"];
 				}
 				socket.emit('getMapBase', res);
-			}},"Map", data,db);
+			}},"Map", transformData.in(data),db);
 
 	});
 }
