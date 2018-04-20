@@ -6,7 +6,7 @@ exports.getParselsBase=function (socket,iosockets,db){
 		DB.getOtherMore(function(res){
 			if(res!=null) {
 				if (typeof(res) != "string") {
-				if(!isNaN(res[0])) {
+				if(typeof(res[0]) !=="undefined") {
 					for (var $key in res) {
 						delete res[$key]["_id"];
 						delete res[$key]["Id_map"];
@@ -15,8 +15,8 @@ exports.getParselsBase=function (socket,iosockets,db){
 					console.log($inf);
 					socket.emit('getParselsBase', $inf);
 				}else{
-					delete res[0]._id;
-					delete res[0].Id_map;
+					delete res._id;
+					delete res.Id_map;
 					$inf=res;
 					console.log(res);
 					console.log("TEST");
