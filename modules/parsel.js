@@ -15,8 +15,8 @@ exports.getParselsBase=function (socket,iosockets,db){
 					console.log($inf);
 					socket.emit('getParselsBase', $inf);
 				}else{
-					delete res._id;
-					delete res.Id_map;
+					delete res[0]._id;
+					delete res[0].Id_map;
 					$inf=res;
 					console.log(res);
 					console.log("TEST");
