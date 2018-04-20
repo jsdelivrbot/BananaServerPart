@@ -12,14 +12,11 @@ exports.getParselsBase=function (socket,iosockets,db){
 						delete res[$key]["Id_map"];
 					}
 					$inf=res;
-					console.log($inf);
 					socket.emit('getParselsBase', $inf);
 				}else{
 					delete res._id;
 					delete res.Id_map;
 					$inf=res;
-					console.log(res);
-					console.log("TEST");
 					socket.emit('getParselsBase', $inf);
 				}}else{
 					delete res["_id"];
