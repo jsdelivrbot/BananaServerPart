@@ -5,9 +5,9 @@ var transformData=require("./inout.js");
 exports.getHire=function (socket,iosockets,db){
 	socket.on("getHire",function(data){
 		try {
-			$finZap = JSON.parse(data);
-			if ($data != null) {
-				DB.dbSendOne("Hire", $finZap, db);
+			$finZap = transformData.in(data);
+			if (data != null) {
+				//DB.dbSendOne("Hire", $finZap, db);
 				DB.getOtherMore(function (res) {
 					if (res != null) {
 						for (var $key in res) {

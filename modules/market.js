@@ -5,10 +5,10 @@ exports.getMarketPrice=function (socket,iosockets,db){
 		DB.getOther(function(res){
 			if(res!=null) {
 				if (typeof(res) != "string") {
-					delete res["_id"];
+					delete res._id;
 				}
 				socket.emit('getMarketPrice', res);
-			}},"MarketPrice", "{}",db);
+			}},"MarketPrice", "",db);
 
 	});
 }
