@@ -17,6 +17,8 @@ exports.getParselsBase=function (socket,iosockets,db){
 					delete res["Id_map"];
 					socket.emit('getParselsBase', res);
 				}}else{
+					delete res["_id"];
+					delete res["Id_map"];
 					socket.emit('getParselsBase', res);
 				}
 			}},"ParselsBase", infor,db);
