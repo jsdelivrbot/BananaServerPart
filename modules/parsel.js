@@ -38,7 +38,7 @@ exports.getParselUser=function (socket,iosockets,db){
 					delete res._id;
 					delete res.Id_User;
 					delete res.Id_map;
-					console.log(res);
+
 				}
 
 				socket.emit('getParselUser', res);
@@ -54,8 +54,9 @@ exports.getParselsUser=function (socket,iosockets,db){
 			if(res!=null) {
 				if (typeof(res) != "string") {
 				for (var $key in res) {
-					delete res[$key]["_id"];
-					delete res[$key]["Id_User"];
+					delete res[$key]._id;
+					delete res[$key].Id_User;
+					delete res[$key].Id_map;
 				}}
 				socket.emit('getParselsUser', res);
 			}},"ParselUser", infor,db);
