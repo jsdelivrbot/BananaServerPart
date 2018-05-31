@@ -110,10 +110,10 @@ exports.buyParsel=function (socket,iosockets,db){
 											sendNewData($finZap, db, socket);
 										}else{
 											DB.dbUpdateOne("User", $UserPay, $money, db);
-											DB.dbUpdateOne("Parsel", $finZap, $parselStatus2, db);
+											DB.dbUpdateOne("Parsel", $finZap, $parselStatus3, db);
 											DB.getOther(function (res5) {
 												if (res5 == null) {
-													addNewParse(db, $parseInfosNew, $parselStatus1,$parselStatus2, $finZap.Id_User);
+													addNewParse(db, $parseInfosNew, $parselStatus1,$parselStatus3, $finZap.Id_User);
 												}
 											}, "Parsel", $parseInfosChange, db);
 											sendNewData($finZap, db, socket);
@@ -137,7 +137,7 @@ exports.buyParsel=function (socket,iosockets,db){
 											$finalDataPay_new.Current_CoolDown_Time = 0;
 											$finalDataPay_new.Agronom_buff = 0;
 											$finalDataPay_new.Id_Agronom = -1;
-											$finalDataPay_new.Parsel_Status = 2;
+											$finalDataPay_new.Parsel_Status = 3;
 											$finalDataPay_new.Resource = 0;
 											$finalDataPay_new.Fertility = 1;
 											$infos = $finZap;
@@ -183,6 +183,7 @@ function addNewParse(db,$parseInfosNew,$parselStatus1,$parselStatus2,$id,$parseI
 			res3.Fertility = 1;
 
 			DB.dbSendOne("Parsel", res3, db);
+		
 			updateParselStatus(db, res3.Current_CoolDown_Time, $parseInfosNewUpdate, $parselStatus1,$parselStatus2);
 		}
 	}, "ParselBase", $parseInfosNew, db);
