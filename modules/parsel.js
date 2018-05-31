@@ -183,7 +183,7 @@ function addNewParse(db,$parseInfosNew,$parselStatus1,$parselStatus2,$id,$parseI
 			res3.Fertility = 1;
 
 			DB.dbSendOne("Parsel", res3, db);
-		
+
 			updateParselStatus(db, res3.Current_CoolDown_Time, $parseInfosNewUpdate, $parselStatus1,$parselStatus2);
 		}
 	}, "ParselBase", $parseInfosNew, db);
