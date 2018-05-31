@@ -192,10 +192,14 @@ function addNewParse(db,$parseInfosNew,$parselStatus1,$parselStatus2,$id,$parseI
 function sendNewData($info,database,socket){
 
 		DB.getOther(function (res4) {
-			delete res4._id;
-			delete res4.Id_map;
-			delete res4.Id_User;
-			socket.emit('buyParsel', res4);
+			if(res4!=null) {
+				delete res4._id;
+				delete res4.Id_map;
+				delete res4.Id_User;
+				socket.emit('buyParsel', res4);
+			}else{
+				socket.emit('buyParsel', -1);
+			}
 		}, "Parsel", $info, database);
 	}
 
