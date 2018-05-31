@@ -1,5 +1,6 @@
 var DB=require("./db.js");
 var transformData=require("./inout.js");
+var createUsers=require("./createdUsers.js");
 exports.getMapBase=function (socket,iosockets,db){
 	socket.on("getMapBase",function(data){
 		DB.getOther(function(res){

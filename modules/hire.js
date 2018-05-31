@@ -2,20 +2,20 @@
 
 var DB=require("./db.js");
 var transformData=require("./inout.js");
+var createUsers=require("./createdUsers.js");
 exports.getHire=function (socket,iosockets,db){
 	socket.on("getHire",function(data){
 		try {
 			$finZap = transformData.in(data);
 			if (data != null) {
-				//DB.dbSendOne("Hire", $finZap, db);
-				DB.getOtherMore(function (res) {
-					if (res != null) {
-						for (var $key in res) {
-							delete res[$key]["_id"];
-							delete res[$key]["Type_employer"];
-						}
+				DB.getOther(function (res) {
+					if (res != null&&res.length!=0) {
+							delete res._id;
+							delete res.Type_employer;
 						socket.emit('getHire', res);
-					} else {
+					} else if(res != null&&res.length==0){
+						socket.emit('getHire', "-1");
+					}else {
 						socket.emit('getHire', "-1");
 					}
 				}, "Hire", transformData.in(data), db);

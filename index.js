@@ -15,10 +15,12 @@ var market = require("./modules/market.js");
 var warehouse = require("./modules/warehouse.js");
 var parsel = require("./modules/parsel.js");
 var install = require("./modules/install.js");
+var marketEmulation = require("./modules/marketEmulation.js");
+var trader = require("./modules/trader.js");
 var MongoClient = require('mongodb').MongoClient;
 
 
-const PORT =  process.env.PORT||5891;
+const PORT =  5891;
 const INDEX = path.join(__dirname, 'index.html');
 
 
@@ -55,15 +57,17 @@ io.sockets.on('connection', function (socket) {
 		user.getUserEmployer(socket, io.sockets,db);
 		user.getUserEmployers(socket, io.sockets,db);
 		user.getUserEmployeerItems(socket, io.sockets,db);
+		user.deleteUser(socket, io.sockets,db);
 
 		graphic.getGraphicItem(socket, io.sockets,db);
 		graphic.getGraphics(socket, io.sockets,db);
 
 		agronom.hireAgronom(socket, io.sockets,db);
 
-		employers.hireEmployeer(socket, io.sockets,db);
+		employers.hireEmployer(socket, io.sockets,db);
 		employers.buyEmployer(socket, io.sockets,db);
 		employers.getEmployeerItems(socket, io.sockets,db);
+		employers.buyEmployerItem(socket, io.sockets,db);
 
 		hire.getHire(socket, io.sockets,db);
 
@@ -75,6 +79,8 @@ io.sockets.on('connection', function (socket) {
 		warehouse.getWarehouseResources(socket, io.sockets,db);
 		warehouse.upgradeWarehouse(socket, io.sockets,db);
 
+		trader.buffTraderItem(socket, io.sockets,db);
+
 		parsel.getParselsBase(socket, io.sockets,db);
 		parsel.getParselUser(socket, io.sockets,db);
 		parsel.getParselsUser(socket, io.sockets,db);
@@ -82,7 +88,7 @@ io.sockets.on('connection', function (socket) {
 
 		install.getInstallInfo(socket, io.sockets,db);
 		install.setInstallInfo(socket, io.sockets,db);
-
+		marketEmulation.marketEmulation(db);
 	socket.on('addme', function (user) {
 
 		socket.username = user;
@@ -93,9 +99,5 @@ io.sockets.on('connection', function (socket) {
 
 	});
 
-
-	socket.on('disconect', function () {
-		io.sockets.emit('chat', 'Server', socket.username + 'left');
-	});
 });
 });

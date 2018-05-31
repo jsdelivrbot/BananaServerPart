@@ -25,10 +25,22 @@ exports.dbUpdateOne=function(table,dataFilter,dataUpdate,db){
 
 		var datas = db.db("banandata");
 		var collection = datas.collection(table);
-		collection.updateOne(dataFilter,{$set:dataUpdate}, function(err, result){});
+		collection.updateOne(dataFilter,{$set:dataUpdate}, function(err, result){
+
+		});
 
 }
 
+
+exports.dbUpdateCallback=function(table,dataFilter,dataUpdate,db,callback){
+
+	var datas = db.db("banandata");
+	var collection = datas.collection(table);
+	collection.updateOne(dataFilter,{$set:dataUpdate}, function(err, result){
+		callback(result);
+	});
+
+}
 
 exports.dbInsertOne=function(table,dataInsert,db){
 
@@ -108,10 +120,17 @@ exports.getMaxValParam=function(table,param,db){
 				}
 			}
 			$val++;
+
 			setMax($val);
 			
 		});
 return max;
+}
+
+exports.deleteDatas=function(table,data,db){
+	var datas = db.db("banandata");
+	var collection = datas.collection(table);
+	collection.deleteMany(data,function(err,res){});
 }
 
 exports.dbGetMore=function(table,data,db){
