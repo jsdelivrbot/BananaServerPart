@@ -25,7 +25,7 @@ const INDEX = path.join(__dirname, 'index.html');
 
 
 
-app.set('port', process.env.PORT||5891);
+app.set('port', PORT);
 app.set('views', path.join(__dirname, 'views'));
 
 app.set('view engine', 'jade');
