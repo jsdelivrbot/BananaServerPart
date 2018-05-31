@@ -20,7 +20,7 @@ var trader = require("./modules/trader.js");
 var MongoClient = require('mongodb').MongoClient;
 
 
-const PORT =  process.env.port || 5891;
+const PORT =  process.env.PORT || 5891;
 const INDEX = path.join(__dirname, 'index.html');
 
 
