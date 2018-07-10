@@ -1,0 +1,20 @@
+html(lang="en")
+	head
+		title= pageTitle
+		script(src='https://cdn.socket.io/socket.io-1.4.5.js')
+		script.
+			
+			var socket=io("https://ancient-gorge-52214.herokuapp.com");
+			socket.on('middle',function(infos){
+				var p=document.createElement("p");
+					p.innerHTML=infos;
+					document.getElementById("output").appendChild(p);
+				}
+			);
+	body
+	h1 Banan server socket
+	#container !{title}
+	.container !{message}
+	#output
+	
+		

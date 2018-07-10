@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>Test socket.io</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+	
+</head>
+<body>
+<div id="output"></div>
+<div id="send">
+<!--<input type="text" id="data" size="100" /><br />
+<input type="button" id="sendtext" value="Send Text" />-->
+</div>
+<script>
+	var socket = io("http://ancient-gorge-52214.herokuapp.com");
+	socket.on('connect',function(){
+		//socket.emit('addme',prompt('New users'));
+	})
+	socket.on('chat',function(infos){
+		var p=document.createElement("p");
+		
+		p.innerHTML=infos;
+		document.getElementById("output").appendChild(p);
+	})
+	socket.on('middle',function(infos){
+		var p=document.createElement("p");
+		
+		p.innerHTML=infos;
+		document.getElementById("output").appendChild(p);
+	})
+	window.addEventListener('load',function(){
+		document.getElementById('sendtext').addEventListener('click',function(){
+			var text=document.getElementById('data').value;
+			socket.emit('sendchat',text);
+		},false);
+	},false);
+	</script>
+</body>
+</html>
